@@ -12,6 +12,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,7 +20,7 @@ public class GamePlayWindow : MonoBehaviour {
 
     private static GamePlayWindow instance;
 
-    public Text levelText;
+    public TextMeshProUGUI levelText;
 
     private void Awake() {
         instance = this;
@@ -35,7 +36,7 @@ public class GamePlayWindow : MonoBehaviour {
     
     public static void ShowStatic() {
         instance.gameObject.SetActive(true);
-        GameManager.instance.background.SetActive(false);
+        GameManager.Instance.background.SetActive(false);
     }
 
     public static void HideStatic() {

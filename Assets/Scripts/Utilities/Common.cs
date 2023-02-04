@@ -14,6 +14,7 @@ public static class Common
     public static int maxLevelUnlocked = 0;
     public static int currentStageLoad = 0;
     public static bool isTutorialLevel = false;
+    public static int curScore = 0;
 
     public static void savePlayerData()
     {

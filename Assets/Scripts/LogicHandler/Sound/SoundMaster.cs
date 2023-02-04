@@ -97,19 +97,16 @@ using UnityEngine;
 */
 namespace Mkey
 {
-    public enum ESoundType : int
+    public enum EAudioEffectID : int
     {
-        EatBanana = 0,
-        DuoiDai = 1,
-        EatSpicy = 2,
-        Spicing = 3,
-        PortOpen = 4,
-        WinGame = 5,
-        LoseGame = 6,
-        Move = 7,
-        SnakeDrop = 8,
-        FoodDrop = 9,
-        FoodMove = 10
+        click = 0,
+        place = 1,
+        pop = 2,
+        port = 3,
+        splash = 4,
+        tree = 5,
+        windmill = 6,
+        windmillhill = 7
     }
 
     public class SoundMaster : MonoBehaviour
@@ -303,9 +300,10 @@ namespace Mkey
             PlayClip(playDelay, closeWindow, callBack);
         }
 
-        public void SoundPlayByEnum(ESoundType soundType, float playDelay, Action callBack)
+        public void SoundPlayByEnum(EAudioEffectID soundType, float playDelay, float soundVolume, Action callBack)
         {
-            PlayClip(playDelay, listAudioClips[(int)soundType], callBack);
+            StartCoroutine(PlayClipAtPoint(playDelay, listAudioClips[(int)soundType], transform.position, soundVolume, callBack));
+
         }
 
         #endregion play basic clips

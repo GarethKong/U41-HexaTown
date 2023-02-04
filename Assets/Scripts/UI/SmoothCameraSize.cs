@@ -22,40 +22,12 @@ namespace UI
 
         private bool isStartZoom = false;
 
-       public  void StartZoom(LevelGrid levelGrid)
+       public  void StartZoom()
         {
             int minX = 0;
             int minY = 0;
             int maxX = 0;
             int maxY = 0;
-            var mapInfos = levelGrid.mapInfos;
-            //Calculator scale size
-            for (int row = 0; row < GameConfig.MAPSIZE; row++)
-            {
-                for (int column = 0; column <GameConfig.MAPSIZE; column++)
-                {
-                    if (mapInfos[column, row]!=0)
-                    {
-                        if (minX> row)
-                        {
-                            minX = row;
-                        }
-                        if (maxX< row)
-                        {
-                            maxX = row;
-                        }
-                        if (minY> column)
-                        {
-                            minY = column;
-                        }
-                        if (maxY< column)
-                        {
-                            maxY = column;
-                        }
-                    }
-                }
-            }
-
             int widthSize = maxX - minX;
             int heightSize = maxY - minY;
             float scaleX = 21f / widthSize;

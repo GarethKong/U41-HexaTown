@@ -81,6 +81,6 @@ public class WinWindow : MonoBehaviour
         HideStatic();
         GamePlayWindow.ShowStatic();
         Common.SetLevelNumberNeedLoad(Common.currentStageLoad+1);
-        GameManager.instance.StartNewGame();
+        GameManager.Instance.StartNewGame();
     }
 }

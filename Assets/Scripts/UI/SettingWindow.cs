@@ -72,7 +72,7 @@ public class SettingWindow : MonoBehaviour
         btnClose.ClickFunc = () =>
         {
             SoundMaster.Instance.SoundPlayClick(0, null);
-            GameManager.instance.HideDialog(EDialog.SETTING);
+            GameManager.Instance.HideDialog(EDialog.SETTING);
         };
         Hide();
     }

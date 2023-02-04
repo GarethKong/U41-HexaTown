@@ -21,7 +21,6 @@ namespace Interface
         public Action OnFailLevel;
         public Action OnFoodDrop;
         public Action OnNextLevel;
-        public Action<Direction> OnSpitFire;
         public Action OnFire;
         public Action OnStopFire;
         public Action OnEatBanana;
@@ -47,14 +46,6 @@ namespace Interface
             if (OnStopFire != null)
             {
                 OnStopFire();
-            }
-        }
-        
-        public void SpitFire(Direction direction)
-        {
-            if (OnSpitFire != null)
-            {
-                OnSpitFire(direction);
             }
         }
 
