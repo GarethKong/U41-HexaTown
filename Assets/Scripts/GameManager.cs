@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     public GameObject background;
 
     public GameObject effectNode;
+    public GameObject scoreNode;
 
     public TextMeshProUGUI scoreTextMain;
     public TextMeshProUGUI deckCounterText;
@@ -60,6 +61,9 @@ public class GameManager : MonoBehaviour
     public GameObject boardNode;
     public bool isMoving = false;
     public bool isCanMove = false;
+    
+    public Button btnLeft;
+    public Button btnRight;
 
     List<Hex> bigPreviewTrihex;
 
@@ -68,12 +72,15 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+       
     }
 
     private void Start()
     {
         Debug.Log("GameHandler.Start");
         CustomEventManager.Instance.OnWinLevel += OnWinLevel;
+        btnLeft.onClick.AddListener(onRotateLeftButtonClick);
+        btnRight.onClick.AddListener(onRotateRightButtonClick);
         StartNewGame();
     }
 
@@ -118,7 +125,7 @@ public class GameManager : MonoBehaviour
         }
 
         this.pickNextTrihex();
-        grid.updateTriPreview(GameConfig.DynamicPos.X, GameConfig.DynamicPos.Y, this.nextTrihex);
+        grid.updateTriPreview(GameConfig.DynamicPos.X, GameConfig.DynamicPos.Y, this.nextTrihex, true);
 
         // if (GameConfig.sessionNumber % 3 == 0)
         // {
@@ -139,7 +146,7 @@ public class GameManager : MonoBehaviour
                 {
                     case 'a':
                     case 'v':
-                        if (deckCounterImage.TryGetComponent(out SpriteRenderer sp))
+                        if (deckCounterImage.TryGetComponent(out Image sp))
                         {
                             sp.sprite = SpriteMgr.Instance.deckCounterImage[0];
                         }
@@ -148,7 +155,7 @@ public class GameManager : MonoBehaviour
                     case '/':
                     case '-':
                     case '\\':
-                        if (deckCounterImage.TryGetComponent(out SpriteRenderer sp1))
+                        if (deckCounterImage.TryGetComponent(out Image sp1))
                         {
                             sp1.sprite = SpriteMgr.Instance.deckCounterImage[1];
                         }
@@ -160,7 +167,7 @@ public class GameManager : MonoBehaviour
                     case 'd':
                     case 'j':
                     case 'l':
-                        if (deckCounterImage.TryGetComponent(out SpriteRenderer sp2))
+                        if (deckCounterImage.TryGetComponent(out Image sp2))
                         {
                             sp2.sprite = SpriteMgr.Instance.deckCounterImage[2];
                         }
@@ -414,6 +421,15 @@ public class GameManager : MonoBehaviour
               
             }
         }
+        
+        if (Input.mouseScrollDelta.y > 0)
+        {
+            rotateLeft();
+        }
+        else if (Input.mouseScrollDelta.y < 0)
+        {
+            rotateRight();
+        }
     }
     
     void OnTouchStart( ) {
@@ -427,7 +443,7 @@ public class GameManager : MonoBehaviour
          this.isMoving = true;
     
          var l_touchPos = touchPos;
-         this.grid.updateTriPreview(l_touchPos.x, l_touchPos.y, this.nextTrihex);
+         this.grid.updateTriPreview(l_touchPos.x, l_touchPos.y, this.nextTrihex, true);
         // Debug.Log("ON TOUCH MOVE");
      }
     
@@ -453,7 +469,7 @@ public class GameManager : MonoBehaviour
              }
          }
          isMoving = false;
-        grid.updateTriPreview(GameConfig.DynamicPos.X, GameConfig.DynamicPos.Y, this.nextTrihex);
+        grid.updateTriPreview(GameConfig.DynamicPos.X, GameConfig.DynamicPos.Y, this.nextTrihex, true);
         Debug.Log("ON TOUCH END");
      }
 
@@ -472,5 +488,28 @@ public class GameManager : MonoBehaviour
 
      void endGame() {
          Debug.Log("END ALREADY");
+     }
+     
+     
+     void onRotateRightButtonClick() {
+         SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.click, 0, 0.9f, null);
+         this.rotateRight();
+     }
+
+     void rotateRight() {
+         this.nextTrihex.rotateRight();
+         this.grid.updateTriPreview(0, 0, this.nextTrihex);
+         this.updateStaticTrihex();
+     }
+
+     void onRotateLeftButtonClick() {
+         SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.click, 0, 0.9f, null);
+         this.rotateLeft();
+     }
+
+     void rotateLeft() {
+         this.nextTrihex.rotateLeft();
+         this.grid.updateTriPreview(0, 0, this.nextTrihex);
+         this.updateStaticTrihex();
      }
 }

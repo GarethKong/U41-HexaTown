@@ -187,7 +187,7 @@ namespace Custom
             gridBoard.get(size * 2, 0)!.transform.eulerAngles = Vector3.forward * 60;
 
             gridBoard.get(size * 2, size)?.setType(EHexType.portbw);
-            gridBoard.get(size * 2, size)!.transform.eulerAngles= Vector3.forward * 0;
+            gridBoard.get(size * 2, size)!.transform.eulerAngles = Vector3.forward * 0;
 
             var placed = 0;
             Random rnd = new Random();
@@ -226,7 +226,7 @@ namespace Custom
                 var redNode = new GameObject();
                 redNode.transform.parent = whiteNode.transform;
                 redNode.name = "redNode";
-               
+
                 SpriteRenderer redSr = redNode.AddComponent<SpriteRenderer>() as SpriteRenderer;
                 redSr.sortingLayerID = SortingLayer.NameToID("Game");
                 redSr.sortingOrder = 3;
@@ -238,7 +238,7 @@ namespace Custom
                 triPreviews.Add(whiteNode);
             }
 
-            StartCoroutine(nextPopper());
+            InvokeRepeating("nextPopper", 0f, 0.1f);
         }
 
 
@@ -343,35 +343,47 @@ namespace Custom
                 }
             }
         }
-        
-       public void sinkBlanks() {
-        SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.splash, 0, 0.75f, null);
-        foreach (var h in this.hexes) {
-            if (h.hexType == EHexType.empty || (h.hexType == EHexType.portbw && !h.counted))  {
-                h.gameObject.SetActive(false);
-                h.edges.gameObject.SetActive(false);
-                gridBoard.delete(h.row, h.col);
+
+        public void sinkBlanks()
+        {
+            SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.splash, 0, 0.75f, null);
+            foreach (var h in this.hexes)
+            {
+                if (h.hexType == EHexType.empty || (h.hexType == EHexType.portbw && !h.counted))
+                {
+                    h.gameObject.SetActive(false);
+                    h.edges.gameObject.SetActive(false);
+                    gridBoard.delete(h.row, h.col);
+                }
             }
+
+            updateEdges();
         }
-        updateEdges();
-    }
-        
-        public bool canPlaceShape(char shape) {
-            foreach (var hex in hexes) {
-                if (hex.hexType == EHexType.empty) {
-                    foreach (var rotation in rotations[shape]) {
+
+        public bool canPlaceShape(char shape)
+        {
+            foreach (var hex in hexes)
+            {
+                if (hex.hexType == EHexType.empty)
+                {
+                    foreach (var rotation in rotations[shape])
+                    {
                         var canPlaceHere = true;
-                        foreach (var offsets in shapes[rotation]) {
+                        foreach (var offsets in shapes[rotation])
+                        {
                             var r = hex.row + offsets.ro;
                             var c = hex.col + offsets.co;
-                            if (!(gridBoard.has(r, c) && gridBoard.get(r, c).hexType == EHexType.empty)) {
+                            if (!(gridBoard.has(r, c) && gridBoard.get(r, c).hexType == EHexType.empty))
+                            {
                                 canPlaceHere = false;
                             }
                         }
+
                         if (canPlaceHere) return true;
                     }
                 }
             }
+
             return false;
         }
 
@@ -386,28 +398,30 @@ namespace Custom
             hexes.Add(this.gridBoard.get(row + 1, col));
             return hexes;
         }
-        
-        public void deactivate() {
+
+        public void deactivate()
+        {
             this.enabled = false;
             this.triPreviews[0].active = false;
             this.triPreviews[1].active = false;
             this.triPreviews[2].active = false;
-            for (var i = 0; i < 3; i++) {
+            for (var i = 0; i < 3; i++)
+            {
                 Destroy(this.triPreviews[i]);
                 // this.triPreviews[i].removeFromParent();
                 // this.triPreviews[i].destroy();
             }
         }
 
-        private IEnumerator nextPopper()
+        private void nextPopper()
         {
-            yield return new WaitForSeconds(0.1f);
-            if (this.scoreQueue.size() > 0)
+            if (scoreQueue == null) return;
+            if (scoreQueue.size() > 0)
             {
-                var p = this.scoreQueue.deq();
-                p.pop();
+                var p = scoreQueue.deq();
+                p.pop(this);
 
-                this.score += p.points;
+                score += p.points;
                 // update this.score
 
                 // if (this.onScoreUpdate != null)
@@ -417,7 +431,7 @@ namespace Custom
 
                 if (p.hexes != null)
                 {
-                    foreach (var hex in hexes)
+                    foreach (var hex in p.hexes)
                     {
                         hex.upgrade();
 
@@ -463,17 +477,21 @@ namespace Custom
                     }
                 }
             }
-            else if (this.onQueueEmpty != null)
+            else if (onQueueEmpty != null)
             {
-                this.onQueueEmpty();
-                this.onQueueEmpty = null;
+                onQueueEmpty();
+                onQueueEmpty = null;
             }
         }
 
-        public void updateTriPreview(float posX, float posY, Trihex trihex)
+        public void updateTriPreview(float posX, float posY, Trihex trihex, bool isUpdatePos = false)
         {
             if (!enabled) return;
-            GameManager.Instance.dynamicPreview.transform.position = new Vector3(posX, posY);
+            if (isUpdatePos == true)
+            {
+                GameManager.Instance.dynamicPreview.transform.position = new Vector3(posX, posY);
+            }
+
             posX -= GameConfig.BoardNodeOffset.X;
             posY -= GameConfig.BoardNodeOffset.Y;
             var _row = Utils.getRow(posX, posY);
@@ -533,136 +551,176 @@ namespace Custom
                 }
             }
         }
-        
-        public bool placeTrihex(float posX,float  posY,Trihex trihex) {
-        posX -= GameConfig.BoardNodeOffset.X;
-        posY -= GameConfig.BoardNodeOffset.Y;
-        var r = Utils.getRow(posX, posY);
-        var c = Utils.getCol(posX, posY);
 
-        List<Hex> hexes = new List<Hex>();
-        var touching = false;
-        for (var i = 0; i < 3; i++) {
-            var offsets = shapes[trihex.shape][i];
-            hexes.Add(this.gridBoard.get(r + offsets.ro, c + offsets.co));
+        public bool placeTrihex(float posX, float posY, Trihex trihex)
+        {
+            posX -= GameConfig.BoardNodeOffset.X;
+            posY -= GameConfig.BoardNodeOffset.Y;
+            var r = Utils.getRow(posX, posY);
+            var c = Utils.getCol(posX, posY);
 
-            if (!touching)
-            {
-                List<Hex> neighbors = this.neighbors(r + offsets.ro, c + offsets.co);
-                foreach (var n in neighbors) {
-                    if (n && n.hexType is EHexType.windmill or EHexType.grass or EHexType.street or EHexType.center) {
-                        touching = true;
-                        break;
-                    }
-                }
-            }
-        }
-        if (touching && hexes[0] && hexes[0].hexType == EHexType.empty &&
-            hexes[1] && hexes[1].hexType == EHexType.empty &&
-            hexes[2] && hexes[2].hexType == EHexType.empty) {
-
-            // play sound 'place'
-            SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.place, 0, 1f, null);
-
+            List<Hex> hexes = new List<Hex>();
+            var touching = false;
             for (var i = 0; i < 3; i++)
             {
-                hexes[i].setType((EHexType)trihex.hexes[i]);
-            }
+                var offsets = shapes[trihex.shape][i];
+                hexes.Add(this.gridBoard.get(r + offsets.ro, c + offsets.co));
 
-            // calculate scores
-            for (var i = 0; i < 3; i++) {
-                if (hexes[i].hexType == EHexType.windmill) {
-                    getPointsFor(hexes[i]);
-                }
-            }
-            for (var i = 0; i < 3; i++) {
-                if (hexes[i].hexType != EHexType.windmill) {
-                    getPointsFor(hexes[i]);
-                }
-            }
-
-            updateEdges();
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    // returns connected hexes INCLUDING itself
-    List<Hex> getConnected(Hex hex) {
-        List<Hex> connectedHexes = new List<Hex>();
-        var visited = new HashSet<Hex>();
-        var queue = new Queue<Hex>();
-        queue.enq(hex);
-
-        while(queue.size() > 0) {
-            var h = queue.deq();
-            if (!visited.Contains(h)) connectedHexes.Add(h);
-            visited.Add(h);
-
-            foreach (var n in this.neighbors(h.row, h.col))
-            {
-                if (n && (n.hexType == h.hexType || (h.hexType == EHexType.street && n.hexType == EHexType.portbw)) && !visited.Contains(n)) {
-                    queue.enq(n);
-                }
-            }
-        }
-        return connectedHexes;
-    }
-
-    void getPointsFor(Hex hex) {
-        if (hex.counted) return;
-
-        if (hex.hexType == EHexType.windmill) {
-            var isolated = true;
-            foreach (var h in this.neighbors(hex.row, hex.col)) {
-                if (h && h.hexType == EHexType.windmill) {
-                    isolated = false;
-                    if (h.counted) {
-                        h.counted = false;
-                        scoreQueue.enq(new ScorePopper(new List<Hex>{h}, h.hasHill ? -3 : -1));
+                if (!touching)
+                {
+                    List<Hex> neighbors = this.neighbors(r + offsets.ro, c + offsets.co);
+                    foreach (var n in neighbors)
+                    {
+                        if (n && n.hexType is EHexType.windmill or EHexType.grass or EHexType.street or EHexType.center)
+                        {
+                            touching = true;
+                            break;
+                        }
                     }
                 }
             }
-            if (isolated) {
-                this.scoreQueue.enq(new ScorePopper(new List<Hex>{hex}, hex.hasHill ? 3 : 1));
-                hex.counted = true;
-            }
-        } else if (hex.hexType == EHexType.grass) {
-            List<Hex> group = this.getConnected(hex);
 
-            var uncountedParks = new List<Hex>();
-            foreach (var park in group) {
-                if (!park.counted) uncountedParks.Add(park);
+            if (touching && hexes[0] && hexes[0].hexType == EHexType.empty &&
+                hexes[1] && hexes[1].hexType == EHexType.empty &&
+                hexes[2] && hexes[2].hexType == EHexType.empty)
+            {
+                // play sound 'place'
+                SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.place, 0, 1f, null);
+
+                for (var i = 0; i < 3; i++)
+                {
+                    hexes[i].setType((EHexType)trihex.hexes[i]);
+                }
+
+                // calculate scores
+                for (var i = 0; i < 3; i++)
+                {
+                    if (hexes[i].hexType == EHexType.windmill)
+                    {
+                        getPointsFor(hexes[i]);
+                    }
+                }
+
+                for (var i = 0; i < 3; i++)
+                {
+                    if (hexes[i].hexType != EHexType.windmill)
+                    {
+                        getPointsFor(hexes[i]);
+                    }
+                }
+
+                updateEdges();
+                return true;
             }
-            while (uncountedParks.Count >= 3) {
-                var newParks = SpliceExtension.Splice(uncountedParks,0,3);
-                newParks[0].counted = true;
-                newParks[1].counted = true;
-                newParks[2].counted = true;
-                scoreQueue.enq(new ScorePopper(newParks, 5));
+            else
+            {
+                return false;
             }
-        } else if (hex.hexType == EHexType.street) {
-            foreach (var h in this.neighbors(hex.row, hex.col)) {
-                if (h && h.hexType == EHexType.center && !hex.counted) {
-                    this.scoreQueue.enq(new ScorePopper(new List<Hex>{hex}, 1));
+        }
+
+        // returns connected hexes INCLUDING itself
+        List<Hex> getConnected(Hex hex)
+        {
+            List<Hex> connectedHexes = new List<Hex>();
+            var visited = new HashSet<Hex>();
+            var queue = new Queue<Hex>();
+            queue.enq(hex);
+
+            while (queue.size() > 0)
+            {
+                var h = queue.deq();
+                if (!visited.Contains(h)) connectedHexes.Add(h);
+                visited.Add(h);
+
+                foreach (var n in this.neighbors(h.row, h.col))
+                {
+                    if (n && (n.hexType == h.hexType ||
+                              (h.hexType == EHexType.street && n.hexType == EHexType.portbw)) && !visited.Contains(n))
+                    {
+                        queue.enq(n);
+                    }
+                }
+            }
+
+            return connectedHexes;
+        }
+
+        void getPointsFor(Hex hex)
+        {
+            if (hex.counted) return;
+
+            if (hex.hexType == EHexType.windmill)
+            {
+                var isolated = true;
+                foreach (var h in this.neighbors(hex.row, hex.col))
+                {
+                    if (h && h.hexType == EHexType.windmill)
+                    {
+                        isolated = false;
+                        if (h.counted)
+                        {
+                            h.counted = false;
+                            scoreQueue.enq(new ScorePopper(new List<Hex> { h }, h.hasHill ? -3 : -1));
+                        }
+                    }
+                }
+
+                if (isolated)
+                {
+                    scoreQueue.enq(new ScorePopper(new List<Hex> { hex }, hex.hasHill ? 3 : 1));
                     hex.counted = true;
                 }
             }
-            var group = this.getConnected(hex);
-            var connectedToCenter = false;
-            foreach (var h in group) {
-                if (h.hexType == EHexType.street && h.counted) connectedToCenter = true;
+            else if (hex.hexType == EHexType.grass)
+            {
+                List<Hex> group = this.getConnected(hex);
+
+                var uncountedParks = new List<Hex>();
+                foreach (var park in group)
+                {
+                    if (!park.counted) uncountedParks.Add(park);
+                }
+
+                while (uncountedParks.Count >= 3)
+                {
+                    var newParks = SpliceExtension.Splice(uncountedParks, 0, 3);
+                    newParks[0].counted = true;
+                    newParks[1].counted = true;
+                    newParks[2].counted = true;
+                    uncountedParks.RemoveRange(0, 3);
+                    scoreQueue.enq(new ScorePopper(newParks, 5));
+                }
             }
-            if (connectedToCenter) {
-                foreach (var h in group) {
-                    if (!h.counted) {
-                        this.scoreQueue.enq(new ScorePopper(new List<Hex>{h}, h.hexType == EHexType.portbw ? 3 : 1));
-                        h.counted = true;
+            else if (hex.hexType == EHexType.street)
+            {
+                foreach (var h in this.neighbors(hex.row, hex.col))
+                {
+                    if (h && h.hexType == EHexType.center && !hex.counted)
+                    {
+                        scoreQueue.enq(new ScorePopper(new List<Hex> { hex }, 1));
+                        hex.counted = true;
+                    }
+                }
+
+                var group = this.getConnected(hex);
+                var connectedToCenter = false;
+                foreach (var h in group)
+                {
+                    if (h.hexType == EHexType.street && h.counted) connectedToCenter = true;
+                }
+
+                if (connectedToCenter)
+                {
+                    foreach (var h in group)
+                    {
+                        if (!h.counted)
+                        {
+                            scoreQueue.enq(new ScorePopper(new List<Hex> { h }, h.hexType == EHexType.portbw ? 3 : 1));
+                            h.counted = true;
+                        }
                     }
                 }
             }
         }
-    }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using DG.Tweening;
@@ -11,7 +12,7 @@ using UnityEngine.UIElements;
 
 namespace Custom
 {
-    public class ScorePopper : MonoBehaviour
+    public class ScorePopper
     {
         public int points;
         public List<Hex> hexes;
@@ -32,20 +33,30 @@ namespace Custom
             this.hexes = hexes;
         }
 
-        public void pop()
+        public void pop(MonoBehaviour monoBehaviour)
         {
             GameObject node = new GameObject();
 
-            TextMeshPro lbScore = gameObject.AddComponent(typeof(TextMeshPro)) as TextMeshPro;
-
+            TextMeshProUGUI lbScore = node.AddComponent(typeof(TextMeshProUGUI)) as TextMeshProUGUI;
             lbScore.text = points > 0 ? "+ " + points + "" : points + "";
-            lbScore.fontSize = 40;
-            lbScore.font = GameManager.Instance.scoreTextMain.font;
-            node.transform.parent = hexes[0].transform.parent;
-            node.transform.position = hexes[0].transform.position;
-            //TODO TWEEN cc.tween(node)
-            //     .to(2, {position: new cc.Vec3(node.x, node.y + HEX_HEIGHT * 2, 0), opacity: 0})
-            // .start()
+            lbScore.fontSize = 60;
+            lbScore.alignment = TextAlignmentOptions.Center;
+            lbScore.color = new Color(0f, 0f, 0f, 1f);
+            lbScore.font = FontManager.instance.GetFont("mvboli SDF");
+            lbScore.horizontalAlignment = HorizontalAlignmentOptions.Center;
+            node.transform.SetParent(GameManager.Instance.scoreNode.transform);
+            // var positionNew = Utils.WorldToCanvasPosition(hexes[0].transform,
+            //     GameManager.Instance.canvas.transform as RectTransform, Camera.main);
+            // node.transform.position = positionNew;
+            node.transform.position = Camera.main.WorldToScreenPoint(hexes[0].transform.position);
+            Vector3 posNew = Camera.main.WorldToScreenPoint(new Vector3(hexes[0].transform.position.x,
+                    hexes[0].transform.position.y + 2));
+
+            node.transform.DOMove(new Vector3(node.transform.position.x, posNew.y, 0), 2)
+                .SetEase(Ease.InSine).OnComplete(() =>
+                {
+                });
+            monoBehaviour.StartCoroutine(Utils.fadeInAndOut(node, false, 2f));
         }
     }
 }

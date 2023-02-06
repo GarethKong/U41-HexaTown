@@ -21,14 +21,14 @@ namespace Custom
         }
         
        public void rotateLeft() {
-            if (this.shape == 'a') {
-                this.shape = 'v';
-                (this.hexes[0], this.hexes[1]) = (this.hexes[1], this.hexes[0]);
-            } else if (this.shape == 'v') {
-                this.shape = 'a';
-                (this.hexes[1], this.hexes[2]) = (this.hexes[2], this.hexes[1]);
-            } else if (this.shape == '\\') {
-                this.shape = '/';
+            if (shape == 'a') {
+                shape = 'v';
+                (hexes[0], hexes[1]) = (hexes[1], hexes[0]);
+            } else if (shape == 'v') {
+                shape = 'a';
+                (hexes[1], hexes[2]) = (hexes[2], hexes[1]);
+            } else if (shape == '\\') {
+                shape = '/';
             } else if (this.shape == '/') {
                 this.shape = '-';
                 (this.hexes[0], this.hexes[2]) = (this.hexes[2], this.hexes[0]);

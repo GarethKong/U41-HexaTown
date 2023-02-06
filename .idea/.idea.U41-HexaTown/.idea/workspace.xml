@@ -1,23 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="101289eb-5478-4be5-877f-5c42d2dad65c" name="Changes" comment="" />
+    <list default="true" id="101289eb-5478-4be5-877f-5c42d2dad65c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/FontManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/FontManager.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.U41-HexaTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.U41-HexaTown/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Convert/HexGrid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Convert/HexGrid.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Convert/ScorePopper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Convert/ScorePopper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Convert/Trihex.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Convert/Trihex.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Convert/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Convert/Utils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/PlayUI/bgBlueShare.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/PlayUI/bgBlueShare.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/PlayUI/blueBG.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/PlayUI/blueBG.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/PlayUI/btn_reload.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/PlayUI/btn_reload.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/PlayUI/btn_undo.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/PlayUI/btn_undo.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/PlayUI/rotate.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/PlayUI/rotate.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/PlayUI/waves.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/PlayUI/waves.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/PlayUI/waves2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/PlayUI/waves2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@1.2.6/Tests/Tests/Shared/TestQuaternion.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@1.2.6/Tests/Tests/Shared/TestRigidTransform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mobile.android-logcat@1.3.2/Tests/Editor/AndroidLogcatRegexTests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/38e2728118f24991966122330609e2726400/1d/b38485df/Canvas.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4ac9ef2b8e294691b53b47afb04569b7158a00/f6/d48a049e/Camera.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bfb370f0c9204304bb5ddff01b3880ba12d400/61/c7f65882/Color.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5377ac4e788cc4f8c6545362cee39859969c7b346233bb3bdcf6191179ada9/System.Drawing.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7d303c2bf72cd4cec95665b89c457d265d2b8ef3ed6da17cd4f85587c2f9de7/System.Linq.cs" root0="SKIP_HIGHLIGHTING" />
@@ -60,10 +74,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="83222">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="83222" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -80,7 +94,10 @@
       <option name="presentableId" value="Default" />
       <updated>1675241147871</updated>
       <workItem from="1675241152386" duration="28543000" />
-      <workItem from="1675408891338" duration="31773000" />
+      <workItem from="1675408891338" duration="34918000" />
+      <workItem from="1675506184726" duration="15296000" />
+      <workItem from="1675666522602" duration="39000" />
+      <workItem from="1675666816186" duration="8964000" />
     </task>
     <servers />
   </component>
@@ -90,6 +107,17 @@
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
@@ -97,23 +125,24 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Convert/HexGrid.cs</url>
-          <line>482</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Convert/HexGrid.cs" initialLine="431" containingFunctionPresentation="method 'updateTriPreview'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Utilities/SpliceExtension.cs</url>
+          <line>9</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Utilities/SpliceExtension.cs" initialLine="9" containingFunctionPresentation="method 'Splice'">
             <startOffsets>
-              <option value="17662" />
+              <option value="226" />
             </startOffsets>
             <endOffsets>
-              <option value="17699" />
+              <option value="272" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="56" />
+          <option name="timeStamp" value="75" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Frame#Matrix2D`1.get" memberName="row" />
+        <PinnedItemInfo parentTag="Type#Queue`1" memberName="data" />
       </pinned-members>
     </pin-to-top-manager>
     <watches-manager>
