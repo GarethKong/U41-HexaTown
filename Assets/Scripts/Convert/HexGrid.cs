@@ -132,14 +132,14 @@ namespace Custom
         public Action onQueueEmpty;
         public Action<int> onScoreUpdate;
 
-        public void init(int size, int hills, float posX, float posY)
+        public void init(int size, int hills, float posX, float posY, Action<int> onScoreUpdate)
         {
             enabled = true;
             this.gridBoard = new Matrix2D<Hex>();
             this.hexes = new List<Hex>();
             this.size = size;
             this.score = 0;
-            //this.onScoreUpdate = onScoreUpdate;
+            this.onScoreUpdate = onScoreUpdate;
 
             this.scoreQueue = new Queue<ScorePopper>();
 
@@ -424,10 +424,10 @@ namespace Custom
                 score += p.points;
                 // update this.score
 
-                // if (this.onScoreUpdate != null)
-                // {
-                //     this.onScoreUpdate(this.score);
-                // }
+                if (onScoreUpdate != null)
+                {
+                    onScoreUpdate(score);
+                }
 
                 if (p.hexes != null)
                 {

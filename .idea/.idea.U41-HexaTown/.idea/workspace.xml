@@ -2,23 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="101289eb-5478-4be5-877f-5c42d2dad65c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/FontManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/FontManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/AutoFixSize.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/AutoFixSize.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.U41-HexaTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.U41-HexaTown/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Convert/HexGrid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Convert/HexGrid.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Convert/ScorePopper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Convert/ScorePopper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Convert/Trihex.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Convert/Trihex.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Convert/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Convert/Utils.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/PlayUI/bgBlueShare.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/PlayUI/bgBlueShare.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/PlayUI/blueBG.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/PlayUI/blueBG.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/PlayUI/btn_reload.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/PlayUI/btn_reload.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/PlayUI/btn_undo.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/PlayUI/btn_undo.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/PlayUI/rotate.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/PlayUI/rotate.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/PlayUI/waves.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/PlayUI/waves.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/PlayUI/waves2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/PlayUI/waves2.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,10 +64,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="41408">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="41408" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -97,7 +87,7 @@
       <workItem from="1675408891338" duration="34918000" />
       <workItem from="1675506184726" duration="15296000" />
       <workItem from="1675666522602" duration="39000" />
-      <workItem from="1675666816186" duration="8964000" />
+      <workItem from="1675666816186" duration="26304000" />
     </task>
     <servers />
   </component>
@@ -136,6 +126,71 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/SmoothCameraSize.cs</url>
+          <line>27</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/UI/SmoothCameraSize.cs" initialLine="27" containingFunctionPresentation="method 'StartZoom'">
+            <startOffsets>
+              <option value="602" />
+            </startOffsets>
+            <endOffsets>
+              <option value="676" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/SmoothCameraSize.cs</url>
+          <line>28</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/UI/SmoothCameraSize.cs" initialLine="28" containingFunctionPresentation="method 'StartZoom'">
+            <startOffsets>
+              <option value="689" />
+            </startOffsets>
+            <endOffsets>
+              <option value="721" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/SmoothCameraSize.cs</url>
+          <line>30</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/UI/SmoothCameraSize.cs" initialLine="30" containingFunctionPresentation="method 'StartZoom'">
+            <startOffsets>
+              <option value="735" />
+            </startOffsets>
+            <endOffsets>
+              <option value="787" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="79" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/SmoothCameraSize.cs</url>
+          <line>43</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/UI/SmoothCameraSize.cs" initialLine="38" containingFunctionPresentation="method 'Update'">
+            <startOffsets>
+              <option value="1093" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1170" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="80" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/SmoothCameraSize.cs</url>
+          <line>35</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/UI/SmoothCameraSize.cs" initialLine="31" containingFunctionPresentation="method 'StartZoom'">
+            <startOffsets>
+              <option value="886" />
+            </startOffsets>
+            <endOffsets>
+              <option value="905" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="81" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

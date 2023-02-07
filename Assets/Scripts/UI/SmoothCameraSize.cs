@@ -18,30 +18,23 @@ namespace UI
         {
             Instance = this;
             startingSize = interpolateCam.orthographicSize;
+            StartZoom();
         }
 
         private bool isStartZoom = false;
 
-       public  void StartZoom()
+        public void StartZoom()
         {
-            int minX = 0;
-            int minY = 0;
-            int maxX = 0;
-            int maxY = 0;
-            int widthSize = maxX - minX;
-            int heightSize = maxY - minY;
-            float scaleX = 21f / widthSize;
-            float scaleY = 21f / heightSize;
+            float width = Camera.main.orthographicSize * Screen.width / Screen.height;
+            float scaleValue = width / 5.5f;
 
-            Debug.Log("SIZE CAMERA" + "X: " + scaleX+ " Y: " + scaleY);
-            var scale = scaleY;
-            if (scaleX > scaleY)
+            endSize = Camera.main.orthographicSize / scaleValue;
+            if (endSize < 9)
             {
-                scale = scaleX;
+                endSize = 9;
             }
-            
-            endSize = startingSize /scale;
             isStartZoom = true;
+            AutoFixSize.Instance.StartZoom(endSize);
         }
 
         private void Update()
@@ -49,7 +42,6 @@ namespace UI
             if (!isStartZoom) return;
             t += Time.deltaTime;
             interpolateCam.orthographicSize = Mathf.SmoothStep(startingSize, endSize, t);
-
         }
     }
 }

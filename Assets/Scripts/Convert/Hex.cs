@@ -70,7 +70,7 @@ namespace Custom
                 if (hasHill)
                 {
                     propeller.parent = transform.parent;
-                    propeller.localScale = new Vector3(0.5f, 0.5f);
+                    //propeller.localScale = new Vector3(0.5f, 0.5f);
                     var position = transform.position;
                     var pos = new Vector3(position.x + GameConfig.propeller_hillPos.X,
                         position.y + GameConfig.propeller_hillPos.Y);
@@ -135,9 +135,9 @@ namespace Custom
 
          void Update()
         {
-            if (this.propeller.gameObject.activeSelf) {
+            if (propeller.gameObject.activeSelf) {
                 var speed = (this.hasHill && this.counted) ? 2.2 : this.counted ? 1 : 0.1;
-                this.propeller.transform.Rotate(Vector3.right * Time.deltaTime);
+                propeller.transform.Rotate(Vector3.right * Time.deltaTime);
             }
         }
     }

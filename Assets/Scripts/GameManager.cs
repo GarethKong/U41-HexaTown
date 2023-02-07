@@ -21,6 +21,7 @@ using DG.Tweening;
 using Interface;
 using Mkey;
 using TMPro;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public enum EDialog
@@ -64,6 +65,9 @@ public class GameManager : MonoBehaviour
     
     public Button btnLeft;
     public Button btnRight;
+    
+    public GameObject waves1;
+    public GameObject waves2;
 
     List<Hex> bigPreviewTrihex;
 
@@ -87,30 +91,30 @@ public class GameManager : MonoBehaviour
     public void StartNewGame()
     {
         GameConfig.sessionNumber += 1;
-        this.score = 0;
-        this.dynamicPreview.active = true;
-        var gridBoardNode = Instantiate(this.GridBoardPrefab);
-        gridBoardNode.transform.parent = this.boardNode.transform;
+        score = 0;
+        dynamicPreview.active = true;
+        var gridBoardNode = Instantiate(GridBoardPrefab);
+        gridBoardNode.transform.parent = boardNode.transform;
 
         if (gridBoardNode.TryGetComponent(out HexGrid hexgrid))
         {
             grid = hexgrid;
-            //Action<int> actionUpdateScore = onScoreUpdate;
-            grid.init(5, 8, 0, 0);
+            Action<int> actionUpdateScore = onScoreUpdate;
+            grid.init(5, 8, 0, 0, actionUpdateScore);
         }
 
-        this.trihexDeck = this.createTrihexDeck(GameConfig.TrihexDeckNum, true);
-        this.scoreTextMain.text = " 0 ";
-        this.deckCounterText.text = this.trihexDeck.Count + "";
-        var position = this.deckCounterText.transform.position;
+        trihexDeck = createTrihexDeck(GameConfig.TrihexDeckNum, true);
+        scoreTextMain.text = " 0 ";
+        deckCounterText.text = trihexDeck.Count + "";
+        var position = deckCounterText.transform.position;
         position = new Vector3(position.x, position.y + 0.45f, 1);
-        this.deckCounterText.transform.position = position;
-        this.deckCounterImage.active = true;
-        var sp = this.deckCounterImage.GetComponent<Image>();
+        deckCounterText.transform.position = position;
+        deckCounterImage.SetActive(true);
+        var sp = deckCounterImage.GetComponent<Image>();
         sp.sprite = null; //'a-shape' spFrame
         Utils.setColorAlphaImage(sp, 1);
 
-        this.bigPreviewTrihex = new List<Hex>();
+        bigPreviewTrihex = new List<Hex>();
         
         for (var i = 0; i < 3; i++)
         {
@@ -124,7 +128,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        this.pickNextTrihex();
+        pickNextTrihex();
         grid.updateTriPreview(GameConfig.DynamicPos.X, GameConfig.DynamicPos.Y, this.nextTrihex, true);
 
         // if (GameConfig.sessionNumber % 3 == 0)
@@ -386,11 +390,12 @@ public class GameManager : MonoBehaviour
         }
     }
     
+    float time = 0;
     
     void Update ( ) {
         // Handle screen touches.
 
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0  && Time.timeScale != 0 && !EventSystem.current.IsPointerOverGameObject())
         {
             Touch touch = Input.GetTouch(0);
             
@@ -430,6 +435,13 @@ public class GameManager : MonoBehaviour
         {
             rotateRight();
         }
+        time += Time.deltaTime;
+        var position = waves1.transform.position;
+        position = new Vector3(position.x + MathF.Sin(time) * 0.003f, position.y ) ;
+        waves1.transform.position = position;
+        var position1 = this.waves2.transform.position;
+        position1 = new Vector3(position1.x - MathF.Sin(time)* 0.003f, position1.y ) ;
+        waves2.transform.position = position1;
     }
     
     void OnTouchStart( ) {

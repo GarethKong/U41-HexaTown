@@ -35,7 +35,7 @@ public class GameConfig
     public static int[] LineCount = {3, 4, 5, 4, 3};
     public static int  TrihexDeckNum  = 25;
     public static Vector2 DraggingScale = new Vector2(1.5f, 3f); 
-    public static Vector2 propeller_hillPos  = new Vector2(0, 34.5f);
+    public static Vector2 propeller_hillPos  = new Vector2(0, 0.2f);
     public static Vector2 BoardNodeOffset  = new Vector2(0, 2.98125f);
     public static Size captureSize = new Size(667, 376);
    

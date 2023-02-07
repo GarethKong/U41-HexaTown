@@ -9,6 +9,10 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
+HexaTown(1.0.0)_BackUpThisFolder_ButDontShipItWithYourGame/
+HexaTown(1.0.0)_BurstDebugInformation_DoNotShip/
+IOS-41/
+IOS-41_BurstDebugInformation_DoNotShip/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
@@ -42,6 +46,7 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
+*.aab
 
 # Unity3D generated meta files
 *.pidb.meta

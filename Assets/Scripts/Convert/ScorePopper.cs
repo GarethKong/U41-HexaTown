@@ -39,7 +39,7 @@ namespace Custom
 
             TextMeshProUGUI lbScore = node.AddComponent(typeof(TextMeshProUGUI)) as TextMeshProUGUI;
             lbScore.text = points > 0 ? "+ " + points + "" : points + "";
-            lbScore.fontSize = 60;
+            lbScore.fontSize = 70;
             lbScore.alignment = TextAlignmentOptions.Center;
             lbScore.color = new Color(0f, 0f, 0f, 1f);
             lbScore.font = FontManager.instance.GetFont("mvboli SDF");
