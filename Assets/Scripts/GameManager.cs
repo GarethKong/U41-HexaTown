@@ -220,6 +220,7 @@ public class GameManager : MonoBehaviour
             if (this.nextTrihex.hexes[i] == 0) {
                 this.bigPreviewTrihex[i].gameObject.SetActive(false);
                 this.grid.triPreviews[i].SetActive(false);
+                this.grid.triPreviews[i].SetActive(false);
             }
         }
     }
@@ -391,7 +392,8 @@ public class GameManager : MonoBehaviour
     }
     
     float time = 0;
-    
+    float pressTime = 0;
+
     void Update ( ) {
         // Handle screen touches.
 
@@ -405,12 +407,17 @@ public class GameManager : MonoBehaviour
                 Debug.Log("ON TOUCH START");
                 OnTouchStart();
             }
+            
+            // if (touch.phase == TouchPhase.Stationary)
+            // {
+            //     pressTime += Time.deltaTime;
+            // }
 
             if (touch.phase == TouchPhase.Moved)
             {
-                var touchPos = Camera.main.ScreenToWorldPoint(touch.position);
-                touchPos.z = transform.position.z;
-                OnTouchMove(touchPos);
+                    var touchPos = Camera.main.ScreenToWorldPoint(touch.position);
+                    touchPos.z = transform.position.z;
+                    OnTouchMove(touchPos);
             }
             
             if (touch.phase == TouchPhase.Ended)

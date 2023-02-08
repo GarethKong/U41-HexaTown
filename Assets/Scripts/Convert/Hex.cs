@@ -69,9 +69,8 @@ namespace Custom
                 img.sprite = SpriteMgr.Instance.hexList[(int)hexType + (hasHill ? 5 : 0)];
                 if (hasHill)
                 {
-                    propeller.parent = transform.parent;
                     //propeller.localScale = new Vector3(0.5f, 0.5f);
-                    var position = transform.position;
+                    var position = propeller.transform.position;
                     var pos = new Vector3(position.x + GameConfig.propeller_hillPos.X,
                         position.y + GameConfig.propeller_hillPos.Y);
                     propeller.position = pos;
@@ -136,8 +135,8 @@ namespace Custom
          void Update()
         {
             if (propeller.gameObject.activeSelf) {
-                var speed = (this.hasHill && this.counted) ? 2.2 : this.counted ? 1 : 0.1;
-                propeller.transform.Rotate(Vector3.right * Time.deltaTime);
+                var speed = (this.hasHill && this.counted) ? 2.2f : this.counted ? 1f : 0.1f;
+                propeller.transform.eulerAngles += new Vector3(0,0,speed*100f*Time.deltaTime);
             }
         }
     }

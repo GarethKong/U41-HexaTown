@@ -22,4 +22,5 @@ public class FontManager : MonoBehaviour {
                 return font;
         return null;
     }
+    
 }

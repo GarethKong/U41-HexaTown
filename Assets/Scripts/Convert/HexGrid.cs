@@ -487,9 +487,9 @@ namespace Custom
         public void updateTriPreview(float posX, float posY, Trihex trihex, bool isUpdatePos = false)
         {
             if (!enabled) return;
-            if (isUpdatePos == true)
+            if (isUpdatePos)
             {
-                GameManager.Instance.dynamicPreview.transform.position = new Vector3(posX, posY);
+                GameManager.Instance.dynamicPreview.transform.position = new Vector3(posX, posY + 3f);
             }
 
             posX -= GameConfig.BoardNodeOffset.X;
@@ -554,8 +554,8 @@ namespace Custom
 
         public bool placeTrihex(float posX, float posY, Trihex trihex)
         {
-            posX -= GameConfig.BoardNodeOffset.X;
-            posY -= GameConfig.BoardNodeOffset.Y;
+            posX -= 0;
+            posY -= 3;
             var r = Utils.getRow(posX, posY);
             var c = Utils.getCol(posX, posY);
 
@@ -565,7 +565,7 @@ namespace Custom
             {
                 var offsets = shapes[trihex.shape][i];
                 hexes.Add(this.gridBoard.get(r + offsets.ro, c + offsets.co));
-
+    
                 if (!touching)
                 {
                     List<Hex> neighbors = this.neighbors(r + offsets.ro, c + offsets.co);

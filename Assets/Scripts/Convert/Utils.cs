@@ -21,7 +21,7 @@ public class Shape
 public class Matrix2D<T>
 {
     public Dictionary<int, Dictionary<int, T>> rows;
-
+    
     public Matrix2D()
     {
         rows = new Dictionary<int, Dictionary<int, T?>>();
