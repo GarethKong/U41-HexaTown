@@ -25,7 +25,6 @@ using Mkey;
 using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using DG.Tweening;
 
 public enum EDialog
 {
@@ -74,19 +73,14 @@ public class GameManager : MonoBehaviour
 
     public GameObject waves1;
     public GameObject waves2;
-    
-    public Image endGameImage;
-    public GameObject[] TextTutorial;
 
-    public Array ListTextTut;
+    public Image endGameImage;
 
     List<Hex> bigPreviewTrihex;
 
     int score;
     
     public float fadeTime = 1f;
-    
-    
     public bool Tutorial = false;
 
     public int[,,] RCPosYellowHex = new int[6, 3, 2]
@@ -98,7 +92,7 @@ public class GameManager : MonoBehaviour
         {{3,5},{4,5},{5,4}}};
 
     private int indexStep = 0;
-
+    public GameObject[] TextTutorial;
 
     public Camera uiCamera;
 
@@ -139,8 +133,9 @@ public class GameManager : MonoBehaviour
             Action<int> actionUpdateScore = onScoreUpdate;
             grid.init(5, 8, 0, 0, actionUpdateScore);
         }
-        
 
+
+        
         if (Tutorial)
         {
             SetHexForTutorial();
@@ -150,10 +145,8 @@ public class GameManager : MonoBehaviour
             trihexDeck = createTrihexDeck(GameConfig.TrihexDeckNum, true);
         }
         
-        trihexDeck = createTrihexDeck(GameConfig.TrihexDeckNum, true);
         scoreTextMain.text = " 0 ";
         deckCounterText.text = trihexDeck.Count + "";
-        Debug.Log(trihexDeck.Count);
         var position = deckCounterText.transform.position;
         position = new Vector3(position.x, position.y + 0.45f, 1);
         deckCounterText.transform.position = position;
@@ -196,8 +189,6 @@ public class GameManager : MonoBehaviour
 
         gridBoardPri = gridBoardNode;
     }
-    
-
 
     void pickNextTrihex()
     {
@@ -549,7 +540,6 @@ public class GameManager : MonoBehaviour
         var l_touchPos = touchPos;
         this.grid.updateTriPreview(l_touchPos.x, l_touchPos.y, this.nextTrihex, true);
         // Debug.Log("ON TOUCH MOVE");
-
     }
 
     void OnTouchEnd(Vector2 touchPos)
@@ -566,6 +556,12 @@ public class GameManager : MonoBehaviour
                 this.nextTrihex))
         {
             this.pickNextTrihex();
+            
+            if (Tutorial)
+            {
+                if (indexStep < 6) indexStep++;
+                SetStepTut(indexStep);
+            }
 
             if (nextTrihex.hexes[0] == 0)
             {
@@ -581,6 +577,8 @@ public class GameManager : MonoBehaviour
         }
 
         isMoving = false;
+        grid.updateTriPreview(GameConfig.DynamicPos.X, GameConfig.DynamicPos.Y, this.nextTrihex, true);
+        Debug.Log("ON TOUCH END");
     }
 
     private IEnumerator EndgameAction(float delayTime)
@@ -604,7 +602,7 @@ public class GameManager : MonoBehaviour
         rectTransform.sizeDelta = new Vector2(Screen.width, height);
     }
 
-    
+
     void onRotateRightButtonClick()
     {
         SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.click, 0, 0.9f, null);
@@ -665,8 +663,7 @@ public class GameManager : MonoBehaviour
         updateStaticTrihex(onAds);
         deckCounterImage.GetComponent<Image>().enabled = false;
     }
-
-
+    
     #region Trong Write
      public void StartTutorial(bool tut)
      {

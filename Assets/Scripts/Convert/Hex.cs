@@ -1,13 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Drawing;
 using DG.Tweening;
 using JetBrains.Annotations;
 using Mkey;
 using UnityEngine;
 using UnityEngine.UI;
-using Color = UnityEngine.Color;
 
 namespace Custom
 {
@@ -94,11 +92,6 @@ namespace Custom
             }
         }
 
-        public void setColorHex(Color color)
-        {
-            img.color = color;
-        }
-
         public void upgrade()
         {
             upgraded = true;
@@ -146,5 +139,14 @@ namespace Custom
                 propeller.transform.eulerAngles += new Vector3(0,0,speed*100f*Time.deltaTime);
             }
         }
+
+         #region trọng
+
+         public void setColorHex(Color color)
+         {
+             img.color = color;
+         }
+
+         #endregion
     }
 }
