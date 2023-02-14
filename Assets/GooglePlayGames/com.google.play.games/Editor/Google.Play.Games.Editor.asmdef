@@ -1,0 +1,13 @@
+{
+    "name": "Google.Play.Games.Editor",
+    "references": [
+        "Google.Play.Games",
+        "UnityEditor.UI",
+        "UnityEngine.UI",
+        "UnityEditor.TestRunner",
+        "UnityEngine.TestRunner"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ]
+}

@@ -41,7 +41,7 @@ public class WinWindow : MonoBehaviour
         btnHome.ClickFunc = () =>
         {
             SoundMaster.Instance.SoundPlayClick(0, null);
-            Loader.Load(Loader.Scene.LevelScreen);
+            Loader.Load(Loader.Scene.HomeScreen);
         };
         //btnHome.AddButtonSounds();
         Hide();

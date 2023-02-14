@@ -2,23 +2,233 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="101289eb-5478-4be5-877f-5c42d2dad65c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/AutoFixSizeHome.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/AutoFixSizeHome.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/RotatePro.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/RotatePro.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/EndGameWindow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/EndGameWindow.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/GameOverWindow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/GameOverWindow.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/HomeScript.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/HomeScript.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/HomeSettingScript.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/HomeSettingScript.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/SnapshotCamera.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/SnapshotCamera.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.U41-HexaTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.U41-HexaTown/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Hex.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Hex.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/circle_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/circle_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/circle_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/circle_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/circlestretchy_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/circlestretchy_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/cloud_2x2_default_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/cloud_2x2_default_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/cloud_2x2_soft_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/cloud_2x2_soft_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/cloud_2x2_soft_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/cloud_2x2_soft_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/glow1_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/glow1_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/glow1_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/glow1_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/glow2_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/glow2_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/glow4_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/glow4_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/glow6_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/glow6_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/gradient_circle_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/gradient_circle_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/gradient_edges_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/gradient_edges_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/gradient_horizontal_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/gradient_horizontal_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/gradient_vertical_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/gradient_vertical_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/lightray2_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/lightray2_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/lightray3_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/lightray3_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/ring_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/ring_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/ring_nofade_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/ring_nofade_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/ring_shockwave_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/ring_shockwave_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/snow_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/snow_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/solid_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/solid_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/sparkle2_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/sparkle2_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/sparkle_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/sparkle_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/triangle_curve_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/triangle_curve_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/triangle_soft_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/triangle_soft_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Bubbles/bubble_round3_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Bubbles/bubble_round3_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Cards/cardglow06_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Cards/cardglow06_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Cards/cardglow07_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Cards/cardglow07_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Explosions/explosion_spritesheet_3x3_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Explosions/explosion_spritesheet_3x3_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Explosions/nova_6x3_spritesheet_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Explosions/nova_6x3_spritesheet_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Fire/fire_ground_3x3_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Fire/fire_ground_3x3_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Fire/fire_soft_blank_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Fire/fire_soft_blank_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Lightning/lightning_3x3_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Lightning/lightning_3x3_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Liquid/drop_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Liquid/drop_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Liquid/splat01_3x3_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Liquid/splat01_3x3_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Liquid/splat01_trsp_3x3_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Liquid/splat01_trsp_3x3_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Liquid/splat02_3x3_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Liquid/splat02_3x3_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Liquid/splat02_trsp_3x3_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Liquid/splat02_trsp_3x3_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Liquid/water_soft_3x3_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Liquid/water_soft_3x3_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Liquid/water_trsp_3x3_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Liquid/water_trsp_3x3_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Magic/aura_slam_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Magic/aura_slam_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Magic/aura_soft01_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Magic/aura_soft01_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Magic/magic_blast_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Magic/magic_blast_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Magic/magic_line_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Magic/magic_line_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Magic/magic_orb2_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Magic/magic_orb2_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Magic/magic_orb2_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Magic/magic_orb2_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Magic/magic_orb_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Magic/magic_orb_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Portals/portal_circular_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Portals/portal_circular_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Portals/portal_glow_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Portals/portal_glow_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Portals/portal_ring_twisty2_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Portals/portal_ring_twisty2_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Portals/portal_ring_twisty_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Portals/portal_ring_twisty_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Portals/portal_soft_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Portals/portal_soft_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Portals/portal_stripes_blue_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Portals/portal_stripes_blue_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Portals/portal_stripes_purple_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Portals/portal_stripes_purple_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Portals/portal_stripes_red_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Portals/portal_stripes_red_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Portals/portal_stripes_yellow_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Portals/portal_stripes_yellow_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerbox/VertexColor/power_bullet.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerbox/VertexColor/power_bullet.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerbox/VertexColor/power_health.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerbox/VertexColor/power_health.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerbox/VertexColor/power_heart.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerbox/VertexColor/power_heart.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerbox/VertexColor/power_lightning.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerbox/VertexColor/power_lightning.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerbox/VertexColor/power_question.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerbox/VertexColor/power_question.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerbox/VertexColor/power_shield.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerbox/VertexColor/power_shield.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerbox/VertexColor/power_skull.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerbox/VertexColor/power_skull.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerbox/VertexColor/power_speed.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerbox/VertexColor/power_speed.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerbox/VertexColor/power_star.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerbox/VertexColor/power_star.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerups/pwr_sym_health_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerups/pwr_sym_health_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerups/pwr_sym_magnet_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerups/pwr_sym_magnet_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerups/pwr_sym_question_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerups/pwr_sym_question_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerups/pwr_sym_shield_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerups/pwr_sym_shield_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerups/pwr_sym_skull_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerups/pwr_sym_skull_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerups/pwr_sym_speed_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Powerups/pwr_sym_speed_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Stars/star_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Stars/star_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Stars/star_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Stars/star_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Text/numbers_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Text/numbers_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Unsorted/coins_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Unsorted/coins_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Unsorted/evil_spirit3_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Unsorted/evil_spirit3_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Unsorted/grab2_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Unsorted/grab2_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Unsorted/healing_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Unsorted/healing_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Unsorted/ice_spikes_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Unsorted/ice_spikes_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Unsorted/leaf_3x3_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Unsorted/leaf_3x3_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Unsorted/moneybills_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Unsorted/moneybills_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Unsorted/notes_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Unsorted/notes_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Unsorted/snowflake_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Unsorted/snowflake_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Warnings/warn_bolt_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Warnings/warn_bolt_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Warnings/warn_exclamation_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Warnings/warn_exclamation_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Warnings/warn_explosive_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Warnings/warn_explosive_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Warnings/warn_skull_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Warnings/warn_skull_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Interactive/Portals/SimplePortal/SimplePortalGreen.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Interactive/Portals/SimplePortal/SimplePortalGreen.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Interactive/Portals/VortexPortal/VortexPortalBlue.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Interactive/Portals/VortexPortal/VortexPortalBlue.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Interactive/Portals/VortexPortal/VortexPortalGold.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Interactive/Portals/VortexPortal/VortexPortalGold.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Interactive/Sparkle/SparkleArea/SparkleAreaGreen.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Interactive/Sparkle/SparkleArea/SparkleAreaGreen.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Interactive/Sparkle/SparkleArea/SparkleAreaWhite.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Interactive/Sparkle/SparkleArea/SparkleAreaWhite.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Interactive/Zone/MagicZone/MagicZoneBlue.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Interactive/Zone/MagicZone/MagicZoneBlue.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Interactive/Zone/MagicZone/MagicZonePink.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Interactive/Zone/MagicZone/MagicZonePink.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Interactive/Zone/MagicZone/MagicZoneYellow.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Interactive/Zone/MagicZone/MagicZoneYellow.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ForestLevelMapMaker/Scripts/MapController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ForestLevelMapMaker/Scripts/MapController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LevelScreen.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LevelScreen.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/FontManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/FontManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/GameConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/GameConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Convert/Hex.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Convert/Hex.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Convert/HexGrid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Convert/HexGrid.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Convert/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Convert/Utils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/HomeScreen.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/HomeScreen.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Custom/LifeCount.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Custom/LifeCount.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LogicHandler/CustomEventManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LogicHandler/CustomEventManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpriteMgr.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpriteMgr.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/MainMenuWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/MainMenuWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PlayBtn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PlayBtn.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/SettingWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/SettingWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/WinWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/WinWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/Common.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/Common.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/DataLocal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/DataLocal.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/Loader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/Loader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/background.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/background.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/click.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/click.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/drop.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/drop.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/dropfood.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/dropfood.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/duoidai.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/duoidai.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/eatbanana.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/eatbanana.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/eatspicy.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/eatspicy.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/flying.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/flying.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/foodMove.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/foodMove.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/icecrash.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/icecrash.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/lose.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/lose.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/losegame.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/losegame.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/move.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/move.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/move1.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/move1.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/move2.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/move2.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-35.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-35.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-36.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-36.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-37.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-37.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-38.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-38.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-41.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-41.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-42.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-42.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-44.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-44.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-48.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-48.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-49.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-49.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-50.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-50.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-51.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-51.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-52.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-52.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-53.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-53.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-54.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-54.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-55.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-55.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-56.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-56.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-57.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-57.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-58.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-58.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-59.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-59.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-60.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-60.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-61.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-61.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-62.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/notuse/sound-62.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/portopen.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/portopen.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/spicingfire.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/spicingfire.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/trap.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/trap.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/win.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/win.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/winGame.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/sfx/winGame.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Font/mvboli SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/Font/mvboli SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/center.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/center.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/empty-hill.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/empty-hill.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/empty.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/empty.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/grass.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/grass.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/house.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/house.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/port-color.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/port-color.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/port.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/port.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/propeller.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/propeller.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/red.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/red.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/street.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/street.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/tree.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/tree.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/white.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/white.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/windmill-hill.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/windmill-hill.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/windmill-trihex.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/windmill-trihex.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/windmill.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/windmill.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/AndroidLogcatSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/AndroidLogcatSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
@@ -28,12 +238,19 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/HomeScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.spriteshape@7.0.6/Samples~/Extras/Scripts/SimpleDraw.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@1.2.6/Tests/Tests/Shared/TestQuaternion.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@1.2.6/Tests/Tests/Shared/TestRigidTransform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mobile.android-logcat@1.3.2/Tests/Editor/AndroidLogcatRegexTests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@4.5.2/Runtime/Purchasing/PurchasingManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@4.5.2/Runtime/Stores/Android/ScriptingStoreCallback.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/38e2728118f24991966122330609e2726400/1d/b38485df/Canvas.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4ac9ef2b8e294691b53b47afb04569b7158a00/e2/5f774617/Application.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4ac9ef2b8e294691b53b47afb04569b7158a00/f6/d48a049e/Camera.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/8f/6daf9f6c/Void.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bfb370f0c9204304bb5ddff01b3880ba12d400/61/c7f65882/Color.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bfb370f0c9204304bb5ddff01b3880ba12d400/62/6b9da79c/Camera.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5377ac4e788cc4f8c6545362cee39859969c7b346233bb3bdcf6191179ada9/System.Drawing.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7d303c2bf72cd4cec95665b89c457d265d2b8ef3ed6da17cd4f85587c2f9de7/System.Linq.cs" root0="SKIP_HIGHLIGHTING" />
@@ -76,10 +293,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="63475">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="63475" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -100,7 +317,12 @@
       <workItem from="1675506184726" duration="15296000" />
       <workItem from="1675666522602" duration="39000" />
       <workItem from="1675666816186" duration="40796000" />
-      <workItem from="1675830190500" duration="1602000" />
+      <workItem from="1675830190500" duration="17766000" />
+      <workItem from="1675914398787" duration="16326000" />
+      <workItem from="1675997466255" duration="29763000" />
+      <workItem from="1676282680290" duration="2507000" />
+      <workItem from="1676285199956" duration="50000" />
+      <workItem from="1676285425403" duration="1569000" />
     </task>
     <servers />
   </component>
@@ -141,82 +363,134 @@
           <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/SmoothCameraSize.cs</url>
-          <line>27</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/UI/SmoothCameraSize.cs" initialLine="27" containingFunctionPresentation="method 'StartZoom'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Utilities/HomeSettingScript.cs</url>
+          <line>55</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Utilities/HomeSettingScript.cs" initialLine="59" containingFunctionPresentation="method 'onSettingBtnDown'">
             <startOffsets>
-              <option value="602" />
+              <option value="1688" />
             </startOffsets>
             <endOffsets>
-              <option value="676" />
+              <option value="1704" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="77" />
+          <option name="timeStamp" value="90" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/SmoothCameraSize.cs</url>
-          <line>28</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/UI/SmoothCameraSize.cs" initialLine="28" containingFunctionPresentation="method 'StartZoom'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Utilities/HomeSettingScript.cs</url>
+          <line>45</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Utilities/HomeSettingScript.cs" initialLine="41" containingFunctionPresentation="method 'onSettingBtnUp'">
             <startOffsets>
-              <option value="689" />
+              <option value="1417" />
             </startOffsets>
             <endOffsets>
-              <option value="721" />
+              <option value="1432" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="78" />
+          <option name="timeStamp" value="91" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/SmoothCameraSize.cs</url>
-          <line>30</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/UI/SmoothCameraSize.cs" initialLine="30" containingFunctionPresentation="method 'StartZoom'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Utilities/HomeSettingScript.cs</url>
+          <line>64</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Utilities/HomeSettingScript.cs" initialLine="76" containingFunctionPresentation="method 'show'">
             <startOffsets>
-              <option value="735" />
+              <option value="1899" />
             </startOffsets>
             <endOffsets>
-              <option value="787" />
+              <option value="1929" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="79" />
+          <option name="timeStamp" value="95" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/SmoothCameraSize.cs</url>
-          <line>43</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/UI/SmoothCameraSize.cs" initialLine="38" containingFunctionPresentation="method 'Update'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Utilities/HomeSettingScript.cs</url>
+          <line>75</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Utilities/HomeSettingScript.cs" initialLine="81" containingFunctionPresentation="method 'show'">
             <startOffsets>
-              <option value="1093" />
+              <option value="2227" />
             </startOffsets>
             <endOffsets>
-              <option value="1170" />
+              <option value="2264" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="80" />
+          <option name="timeStamp" value="96" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/SmoothCameraSize.cs</url>
-          <line>35</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/UI/SmoothCameraSize.cs" initialLine="31" containingFunctionPresentation="method 'StartZoom'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Utilities/HomeSettingScript.cs</url>
+          <line>82</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Utilities/HomeSettingScript.cs" initialLine="88" containingFunctionPresentation="lambda expression inside method 'show'">
             <startOffsets>
-              <option value="886" />
+              <option value="2549" />
             </startOffsets>
             <endOffsets>
-              <option value="905" />
+              <option value="2594" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="81" />
+          <option name="timeStamp" value="97" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/AutoFixSizeHome.cs</url>
-          <line>26</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/UI/AutoFixSizeHome.cs" initialLine="25" containingFunctionPresentation="method 'StartZoom'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Utilities/HomeSettingScript.cs</url>
+          <line>68</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Utilities/HomeSettingScript.cs" initialLine="64" containingFunctionPresentation="method 'show'">
             <startOffsets>
-              <option value="519" />
+              <option value="2047" />
             </startOffsets>
             <endOffsets>
-              <option value="567" />
+              <option value="2062" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="88" />
+          <option name="timeStamp" value="98" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Utilities/HomeSettingScript.cs</url>
+          <line>70</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Utilities/HomeSettingScript.cs" initialLine="66" containingFunctionPresentation="method 'show'">
+            <startOffsets>
+              <option value="2085" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2122" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="99" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs</url>
+          <line>498</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" initialLine="498" containingFunctionPresentation="method 'OnTouchStart'">
+            <startOffsets>
+              <option value="13415" />
+            </startOffsets>
+            <endOffsets>
+              <option value="13468" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="100" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs</url>
+          <line>500</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" initialLine="500" containingFunctionPresentation="method 'OnTouchStart'">
+            <startOffsets>
+              <option value="13491" />
+            </startOffsets>
+            <endOffsets>
+              <option value="13532" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="101" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs</url>
+          <line>501</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" initialLine="501" containingFunctionPresentation="method 'OnTouchStart'">
+            <startOffsets>
+              <option value="13545" />
+            </startOffsets>
+            <endOffsets>
+              <option value="13581" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="102" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -235,6 +509,7 @@
         <watch expression="h.hexType != EHexType.empty " />
         <watch expression="grid.has(r, c + 1)" />
         <watch expression="grid.get(r, c + 1)" />
+        <watch expression="Vector3.Distance(touchPos, dynamicPreview.transform.position); " language="C#" />
       </configuration>
     </watches-manager>
   </component>

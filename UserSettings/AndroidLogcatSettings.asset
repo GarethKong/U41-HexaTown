@@ -2,8 +2,8 @@
     "m_SelectedDeviceId": "R58T12SW7YK",
     "m_SelectedPackage": {
         "deviceId": "R58T12SW7YK",
-        "name": "com.kongsoftware.kongsnake",
-        "processId": 18812,
+        "name": "com.kongsoftware.hexatown",
+        "processId": 9012,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -11,31 +11,31 @@
         {
             "deviceId": "R58T12SW7YK",
             "name": "com.kongsoftware.kongsnake",
-            "processId": 9927,
-            "exited": true
-        },
-        {
-            "deviceId": "R58T12SW7YK",
-            "name": "com.kongsoftware.kongsnake",
-            "processId": 14809,
-            "exited": true
-        },
-        {
-            "deviceId": "R58T12SW7YK",
-            "name": "com.kongsoftware.kongsnake",
-            "processId": 15661,
-            "exited": true
-        },
-        {
-            "deviceId": "R58T12SW7YK",
-            "name": "com.kongsoftware.kongsnake",
-            "processId": 16401,
-            "exited": true
-        },
-        {
-            "deviceId": "R58T12SW7YK",
-            "name": "com.kongsoftware.kongsnake",
             "processId": 18812,
+            "exited": true
+        },
+        {
+            "deviceId": "R58T12SW7YK",
+            "name": "com.kongsoftware.hexatown",
+            "processId": 29212,
+            "exited": true
+        },
+        {
+            "deviceId": "R58T12SW7YK",
+            "name": "com.kongsoftware.hexatown",
+            "processId": 29609,
+            "exited": true
+        },
+        {
+            "deviceId": "R58T12SW7YK",
+            "name": "com.kongsoftware.hexatown",
+            "processId": 30860,
+            "exited": true
+        },
+        {
+            "deviceId": "R58T12SW7YK",
+            "name": "com.kongsoftware.hexatown",
+            "processId": 9012,
             "exited": false
         }
     ],

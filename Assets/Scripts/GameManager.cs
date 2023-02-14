@@ -18,6 +18,8 @@ using BeautifulTransitions.Scripts.Transitions;
 using UnityEngine;
 using Custom;
 using DG.Tweening;
+using GooglePlayGames;
+using GooglePlayGames.BasicApi;
 using Interface;
 using Mkey;
 using TMPro;
@@ -28,7 +30,7 @@ public enum EDialog
 {
     PLAY,
     SETTING,
-    WIN
+    ENDGAME
 }
 
 
@@ -36,6 +38,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    private SnapshotCamera snapshotCamera;
 
     public GameObject foreground;
 
@@ -57,36 +60,48 @@ public class GameManager : MonoBehaviour
     public GameObject dynamicPreview;
     public GameObject staticPreview;
     public GameObject deckCounterImage;
+    public GameObject staticPreviewSP;
+
 
     public GameObject GridBoardPrefab;
     public GameObject boardNode;
     public bool isMoving = false;
     public bool isCanMove = false;
-    
+
     public Button btnLeft;
     public Button btnRight;
-    
+
     public GameObject waves1;
     public GameObject waves2;
+
+    public Image endGameImage;
 
     List<Hex> bigPreviewTrihex;
 
     int score;
 
+    public Camera uiCamera;
+
+
+
+
+
     private void Awake()
     {
         Instance = this;
-       
     }
 
     private void Start()
     {
         Debug.Log("GameHandler.Start");
-        CustomEventManager.Instance.OnWinLevel += OnWinLevel;
+        CustomEventManager.Instance.OnEndGame += OnEndGame;
         btnLeft.onClick.AddListener(onRotateLeftButtonClick);
         btnRight.onClick.AddListener(onRotateRightButtonClick);
+        snapshotCamera = SnapshotCamera.MakeSnapshotCamera(1, "");
         StartNewGame();
     }
+
+    private GameObject gridBoardPri;
 
     public void StartNewGame()
     {
@@ -96,12 +111,14 @@ public class GameManager : MonoBehaviour
         var gridBoardNode = Instantiate(GridBoardPrefab);
         gridBoardNode.transform.parent = boardNode.transform;
 
+
         if (gridBoardNode.TryGetComponent(out HexGrid hexgrid))
         {
             grid = hexgrid;
             Action<int> actionUpdateScore = onScoreUpdate;
             grid.init(5, 8, 0, 0, actionUpdateScore);
         }
+
 
         trihexDeck = createTrihexDeck(GameConfig.TrihexDeckNum, true);
         scoreTextMain.text = " 0 ";
@@ -113,9 +130,19 @@ public class GameManager : MonoBehaviour
         var sp = deckCounterImage.GetComponent<Image>();
         sp.sprite = null; //'a-shape' spFrame
         Utils.setColorAlphaImage(sp, 1);
+        if (onAds)
+        {
+            onAds = false;
+            foreach (Transform trans in adsPreview.transform)
+            {
+                Destroy(trans.gameObject);
+            }
+        }
 
         bigPreviewTrihex = new List<Hex>();
-        
+        staticPreviewSP.transform.position = deckCounterImage.transform.position;
+
+
         for (var i = 0; i < 3; i++)
         {
             GameObject hexNode = Instantiate(this.HexTilePrefab);
@@ -135,6 +162,8 @@ public class GameManager : MonoBehaviour
         // {
         //     FBGlobal.instance.showAdsInterestial();
         // }
+
+        gridBoardPri = gridBoardNode;
     }
 
     void pickNextTrihex()
@@ -143,7 +172,7 @@ public class GameManager : MonoBehaviour
         {
             this.nextTrihex = trihexDeck.Last();
             trihexDeck.RemoveAt(trihexDeck.Count - 1);
-            this.deckCounterText.text = trihexDeck.Count +"";
+            this.deckCounterText.text = trihexDeck.Count + "";
             if (this.trihexDeck.Count > 0)
             {
                 switch (this.trihexDeck[this.trihexDeck.Count - 1].shape)
@@ -152,8 +181,9 @@ public class GameManager : MonoBehaviour
                     case 'v':
                         if (deckCounterImage.TryGetComponent(out Image sp))
                         {
-                            sp.sprite = SpriteMgr.Instance.deckCounterImage[0];
+                            sp.sprite = onAds ? null : SpriteMgr.Instance.deckCounterImage[0];
                         }
+
                         break;
 
                     case '/':
@@ -161,8 +191,9 @@ public class GameManager : MonoBehaviour
                     case '\\':
                         if (deckCounterImage.TryGetComponent(out Image sp1))
                         {
-                            sp1.sprite = SpriteMgr.Instance.deckCounterImage[1];
+                            sp1.sprite = onAds ? null : SpriteMgr.Instance.deckCounterImage[1];
                         }
+
                         break;
 
                     case 'c':
@@ -173,8 +204,9 @@ public class GameManager : MonoBehaviour
                     case 'l':
                         if (deckCounterImage.TryGetComponent(out Image sp2))
                         {
-                            sp2.sprite = SpriteMgr.Instance.deckCounterImage[2];
+                            sp2.sprite = onAds ? null : SpriteMgr.Instance.deckCounterImage[2];
                         }
+
                         break;
 
                     default:
@@ -183,15 +215,15 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                this.deckCounterImage.active = false;
+                this.deckCounterImage.SetActive(false);
                 this.deckCounterText.text = "";
             }
 
-            this.updateStaticTrihex();
+            this.updateStaticTrihex(this.onAds);
 
             var position = deckCounterImage.transform.position;
             this.staticPreview.transform.position = new Vector3(position.x, position.y);
-            this.staticPreview.transform.localScale = new Vector3(0.2f,0.2f);
+            this.staticPreview.transform.localScale = new Vector3(0.2f, 0.2f);
             //TODO cc.tween(this.staticPreview)
             //     .to(0.4,  {
             //     position:
@@ -207,24 +239,34 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
-    public void updateStaticTrihex() {
-        var shapeIndex = HexGrid.shapes[this.nextTrihex.shape];
-        for (var i = 0; i < 3; i++) {
+
+    public void updateStaticTrihex(bool isAds = false)
+    {
+        if (this.trihexDeck.Count == 0)
+        {
+            return;
+        }
+
+        var triHex = isAds ? this.trihexDeck[this.trihexDeck.Count - 1] : this.nextTrihex;
+        var shapeIndex = HexGrid.shapes[triHex.shape];
+        var preview = isAds ? this.adsPreviewTrihex : this.bigPreviewTrihex;
+
+        for (var i = 0; i < 3; i++)
+        {
             var row = shapeIndex[i].ro;
             var col = shapeIndex[i].co;
             var posX = (col + 0.5f * row) * Utils.d_col;
             var posY = row * Utils.d_row;
-            this.bigPreviewTrihex[i].transform.position = new Vector2(posX, posY);
-            this.bigPreviewTrihex[i].setType((EHexType)nextTrihex.hexes[i]);
-            if (this.nextTrihex.hexes[i] == 0) {
-                this.bigPreviewTrihex[i].gameObject.SetActive(false);
-                this.grid.triPreviews[i].SetActive(false);
-                this.grid.triPreviews[i].SetActive(false);
+            preview[i].transform.position = new Vector3(posX + 3.5f, posY - 7);
+            preview[i].GetComponent<Hex>().setType((EHexType)triHex.hexes[i]);
+            if (triHex.hexes[i] == 0)
+            {
+                preview[i].gameObject.SetActive(false);
+                grid.triPreviews[i].SetActive(false);
             }
         }
     }
-    
+
 
     List<Trihex> createTrihexDeck(int size, bool allShapes)
     {
@@ -326,20 +368,17 @@ public class GameManager : MonoBehaviour
     {
     }
 
-    public void OnWinLevel()
+    public void OnEndGame()
     {
-        StartCoroutine(EWinLevel(1f));
+        StartCoroutine(EEndGame(0f));
     }
 
-    IEnumerator EWinLevel(float delayTime)
+    IEnumerator EEndGame(float delayTime)
     {
         yield return new WaitForSeconds(delayTime);
-        if (Common.maxLevelUnlocked == Common.GetLevelNumberNeedLoad())
-        {
-            Common.SaveNextStage();
-        }
-
-        ShowDialogByEDialog(EDialog.WIN);
+        CaptureImage();
+        ShowDialogByEDialog(EDialog.ENDGAME);
+        Common.saveScore(Common.curScore);
         //GamePlayWindow.HideStatic();
     }
 
@@ -348,7 +387,7 @@ public class GameManager : MonoBehaviour
         SoundMaster.Instance.SoundPlayClick(0, null);
         ShowDialogByEDialog(EDialog.SETTING);
     }
-    
+
     void ShowDialogByEDialog(EDialog dialogType)
     {
         foreach (var t in listDlg)
@@ -362,8 +401,8 @@ public class GameManager : MonoBehaviour
             case EDialog.SETTING:
                 SettingWindow.ShowStatic();
                 break;
-            case EDialog.WIN:
-                WinWindow.ShowStatic();
+            case EDialog.ENDGAME:
+                EndGameWindow.ShowStatic();
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(dialogType), dialogType, null);
@@ -383,31 +422,32 @@ public class GameManager : MonoBehaviour
             case EDialog.SETTING:
                 SettingWindow.HideStatic();
                 break;
-            case EDialog.WIN:
+            case EDialog.ENDGAME:
                 WinWindow.HideStatic();
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(dialogType), dialogType, null);
         }
     }
-    
+
     float time = 0;
     float pressTime = 0;
 
-    void Update ( ) {
+    void Update()
+    {
         // Handle screen touches.
 
-        if (Input.touchCount > 0  && Time.timeScale != 0 && !EventSystem.current.IsPointerOverGameObject())
+        if (Input.touchCount > 0 && Time.timeScale != 0 && !EventSystem.current.IsPointerOverGameObject())
         {
             Touch touch = Input.GetTouch(0);
-            
+
             if (touch.phase == TouchPhase.Began)
             {
-                Vector2 pos = touch.position;
+                var touchPos = Camera.main.ScreenToWorldPoint(touch.position);
                 Debug.Log("ON TOUCH START");
-                OnTouchStart();
+                OnTouchStart(touchPos);
             }
-            
+
             // if (touch.phase == TouchPhase.Stationary)
             // {
             //     pressTime += Time.deltaTime;
@@ -415,11 +455,11 @@ public class GameManager : MonoBehaviour
 
             if (touch.phase == TouchPhase.Moved)
             {
-                    var touchPos = Camera.main.ScreenToWorldPoint(touch.position);
-                    touchPos.z = transform.position.z;
-                    OnTouchMove(touchPos);
+                var touchPos = Camera.main.ScreenToWorldPoint(touch.position);
+                touchPos.z = transform.position.z;
+                OnTouchMove(touchPos);
             }
-            
+
             if (touch.phase == TouchPhase.Ended)
             {
                 Debug.Log("ON TOUCH END");
@@ -430,10 +470,9 @@ public class GameManager : MonoBehaviour
 
             if (Input.touchCount == 2)
             {
-              
             }
         }
-        
+
         if (Input.mouseScrollDelta.y > 0)
         {
             rotateLeft();
@@ -442,93 +481,156 @@ public class GameManager : MonoBehaviour
         {
             rotateRight();
         }
+
         time += Time.deltaTime;
         var position = waves1.transform.position;
-        position = new Vector3(position.x + MathF.Sin(time) * 0.003f, position.y ) ;
+        position = new Vector3(position.x + MathF.Sin(time) * 0.003f, position.y);
         waves1.transform.position = position;
         var position1 = this.waves2.transform.position;
-        position1 = new Vector3(position1.x - MathF.Sin(time)* 0.003f, position1.y ) ;
+        position1 = new Vector3(position1.x - MathF.Sin(time) * 0.003f, position1.y);
         waves2.transform.position = position1;
     }
-    
-    void OnTouchStart( ) {
-         isMoving = false;
-         isCanMove = true;
-         Debug.Log("onTouchStart");
-     }
-    
-    void  OnTouchMove(Vector2 touchPos) {
-         if (!this.isCanMove) return;
-         this.isMoving = true;
-    
-         var l_touchPos = touchPos;
-         this.grid.updateTriPreview(l_touchPos.x, l_touchPos.y, this.nextTrihex, true);
+
+    void OnTouchStart(Vector3 touchPos)
+    {
+        isMoving = false;
+        isCanMove = false;
+        Transform[] allChildren = dynamicPreview.GetComponentsInChildren<Transform>();
+        foreach (Transform child in dynamicPreview.transform)
+        {
+            var distance = touchPos - child.position;
+            if (distance.magnitude - 10 < 0.01f)
+            { 
+                isCanMove = true;
+                break;
+            }
+        }
+        Debug.Log("onTouchStart");
+    }
+
+    void OnTouchMove(Vector2 touchPos)
+    {
+        if (!this.isCanMove) return;
+        this.isMoving = true;
+
+        var l_touchPos = touchPos;
+        this.grid.updateTriPreview(l_touchPos.x, l_touchPos.y, this.nextTrihex, true);
         // Debug.Log("ON TOUCH MOVE");
-     }
-    
-     void OnTouchEnd(Vector2 touchPos) {
-         if (isCanMove == false) return;
-         var self = this;
-         if (isMoving == false) {
-             // rotate
-             return;
-         }
-    
-         if (grid.placeTrihex(this.dynamicPreview.transform.position.x, this.dynamicPreview.transform.position.y, this.nextTrihex)) {
-             this.pickNextTrihex();
-         
-             if (nextTrihex.hexes[0] == 0) {
-                 staticPreview.SetActive(false);
-                 dynamicPreview.SetActive(false);
-             }
-             if (nextTrihex.hexes[0] == (int)EHexType.empty || !grid.canPlaceShape(nextTrihex.shape))
-             {
-                 StartCoroutine(EndgameAction(2.5f));
-                 StartCoroutine(DeactivateameAction( 1.2f));
-             }
-         }
-         isMoving = false;
+    }
+
+    void OnTouchEnd(Vector2 touchPos)
+    {
+        if (isCanMove == false) return;
+        var self = this;
+        if (isMoving == false)
+        {
+            // rotate
+            return;
+        }
+
+        if (grid.placeTrihex(this.dynamicPreview.transform.position.x, this.dynamicPreview.transform.position.y,
+                this.nextTrihex))
+        {
+            this.pickNextTrihex();
+
+            if (nextTrihex.hexes[0] == 0)
+            {
+                staticPreview.SetActive(false);
+                dynamicPreview.SetActive(false);
+            }
+
+            if (nextTrihex.hexes[0] == (int)EHexType.empty || !grid.canPlaceShape(nextTrihex.shape))
+            {
+                StartCoroutine(EndgameAction(2.5f));
+                StartCoroutine(DeactivateameAction(1.2f));
+            }
+        }
+
+        isMoving = false;
         grid.updateTriPreview(GameConfig.DynamicPos.X, GameConfig.DynamicPos.Y, this.nextTrihex, true);
         Debug.Log("ON TOUCH END");
-     }
+    }
 
-     private IEnumerator EndgameAction(float delayTime)
-     {
-         yield return new WaitForSeconds(delayTime);
-         grid.sinkBlanks();
-         endGame();
-     }
-     
-     private IEnumerator DeactivateameAction(float delayTime)
-     {
-         yield return new WaitForSeconds(delayTime);
-         grid.deactivate();
-     }
+    private IEnumerator EndgameAction(float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        CustomEventManager.Instance.EndLevel();
+    }
 
-     void endGame() {
-         Debug.Log("END ALREADY");
-     }
-     
-     
-     void onRotateRightButtonClick() {
-         SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.click, 0, 0.9f, null);
-         this.rotateRight();
-     }
+    private IEnumerator DeactivateameAction(float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        grid.deactivate();
+    }
 
-     void rotateRight() {
-         this.nextTrihex.rotateRight();
-         this.grid.updateTriPreview(0, 0, this.nextTrihex);
-         this.updateStaticTrihex();
-     }
+    private void CaptureImage()
+    {
+        int height = (int)Math.Round(Screen.width * 1.15f);
+        Texture2D texture2D = snapshotCamera.TakeObjectSnapshot(gridBoardPri, Screen.width, height);
+        endGameImage.sprite = Sprite.Create(texture2D, new Rect(0, 0, Screen.width, height), new Vector2());
+        var rectTransform = endGameImage.GetComponent<RectTransform>();
+        rectTransform.sizeDelta = new Vector2(Screen.width, height);
+    }
 
-     void onRotateLeftButtonClick() {
-         SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.click, 0, 0.9f, null);
-         this.rotateLeft();
-     }
 
-     void rotateLeft() {
-         this.nextTrihex.rotateLeft();
-         this.grid.updateTriPreview(0, 0, this.nextTrihex);
-         this.updateStaticTrihex();
-     }
+    void onRotateRightButtonClick()
+    {
+        SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.click, 0, 0.9f, null);
+        this.rotateRight();
+        //CustomEventManager.Instance.EndLevel();
+    }
+
+    void rotateRight()
+    {
+        this.nextTrihex.rotateRight();
+        this.grid.updateTriPreview(0, 0, this.nextTrihex);
+        //this.updateStaticTrihex();
+    }
+
+    void onRotateLeftButtonClick()
+    {
+        SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.click, 0, 0.9f, null);
+        this.rotateLeft();
+    }
+
+    void rotateLeft()
+    {
+        nextTrihex.rotateLeft();
+        grid.updateTriPreview(0, 0, this.nextTrihex);
+        //updateStaticTrihex();
+    }
+
+    public GameObject adsBtn;
+    public GameObject adsPreview;
+    private List<Hex> adsPreviewTrihex = new List<Hex>();
+    private bool onAds = false;
+
+    public void onAdsPreviewClick()
+    {
+        var self = this;
+        //TODO CHECK ADS let AVSuccessCb = function (arg) {
+        //     self.onShowPreview();
+        // };
+        // let AVFailedCb = function (arg) {
+        // };
+        // FBGlobal.instance.showAdsVideo(AVSuccessCb.bind(self), AVFailedCb.bind(self), null);
+        self.onShowPreview();
+    }
+
+    public void onShowPreview()
+    {
+        this.onAds = true;
+        this.adsBtn.active = false;
+        this.adsPreviewTrihex = new List<Hex>();
+        for (var i = 0; i < 3; i++)
+        {
+            var hexNode = Instantiate(this.HexTilePrefab, staticPreviewSP.transform, true);
+            var hex = hexNode.GetComponent<Hex>();
+            hex.initGrid(0, 0, -1, -1);
+            this.adsPreviewTrihex.Add(hex);
+        }
+
+        updateStaticTrihex(onAds);
+        deckCounterImage.GetComponent<Image>().enabled = false;
+    }
 }

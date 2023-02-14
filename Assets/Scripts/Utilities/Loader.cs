@@ -20,7 +20,7 @@ public static class Loader {
 
     public enum Scene {
         GameScene,
-        LevelScreen,
+        HomeScreen,
         Loading,
         MainMenu,
     }

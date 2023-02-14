@@ -141,8 +141,8 @@ namespace Mkey
                     }
                 });
 
-                SetButtonActive(scene,  scene == Common.maxLevelUnlocked,
-                    (Common.maxLevelUnlocked >= scene));
+                SetButtonActive(scene,  scene == Common.maxScore,
+                    (Common.maxScore >= scene));
                 MapLevelButtons[i].numberText.text = (scene).ToString();
             }
 

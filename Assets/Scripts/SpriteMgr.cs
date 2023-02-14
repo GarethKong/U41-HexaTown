@@ -30,4 +30,5 @@ public class SpriteMgr : MonoBehaviour
     public Sprite[] triPreviewsRed;
     public Sprite[] triPreviews;
     public Sprite redSpriteFrame;
+    public GameObject lifeEffect;
 }

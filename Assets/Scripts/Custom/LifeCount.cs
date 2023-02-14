@@ -46,12 +46,12 @@ public class LifeCount : MonoBehaviour {
 			UIAdsController.Instance.ShowStatic();
 		};
 		
-		btnAdsClose.ClickFunc = () =>
-		{
-			SoundMaster.Instance.SoundPlayClick(0, null);
-			UIAdsController.Instance.HideStatic();
-
-		};
+		// btnAdsClose.ClickFunc = () =>
+		// {
+		// 	SoundMaster.Instance.SoundPlayClick(0, null);
+		// 	UIAdsController.Instance.HideStatic();
+		//
+		// };
 	}
 
 	private void Update() {

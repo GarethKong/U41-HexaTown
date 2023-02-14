@@ -11,7 +11,7 @@ public static class Common
     public static int TOTAL_LEVEL = 100;
     public static bool isRemovedAds;
 
-    public static int maxLevelUnlocked = 0;
+    public static int maxScore = 0;
     public static int currentStageLoad = 0;
     public static bool isTutorialLevel = false;
     public static int curScore = 0;
@@ -19,7 +19,7 @@ public static class Common
     public static void savePlayerData()
     {
         DataLocal localData = new DataLocal();
-        localData.maxLevelUnlocked = maxLevelUnlocked;
+        localData.maxScore = maxScore;
         localData.isRemovedAds = isRemovedAds;
         var dataString = JsonUtility.ToJson(localData);
         PlayerPrefs.SetString("GameDots_PlayerData", dataString);
@@ -41,8 +41,8 @@ public static class Common
             //console.log("GameDots_PlayerData-loadPlayerData:" + dataString);
             DataLocal data = JsonConvert.DeserializeObject<DataLocal>(dataString);
             isRemovedAds = data.isRemovedAds;
-            maxLevelUnlocked = data.maxLevelUnlocked;
-            SetLevelNumberUnlocked(maxLevelUnlocked);
+            maxScore = data.maxScore;
+            SetLevelNumberUnlocked(maxScore);
         }
         else
         {
@@ -59,21 +59,21 @@ public static class Common
 
     public static void saveScore(int score)
     {
-        if (maxLevelUnlocked < score)
+        if (maxScore < score)
         {
-            maxLevelUnlocked = score;
+            maxScore = score;
+            if (Application.platform == RuntimePlatform.Android)
+            {
+                Debug.Log("Save score android");
+                if (HomeScript.Instance.IsConnectedToGooglePlay)
+                {
+                    Social.ReportScore(Common.curScore, GPGSIds.leaderboard_leader_board,
+                        (bool success) => { Debug.Log("Save score" + success); });
+                }
+            }
             //TODO LEADERBOARD GameServices.ReportScore(bestScore, EM_GameServicesConstants.Leaderboard_High_Score);
             //CloudOnceUtils.LeaderboardUtils.SubmitScore(bestScore);
         }
-
-        savePlayerData();
-    }
-
-
-    public static void SaveNextStage()
-    {
-        maxLevelUnlocked += 1;
-        SetLevelNumberUnlocked(maxLevelUnlocked);
         savePlayerData();
     }
 

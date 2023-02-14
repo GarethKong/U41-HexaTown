@@ -17,7 +17,7 @@ namespace Interface
         }
 
         public Action OnStartMoving;
-        public Action OnWinLevel;
+        public Action OnEndGame;
         public Action OnFailLevel;
         public Action OnFoodDrop;
         public Action OnNextLevel;
@@ -65,11 +65,11 @@ namespace Interface
             }
         }
 
-        public void WinLevel()
+        public void EndLevel()
         {
-            if (OnWinLevel != null)
+            if (OnEndGame != null)
             {
-                OnWinLevel();
+                OnEndGame();
             }
         }
     

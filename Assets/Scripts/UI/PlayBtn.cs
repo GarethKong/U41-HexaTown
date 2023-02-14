@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using CodeMonkey.Utils;
 using Mkey;
 using UnityEngine;
@@ -16,7 +15,7 @@ public class PlayBtn : MonoBehaviour
         playBtn.ClickFunc = () =>
         {
             SoundMaster.Instance.SoundPlayClick(0, null);
-            Common.SetLevelNumberNeedLoad(Common.maxLevelUnlocked);
+            Common.SetLevelNumberNeedLoad(Common.maxScore);
             LifeCount.Instance.OnButtonConsumePressed();
             if (LifeCount.Instance.checkLoadLevel)
             {

@@ -10,7 +10,6 @@
     --------------------------------------------------
  */
 
-using BeautifulTransitions.Scripts.Transitions;
 using UnityEngine;
 using CodeMonkey.Utils;
 using Mkey;
@@ -31,6 +30,12 @@ public class SettingWindow : MonoBehaviour
     public Sprite[] soundSprite;
     public Sprite[] musicSprite;
     public Sprite[] vibrationSprite;
+    
+    Vector3 original_pos = new Vector3(0, 0, 0);
+    int totalButton = 0;
+    bool isCollapse = true;
+    bool isSliding = false;
+    int distance = 0;
 
     private void Awake()
     {
@@ -64,7 +69,7 @@ public class SettingWindow : MonoBehaviour
         btnHome.ClickFunc = () =>
         {
             SoundMaster.Instance.SoundPlayClick(0, null);
-            Loader.Load(Loader.Scene.LevelScreen);
+            Loader.Load(Loader.Scene.HomeScreen);
         };
 
         btnTutorial.ClickFunc = () => { SoundMaster.Instance.SoundPlayClick(0, null); };
@@ -101,7 +106,6 @@ public class SettingWindow : MonoBehaviour
     public static void ShowStatic()
     {
         instance.Show();
-        TransitionHelper.TransitionIn(instance.gameObject);
     }
 
     public static void HideStatic()
