@@ -52,7 +52,7 @@ namespace Custom
             // node.transform.position = positionNew;
             //node.transform.position = Camera.main.WorldToScreenPoint(hexes[0].transform.position);
           
-
+            //ADAADAD
             Vector2 adjustedPosition =
                 GameManager.Instance.uiCamera.WorldToScreenPoint(new Vector3(hexes[0].transform.position.x,
                     hexes[0].transform.position.y, 1));
