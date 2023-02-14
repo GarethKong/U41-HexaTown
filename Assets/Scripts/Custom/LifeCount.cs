@@ -9,53 +9,52 @@ using UI;
 using Unity.VisualScripting;
 
 
-public class LifeCount : MonoBehaviour {
-	/// <summary>
-	/// Reference to the LivesManager.
-	/// </summary>
-	public LivesManager LivesManager;
-	/// <summary>
-	/// Label to show number of available lives.
-	/// </summary>
-	public Text LivesText;
-	/// <summary>
-	/// Label to show time to next life.
-	/// </summary>
-	public Text TimeToNextLifeText;
+public class LifeCount : MonoBehaviour
+{
+    /// <summary>
+    /// Label to show number of available lives.
+    /// </summary>
+    public Text LivesText;
 
-	public static LifeCount Instance;
+    /// <summary>
+    /// Label to show time to next life.
+    /// </summary>
+    public Text TimeToNextLifeText;
 
-	/// <summary>
-	/// Image display for the result of consuming a life.
-	/// </summary>
-	/// <remarks>
-	/// This should be, for example, a reference to your game controller.
-	/// </remarks>
-	public GameObject lifeWindow;
-	public Button_UI btnAdsGetHeart;
-	public Button_UI btnAdsClose;
+    public static LifeCount Instance;
+
+    /// <summary>
+    /// Image display for the result of consuming a life.
+    /// </summary>
+    /// <remarks>
+    /// This should be, for example, a reference to your game controller.
+    /// </remarks>
+    public GameObject lifeWindow;
+
+    public Button_UI btnAdsGetHeart;
+    public Button_UI btnAdsClose;
 
 
-	public void Awake()
-	{
-		Instance = this;
-		
-		btnAdsGetHeart.ClickFunc = () =>
-		{
-			SoundMaster.Instance.SoundPlayClick(0, null);
-			UIAdsController.Instance.ShowStatic();
-		};
-		
-		// btnAdsClose.ClickFunc = () =>
-		// {
-		// 	SoundMaster.Instance.SoundPlayClick(0, null);
-		// 	UIAdsController.Instance.HideStatic();
-		//
-		// };
-	}
+    public void Awake()
+    {
+        Instance = this;
 
-	private void Update() {
-		#if UNITY_EDITOR
+        btnAdsGetHeart.ClickFunc = () =>
+        {
+            SoundMaster.Instance.SoundPlayClick(0, null);
+            UIAdsController.Instance.ShowStatic();
+        };
+        // btnAdsClose.ClickFunc = () =>
+        // {
+        // 	SoundMaster.Instance.SoundPlayClick(0, null);
+        // 	UIAdsController.Instance.HideStatic();
+        //
+        // };
+    }
+
+    private void Update()
+    {
+#if UNITY_EDITOR
 		/* When testing in the editor, you can use the keyboard to control the lives manager:
 		 * C - Consume life
 		 * G - Give one
@@ -82,81 +81,95 @@ public class LifeCount : MonoBehaviour {
 		}
 
 		if(Input.GetKeyUp(KeyCode.Z)) {
-			LivesManager.AddLifeSlots(1, true);
+			LivesManager.instance.AddLifeSlots(1, true);
 		}
 
 		if(Input.GetKeyUp(KeyCode.I)) {
 			OnButtonInfinitePressed();
 		}
-		#endif
-	}
+#endif
+    }
 
-	#region Button Event Handlers
+    #region Button Event Handlers
 
-	/// <summary>
-	/// Play (consume life) button event handler.
-	/// </summary>
-	public bool checkLoadLevel = false;
-	
-	public void OnButtonConsumePressed() {
-		if(LivesManager.ConsumeLife()) {
-			// Go to your game!
-			checkLoadLevel = true;
-			Debug.Log("A life was consumed and the player can continue!");
-			Debug.Log("on comsume in level ");
-		} else {
-			// Tell player to buy lives, then:
-			// LivesManager.GiveOneLife();
-			// or
-			// LivesManager.FillLives();
-			Debug.Log("Not enough lives to play!");
-			// ResultDisplay.PopUp("Over");
-			checkLoadLevel = false;
-			UIAdsController.Instance.ShowStatic();;
-		}
-	}
+    /// <summary>
+    /// Play (consume life) button event handler.
+    /// </summary>
+    public bool checkLoadLevel = false;
 
-	public void ClosePopUp()
-	{
-		UIAdsController.Instance.HideStatic();;
-	}
+    public void OnButtonConsumePressed()
+    {
+        if (LivesManager.instance.ConsumeLife())
+        {
+            // Go to your game!
+            checkLoadLevel = true;
+            Debug.Log("A life was consumed and the player can continue!");
+            Debug.Log("on comsume in level ");
+        }
+        else
+        {
+            // Tell player to buy lives, then:
+            // LivesManager.GiveOneLife();
+            // or
+            // LivesManager.FillLives();
+            Debug.Log("Not enough lives to play!");
+            // ResultDisplay.PopUp("Over");
+            checkLoadLevel = false;
+            UIAdsController.Instance.ShowStatic();
+            ;
+        }
+    }
 
-	public void OnButtonGiveOnePressed() {
-		LivesManager.GiveOneLife();
-	}
+    public void ClosePopUp()
+    {
+        UIAdsController.Instance.HideStatic();
+        ;
+    }
 
-	public void OnButtonFillPressed() {
-		LivesManager.FillLives();
-	}
+    public void OnButtonGiveOnePressed()
+    {
+        LivesManager.instance.GiveOneLife();
+    }
 
-	public void OnButtonInfinitePressed() {
-		LivesManager.GiveInifinite(1);
-	}
+    public void OnButtonFillPressed()
+    {
+        LivesManager.instance.FillLives();
+    }
 
-	public void OnButtonIncreaseMaxPressed() {
-		LivesManager.AddLifeSlots(1);
-		Debug.LogFormat("Max lives is now {0}", LivesManager.MaxLives);
-	}
+    public void OnButtonInfinitePressed()
+    {
+        LivesManager.instance.GiveInifinite(1);
+    }
 
-	public void OnButtonResetPressed() {
-		LivesManager.ResetPlayerPrefs();
-		Debug.LogFormat("Max lives is now {0}", LivesManager.MaxLives);
-		OnLivesChanged();
-		OnTimeToNextLifeChanged();
-	}
-	#endregion
+    public void OnButtonIncreaseMaxPressed()
+    {
+        LivesManager.instance.AddLifeSlots(1);
+        Debug.LogFormat("Max lives is now {0}", LivesManager.instance.MaxLives);
+    }
 
-	/// <summary>
-	/// Lives changed event handler, changes the label value.
-	/// </summary>
-	public void OnLivesChanged() {
-		LivesText.text = LivesManager.LivesText;
-	}
+    public void OnButtonResetPressed()
+    {
+        LivesManager.instance.ResetPlayerPrefs();
+        Debug.LogFormat("Max lives is now {0}", LivesManager.instance.MaxLives);
+        OnLivesChanged();
+        OnTimeToNextLifeChanged();
+    }
 
-	/// <summary>
-	/// Time to next life changed event handler, changes the label value.
-	/// </summary>
-	public void OnTimeToNextLifeChanged() {
-		TimeToNextLifeText.text = LivesManager.RemainingTimeString;
-	}
+    #endregion
+
+    /// <summary>
+    /// Lives changed event handler, changes the label value.
+    /// </summary>
+    public void OnLivesChanged()
+    {
+        LivesText.text = LivesManager.instance.LivesText;
+    }
+
+    /// <summary>
+    /// Time to next life changed event handler, changes the label value.
+    /// </summary>
+    public void OnTimeToNextLifeChanged()
+    {
+        TimeToNextLifeText.text = LivesManager.instance.RemainingTimeString;
+    }
 }

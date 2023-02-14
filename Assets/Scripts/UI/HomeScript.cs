@@ -1,6 +1,7 @@
 using System;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
+using Mkey;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Purchasing;
@@ -73,6 +74,9 @@ public class HomeScript : MonoBehaviour, IStoreListener
 
     public void tutorialBtn()
     {
+        if(SceneLoader.Instance) SceneLoader.Instance.LoadScene(2, () =>
+        {
+        } );
     }
 
     public void shopBtn()

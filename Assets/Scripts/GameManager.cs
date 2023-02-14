@@ -77,6 +77,9 @@ public class GameManager : MonoBehaviour
     public Image endGameImage;
 
     List<Hex> bigPreviewTrihex;
+    
+    public Canvas canvas;
+
 
     int score;
     
@@ -107,7 +110,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        StartTutorial(true);
+        //StartTutorial(true);
         Debug.Log("GameHandler.Start");
         CustomEventManager.Instance.OnEndGame += OnEndGame;
         btnLeft.onClick.AddListener(onRotateLeftButtonClick);
@@ -523,7 +526,7 @@ public class GameManager : MonoBehaviour
         foreach (Transform child in dynamicPreview.transform)
         {
             var distance = touchPos - child.position;
-            if (distance.magnitude - 10 < 0.01f)
+            if (distance.magnitude - 10 < 0.1f)
             { 
                 isCanMove = true;
                 break;

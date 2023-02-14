@@ -3,6 +3,7 @@ using BeautifulTransitions.Scripts.Transitions;
 using CodeMonkey.Utils;
 using ExaGames.Common;
 using Mkey;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,9 +11,9 @@ namespace UI
 {
     public class UIAdsController : MonoBehaviour
     {
-        public Text TimeCountNextLife;
-        public Text NumberLife;
-        public Text NumberLifeCount;
+        public TextMeshProUGUI TimeCountNextLife;
+        public TextMeshProUGUI NumberLife;
+        public TextMeshProUGUI NumberLifeCount;
 
         public Button_UI btnClaim;
         public static UIAdsController Instance;

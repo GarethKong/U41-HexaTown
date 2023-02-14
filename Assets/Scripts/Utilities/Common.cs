@@ -10,10 +10,10 @@ public static class Common
 {
     public static int TOTAL_LEVEL = 100;
     public static bool isRemovedAds;
+    public static bool isFirstTime = true;
 
     public static int maxScore = 0;
     public static int currentStageLoad = 0;
-    public static bool isTutorialLevel = false;
     public static int curScore = 0;
 
     public static void savePlayerData()
@@ -21,6 +21,7 @@ public static class Common
         DataLocal localData = new DataLocal();
         localData.maxScore = maxScore;
         localData.isRemovedAds = isRemovedAds;
+        localData.isFirstTime = isFirstTime;
         var dataString = JsonUtility.ToJson(localData);
         PlayerPrefs.SetString("GameDots_PlayerData", dataString);
     }
@@ -42,6 +43,7 @@ public static class Common
             DataLocal data = JsonConvert.DeserializeObject<DataLocal>(dataString);
             isRemovedAds = data.isRemovedAds;
             maxScore = data.maxScore;
+            isFirstTime = data.isFirstTime;
             SetLevelNumberUnlocked(maxScore);
         }
         else
@@ -53,7 +55,7 @@ public static class Common
 
     public static void resetPlayerData()
     {
-        currentStageLoad = 0;
+        isFirstTime = true;
         savePlayerData();
     }
 
@@ -74,6 +76,7 @@ public static class Common
             //TODO LEADERBOARD GameServices.ReportScore(bestScore, EM_GameServicesConstants.Leaderboard_High_Score);
             //CloudOnceUtils.LeaderboardUtils.SubmitScore(bestScore);
         }
+
         savePlayerData();
     }
 
@@ -101,7 +104,6 @@ public static class Common
 
     public static int SetLevelNumberNeedLoad(int levelNeedLoad)
     {
-        isTutorialLevel = levelNeedLoad == 0;
         return currentStageLoad = levelNeedLoad;
     }
 
@@ -111,8 +113,19 @@ public static class Common
         savePlayerData();
     }
 
+    public static void SetWatchTut()
+    {
+        isFirstTime = false;
+        savePlayerData();
+    }
+
     public static bool checkRemoveAds()
     {
         return isRemovedAds;
+    }
+
+    public static bool checkWatchTut()
+    {
+        return isFirstTime;
     }
 }
