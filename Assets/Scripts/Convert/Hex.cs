@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Drawing;
 using DG.Tweening;
 using JetBrains.Annotations;
 using Mkey;
 using UnityEngine;
 using UnityEngine.UI;
+using Color = UnityEngine.Color;
 
 namespace Custom
 {
@@ -90,6 +92,11 @@ namespace Custom
             {
                 img.sprite = SpriteMgr.Instance.hexList[9];
             }
+        }
+
+        public void setColorHex(Color color)
+        {
+            img.color = color;
         }
 
         public void upgrade()

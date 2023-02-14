@@ -44,7 +44,14 @@ namespace Custom
             lbScore.color = new Color(0f, 0f, 0f, 1f);
             lbScore.font = FontManager.instance.GetFont("mvboli SDF");
             lbScore.horizontalAlignment = HorizontalAlignmentOptions.Center;
-            node.transform.SetParent(GameManager.Instance.scoreNode.transform);
+            // if (TutorialManager.Instance.Tutorial)
+            // {
+            //     node.transform.SetParent(TutorialManager.Instance.scoreNode.transform);
+            // }
+            // else
+            // {
+                node.transform.SetParent(GameManager.Instance.scoreNode.transform);
+            // }
             // var positionNew = Utils.WorldToCanvasPosition(hexes[0].transform,
             //     GameManager.Instance.canvas.transform as RectTransform, Camera.main);
             // node.transform.position = positionNew;

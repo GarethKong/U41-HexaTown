@@ -25,6 +25,7 @@ using Mkey;
 using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public enum EDialog
 {
@@ -73,12 +74,31 @@ public class GameManager : MonoBehaviour
 
     public GameObject waves1;
     public GameObject waves2;
-
+    
     public Image endGameImage;
+    public GameObject[] TextTutorial;
+
+    public Array ListTextTut;
 
     List<Hex> bigPreviewTrihex;
 
     int score;
+    
+    public float fadeTime = 1f;
+    
+    
+    public bool Tutorial = false;
+
+    public int[,,] RCPosYellowHex = new int[6, 3, 2]
+    {{{4,6},{4,7},{3,7}},
+        {{5,6},{5,7},{5,8}},
+        {{4,10},{5,9},{6,9}},
+        {{2,6},{2,7},{3,6}},    
+        {{1,4},{1,5},{2,5}},
+        {{3,5},{4,5},{5,4}}};
+
+    private int indexStep = 0;
+
 
     public Camera uiCamera;
 
@@ -93,6 +113,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        StartTutorial(true);
         Debug.Log("GameHandler.Start");
         CustomEventManager.Instance.OnEndGame += OnEndGame;
         btnLeft.onClick.AddListener(onRotateLeftButtonClick);
@@ -118,11 +139,21 @@ public class GameManager : MonoBehaviour
             Action<int> actionUpdateScore = onScoreUpdate;
             grid.init(5, 8, 0, 0, actionUpdateScore);
         }
+        
 
-
+        if (Tutorial)
+        {
+            SetHexForTutorial();
+        }
+        else
+        {
+            trihexDeck = createTrihexDeck(GameConfig.TrihexDeckNum, true);
+        }
+        
         trihexDeck = createTrihexDeck(GameConfig.TrihexDeckNum, true);
         scoreTextMain.text = " 0 ";
         deckCounterText.text = trihexDeck.Count + "";
+        Debug.Log(trihexDeck.Count);
         var position = deckCounterText.transform.position;
         position = new Vector3(position.x, position.y + 0.45f, 1);
         deckCounterText.transform.position = position;
@@ -165,6 +196,8 @@ public class GameManager : MonoBehaviour
 
         gridBoardPri = gridBoardNode;
     }
+    
+
 
     void pickNextTrihex()
     {
@@ -516,6 +549,7 @@ public class GameManager : MonoBehaviour
         var l_touchPos = touchPos;
         this.grid.updateTriPreview(l_touchPos.x, l_touchPos.y, this.nextTrihex, true);
         // Debug.Log("ON TOUCH MOVE");
+
     }
 
     void OnTouchEnd(Vector2 touchPos)
@@ -547,8 +581,6 @@ public class GameManager : MonoBehaviour
         }
 
         isMoving = false;
-        grid.updateTriPreview(GameConfig.DynamicPos.X, GameConfig.DynamicPos.Y, this.nextTrihex, true);
-        Debug.Log("ON TOUCH END");
     }
 
     private IEnumerator EndgameAction(float delayTime)
@@ -572,7 +604,7 @@ public class GameManager : MonoBehaviour
         rectTransform.sizeDelta = new Vector2(Screen.width, height);
     }
 
-
+    
     void onRotateRightButtonClick()
     {
         SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.click, 0, 0.9f, null);
@@ -633,4 +665,91 @@ public class GameManager : MonoBehaviour
         updateStaticTrihex(onAds);
         deckCounterImage.GetComponent<Image>().enabled = false;
     }
+
+
+    #region Trong Write
+     public void StartTutorial(bool tut)
+     {
+         Tutorial = tut;
+         // GetListTextTutorial();
+     }
+     
+     private void TransTextTutorial(int step)
+     {
+         if (step == 0)
+         {
+             TransTextIn(step);
+         }
+         else
+         {
+             if (step < 6)
+             {
+                 TransTextOut(step-1);
+                 TransTextIn(step);   
+             }
+             else
+             {
+                 TransTextOut(step-1);
+             }
+
+         }
+     }
+
+     private void TransTextIn(int step)
+     {
+         var rectTrans = TextTutorial[step].GetComponent<RectTransform>();
+         rectTrans.transform.localPosition = new Vector3(-6, -5, 0);
+         rectTrans.DOAnchorPos(new Vector2(1466, -5), fadeTime, false).SetEase(Ease.InBack);
+     }
+     
+     private void TransTextOut(int step)
+     {
+         var rectTrans = TextTutorial[step].GetComponent<RectTransform>();
+         rectTrans.DOAnchorPos(new Vector2(3000, -5), fadeTime, false).SetEase(Ease.InBack);
+     }
+     
+     public void SetStepTut(int Step)
+     {
+         if (Step == 4)
+         {
+             grid.SetYellowHexTut(2,3);
+         }
+         else if(Step == 5)
+         {
+             grid.RemoveYellowHexTut(2,3);
+         }
+         
+         for (int j = 0; j < 3; j++)
+         {
+             if(Step < 6){
+                 if (Step >= 1)
+                 {
+                     grid.RemoveYellowHexTut(RCPosYellowHex[Step-1, j, 0], RCPosYellowHex[Step-1, j, 1]);
+                 }
+                 grid.SetYellowHexTut(RCPosYellowHex[Step, j, 0], RCPosYellowHex[Step, j, 1]);
+             }
+             else
+             {
+                 return;
+             }
+         }
+     }
+
+     private void SetHexForTutorial()
+     {
+         List<Trihex> deckTut = new List<Trihex>();
+         deckTut.Add(new Trihex(3,1,2,'c'));
+         deckTut.Add(new Trihex(2,2,1,'c'));
+         deckTut.Add(new Trihex(3,2,2,'a'));
+         deckTut.Add(new Trihex(3,3,3,'c'));
+         deckTut.Add(new Trihex(3,3,3,'\\'));
+         deckTut.Add(new Trihex(3,2,1,'a'));
+
+         trihexDeck = deckTut;
+         grid.initHill();
+         SetStepTut(indexStep);
+         TransTextTutorial(indexStep);
+     }
+     
+     #endregion
 }

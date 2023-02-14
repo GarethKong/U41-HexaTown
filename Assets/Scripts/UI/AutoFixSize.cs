@@ -32,7 +32,7 @@ namespace UI
             double worldScreenWidth = worldScreenHeight / Screen.height * Screen.width;
 
             // Resize
-            transform.localScale = new Vector2 (1, 1) * (float)(worldScreenWidth / width);
+            transform.localScale = new Vector2 (1.5f, 1.5f) * (float)(worldScreenWidth / width);
         }
     }
 }

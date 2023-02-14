@@ -192,15 +192,18 @@ namespace Custom
             var placed = 0;
             Random rnd = new Random();
 
-            while (placed < hills)
+            if (!GameManager.Instance.Tutorial)
             {
-                var r = rnd.Next((size + size + 1));
-                var c = rnd.Next((size + size + 1));
-                var h = this.gridBoard.get(r, c);
-                if (CheckAroundHill(h, r, c))
+                while (placed < hills)
                 {
-                    h.setHill(true);
-                    placed += 1;
+                    var r = rnd.Next((size + size + 1));
+                    var c = rnd.Next((size + size + 1));
+                    var h = this.gridBoard.get(r, c);
+                    if (CheckAroundHill(h, r, c))
+                    {
+                        h.setHill(true);
+                        placed += 1;
+                    }
                 }
             }
 
@@ -241,6 +244,23 @@ namespace Custom
             InvokeRepeating("nextPopper", 0f, 0.1f);
         }
 
+        public void initHill()
+        {
+            var hillTemp = this.gridBoard.get(4, 6);
+            hillTemp.setHill(true);
+        }
+
+        public void SetYellowHexTut(int r, int c)
+        {
+            var Temp = this.gridBoard.get(r, c);
+            Temp.setColorHex(Color.yellow);
+        }
+        
+        public void RemoveYellowHexTut(int r, int c)
+        {
+            var Temp = this.gridBoard.get(r, c);
+            Temp.setColorHex(Color.white);
+        }
 
         bool CheckAroundHill(Hex h, int r, int c)
         {
@@ -503,28 +523,28 @@ namespace Custom
             var dynamicPos = GameManager.Instance.dynamicPreview.transform.position;
             var _offsets = shapes[trihex.shape];
             for (var i = 0; i < 3; i++)
+        {
+            var offset = _offsets[i];
+            var posX1 = (float)(offset.co + 0.5 * offset.ro) * Utils.d_col;
+            var posY1 = offset.ro * Utils.d_row;
+            hexes.Add(this.gridBoard.get(_row + offset.ro, _col + offset.co));
+            triPreviews[i].transform.position = new Vector3(posX1 + dynamicPos.x, posY1 + dynamicPos.y);
+            if (!touching)
             {
-                var offset = _offsets[i];
-                var posX1 = (float)(offset.co + 0.5 * offset.ro) * Utils.d_col;
-                var posY1 = offset.ro * Utils.d_row;
-                hexes.Add(this.gridBoard.get(_row + offset.ro, _col + offset.co));
-                triPreviews[i].transform.position = new Vector3(posX1 + dynamicPos.x, posY1 + dynamicPos.y);
-                if (!touching)
+                List<Hex> listNeighbors = this.neighbors(_row + offset.ro, _col + offset.co);
+                foreach (var n in listNeighbors)
                 {
-                    List<Hex> listNeighbors = this.neighbors(_row + offset.ro, _col + offset.co);
-                    foreach (var n in listNeighbors)
+                    if (n && (n.hexType == EHexType.windmill ||
+                              n.hexType == EHexType.grass ||
+                              n.hexType == EHexType.street ||
+                              n.hexType == EHexType.center))
                     {
-                        if (n && (n.hexType == EHexType.windmill ||
-                                  n.hexType == EHexType.grass ||
-                                  n.hexType == EHexType.street ||
-                                  n.hexType == EHexType.center))
-                        {
-                            touching = true;
-                            break;
-                        }
+                        touching = true;
+                        break;
                     }
                 }
             }
+        }
 
             if (touching && hexes[0] && hexes[0].hexType == EHexType.empty &&
                 hexes[1] && hexes[1].hexType == EHexType.empty &&
@@ -550,6 +570,7 @@ namespace Custom
                     }
                 }
             }
+            
         }
 
         public bool placeTrihex(float posX, float posY, Trihex trihex)
@@ -580,41 +601,86 @@ namespace Custom
                 }
             }
 
-            if (touching && hexes[0] && hexes[0].hexType == EHexType.empty &&
-                hexes[1] && hexes[1].hexType == EHexType.empty &&
-                hexes[2] && hexes[2].hexType == EHexType.empty)
+            if (GameManager.Instance.Tutorial)
             {
-                // play sound 'place'
-                SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.place, 0, 1f, null);
-
-                for (var i = 0; i < 3; i++)
+                if (touching && hexes[0] && hexes[0].hexType == EHexType.empty &&
+                    hexes[0].img.color.Equals(Color.yellow) &&
+                    hexes[1] && hexes[1].hexType == EHexType.empty &&
+                    hexes[1].img.color.Equals(Color.yellow)&&
+                    hexes[2] && hexes[2].hexType == EHexType.empty &&
+                    hexes[2].img.color.Equals(Color.yellow))
                 {
-                    hexes[i].setType((EHexType)trihex.hexes[i]);
-                }
+                    // play sound 'place'
+                    SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.place, 0, 1f, null);
 
-                // calculate scores
-                for (var i = 0; i < 3; i++)
-                {
-                    if (hexes[i].hexType == EHexType.windmill)
+                    for (var i = 0; i < 3; i++)
                     {
-                        getPointsFor(hexes[i]);
+                        hexes[i].setType((EHexType)trihex.hexes[i]);
                     }
-                }
 
-                for (var i = 0; i < 3; i++)
-                {
-                    if (hexes[i].hexType != EHexType.windmill)
+                    // calculate scores
+                    for (var i = 0; i < 3; i++)
                     {
-                        getPointsFor(hexes[i]);
+                        if (hexes[i].hexType == EHexType.windmill)
+                        {
+                            getPointsFor(hexes[i]);
+                        }
                     }
-                }
 
-                updateEdges();
-                return true;
+                    for (var i = 0; i < 3; i++)
+                    {
+                        if (hexes[i].hexType != EHexType.windmill)
+                        {
+                            getPointsFor(hexes[i]);
+                        }
+                    }
+
+                    updateEdges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {
-                return false;
+                if (touching && hexes[0] && hexes[0].hexType == EHexType.empty  &&
+                    hexes[1] && hexes[1].hexType == EHexType.empty &&
+                    hexes[2] && hexes[2].hexType == EHexType.empty)
+                {
+                    // play sound 'place'
+                    SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.place, 0, 1f, null);
+
+                    for (var i = 0; i < 3; i++)
+                    {
+                        hexes[i].setType((EHexType)trihex.hexes[i]);
+                    }
+
+                    // calculate scores
+                    for (var i = 0; i < 3; i++)
+                    {
+                        if (hexes[i].hexType == EHexType.windmill)
+                        {
+                            getPointsFor(hexes[i]);
+                        }
+                    }
+
+                    for (var i = 0; i < 3; i++)
+                    {
+                        if (hexes[i].hexType != EHexType.windmill)
+                        {
+                            getPointsFor(hexes[i]);
+                        }
+                    }
+
+                    updateEdges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
 
