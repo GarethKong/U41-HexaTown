@@ -69,7 +69,7 @@ public class UICanvasManager : MonoBehaviour {
 		if (PENameText != null)
 			PENameText.text = ParticleEffectsLibrary.GlobalAccess.GetCurrentPENameString();
 	}
-
+	
 	private RaycastHit rayHit;
 	private void SpawnCurrentParticleEffect() {
 		// Spawn Particle Effect
