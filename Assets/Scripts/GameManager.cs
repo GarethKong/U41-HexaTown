@@ -136,8 +136,6 @@ public class GameManager : MonoBehaviour
             Action<int> actionUpdateScore = onScoreUpdate;
             grid.init(5, 8, 0, 0, actionUpdateScore);
         }
-
-
         
         if (Tutorial)
         {
@@ -150,9 +148,9 @@ public class GameManager : MonoBehaviour
         
         scoreTextMain.text = " 0 ";
         deckCounterText.text = trihexDeck.Count + "";
-        var position = deckCounterText.transform.position;
-        position = new Vector3(position.x, position.y + 0.45f, 1);
-        deckCounterText.transform.position = position;
+        // var position = deckCounterText.transform.position;
+        // position = new Vector3(position.x, position.y + 0.45f, 1);
+        // deckCounterText.transform.position = position;
         deckCounterImage.SetActive(true);
         var sp = deckCounterImage.GetComponent<Image>();
         sp.sprite = null; //'a-shape' spFrame
@@ -415,7 +413,7 @@ public class GameManager : MonoBehaviour
         ShowDialogByEDialog(EDialog.SETTING);
     }
 
-    void ShowDialogByEDialog(EDialog dialogType)
+    public void ShowDialogByEDialog(EDialog dialogType)
     {
         foreach (var t in listDlg)
         {
@@ -464,7 +462,7 @@ public class GameManager : MonoBehaviour
     {
         // Handle screen touches.
 
-        if (Input.touchCount > 0 && Time.timeScale != 0 && !EventSystem.current.IsPointerOverGameObject())
+        if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
 

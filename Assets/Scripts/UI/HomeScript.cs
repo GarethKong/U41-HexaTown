@@ -29,6 +29,7 @@ public class HomeScript : MonoBehaviour, IStoreListener
         playButton.onClick.AddListener(playBtn);
         rankingButton.onClick.AddListener(rankingBtn);
         removeAdsButton.onClick.AddListener(removeAds);
+        tutorialButton.onClick.AddListener(tutorialBtn);
 
         if (Application.platform == RuntimePlatform.Android)
         {

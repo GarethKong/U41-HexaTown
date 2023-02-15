@@ -313,14 +313,14 @@ namespace ExaGames.Common {
 			if (HasMaxLives)
 			{ 
 				// ResultDisplay.PopUp("Full");
-				display.SetActive(true);
+				//display.SetActive(true);
 			}
 			
 		}
 
 		public void ClosePopUp()
 		{
-			display.SetActive(false);
+			//display.SetActive(false);
 		}
 
 		/// <summary>

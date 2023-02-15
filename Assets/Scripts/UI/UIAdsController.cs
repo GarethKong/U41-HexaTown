@@ -12,8 +12,8 @@ namespace UI
     public class UIAdsController : MonoBehaviour
     {
         public TextMeshProUGUI TimeCountNextLife;
-        public TextMeshProUGUI NumberLife;
-        public TextMeshProUGUI NumberLifeCount;
+        public TextMeshProUGUI lblTime;
+        //public TextMeshProUGUI NumberLifeCount;
 
         public Button_UI btnClaim;
         public static UIAdsController Instance;
@@ -52,11 +52,11 @@ namespace UI
                 int lives = LivesManager.instance.Lives;
                 lives++;
                 string life = lives.ToString();
-                NumberLifeCount.text = "You have " + life + "/5 live";
+                //NumberLifeCount.text = "You have " + life + "/5 live";
             }
             else
             {
-                NumberLifeCount.text = "You have " + LivesManager.instance.LivesText + "/5 live";
+                //NumberLifeCount.text = "You have " + LivesManager.instance.LivesText + "/5 live";
             }
 
             gameObject.SetActive(true);
@@ -65,15 +65,17 @@ namespace UI
 
         private void Update()
         {
-            if (LivesManager.instance.Lives == 5)
+            if (LivesManager.instance.Lives >= 5)
             {
                 TimeCountNextLife.text = "";
+                lblTime.text = "Full of Heart";
             }
             else
             {
+                lblTime.text = "Refill Heart";
                 TimeCountNextLife.text = "Next life in " + LivesManager.instance.RemainingTimeString;
             }
-            NumberLifeCount.text = "You have " + LivesManager.instance.LivesText + "/5 live";
+            //NumberLifeCount.text = "You have " + LivesManager.instance.LivesText + "/5 live";
         }
 
         private void Hide()

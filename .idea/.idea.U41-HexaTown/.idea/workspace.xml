@@ -2,7 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="101289eb-5478-4be5-877f-5c42d2dad65c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Convert/ScorePopper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Convert/ScorePopper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.U41-HexaTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.U41-HexaTown/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExaGames/Common/LivesManager/Scripts/LivesManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExaGames/Common/LivesManager/Scripts/LivesManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/HomeScreen.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/HomeScreen.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TUT.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TUT.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/EndGameWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/EndGameWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/HomeScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/HomeScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIAdsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIAdsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Font/mvboli SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/Font/mvboli SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Lose/bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Lose/bg.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Lose/bg_win.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Lose/bg_win.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Lose/btn_again.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Lose/btn_again.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Lose/btn_home.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/Lose/btn_home.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Lose/btn_icon_movie.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Lose/btn_icon_movie.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Lose/btn_next.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Lose/btn_next.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Lose/heart.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Lose/heart.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,10 +91,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="81582">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="81582" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -95,7 +120,7 @@
       <workItem from="1675997466255" duration="29763000" />
       <workItem from="1676282680290" duration="2507000" />
       <workItem from="1676285199956" duration="50000" />
-      <workItem from="1676285425403" duration="13746000" />
+      <workItem from="1676285425403" duration="18661000" />
     </task>
     <servers />
   </component>
