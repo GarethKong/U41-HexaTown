@@ -3,43 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="101289eb-5478-4be5-877f-5c42d2dad65c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.U41-HexaTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.U41-HexaTown/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-games-v2-17.0.0.aar" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.gms.play-services-games-v2-17.0.0.aar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/HomeScreen.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/HomeScreen.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Custom/LifeCount.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Custom/LifeCount.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/EndGameWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/EndGameWindow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/HomeScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/HomeScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PlayBtn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PlayBtn.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIAdsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIAdsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/DataLocal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/DataLocal.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/Font/mvboli SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/Font/mvboli SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/center.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/center.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/empty-hill.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/empty-hill.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/empty.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/empty.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/grass.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/grass.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/hand.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/hand.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/hexshape/a-shape.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/hexshape/a-shape.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/hexshape/c-shape.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/hexshape/c-shape.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/hexshape/edge-e.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/hexshape/edge-e.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/hexshape/edge-ne.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/hexshape/edge-ne.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/hexshape/edge-nw.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/hexshape/edge-nw.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/hexshape/edge-se.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/hexshape/edge-se.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/hexshape/edge-sw.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/hexshape/edge-sw.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/hexshape/edge-w.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/hexshape/edge-w.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/hexshape/slash-shape.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/hexshape/slash-shape.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/house.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/house.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/port-color.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/port-color.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/port.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/port.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/propeller.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/propeller.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/red.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/red.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/street.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/street.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/tree.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/tree.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/white.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/white.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/windmill-hill.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/windmill-hill.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/windmill-trihex.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/windmill-trihex.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/newart/windmill.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/newart/windmill.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GvhProjectSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GvhProjectSettings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Convert/ScorePopper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Convert/ScorePopper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Convert/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Convert/Utils.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +97,7 @@
       <workItem from="1675997466255" duration="29763000" />
       <workItem from="1676282680290" duration="2507000" />
       <workItem from="1676285199956" duration="50000" />
-      <workItem from="1676285425403" duration="31280000" />
+      <workItem from="1676285425403" duration="33113000" />
     </task>
     <servers />
   </component>

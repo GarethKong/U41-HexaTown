@@ -207,6 +207,8 @@ public class Utils
 
    public static IEnumerator fadeInAndOut(GameObject objectToFade, bool fadeIn, float duration)
     {
+        yield return new WaitForSeconds(0.5f);
+        
         float counter = 0f;
 
         //Set Values depending on if fadeIn or fadeOut
