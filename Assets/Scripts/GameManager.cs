@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     public GameObject foreground;
 
     private HexGrid grid;
-    private Trihex nextTrihex;
+    public Trihex nextTrihex;
     List<Trihex> trihexDeck;
 
     public GameObject[] listDlg;
@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
         {{1,4},{1,5},{2,5}},
         {{3,5},{4,5},{5,4}}};
 
-    private int indexStep = 0;
+    public int indexStep = 0;
     public GameObject[] TextTutorial;
     public bool checkTouchEnd;
 
@@ -476,6 +476,8 @@ public class GameManager : MonoBehaviour
 
     float time = 0;
     float pressTime = 0;
+    public GameObject effectTouch;
+    public GameObject TouchList;
 
     void Update()
     {
@@ -489,6 +491,10 @@ public class GameManager : MonoBehaviour
                 var touchPos = Camera.main.ScreenToWorldPoint(touch.position);
                 Debug.Log("ON TOUCH START");
                 OnTouchStart(touchPos);
+                var touching = Instantiate(effectTouch, touchPos, effectTouch.transform.rotation);
+                touching.transform.parent = TouchList.transform.parent;
+                var pos = touching.transform.localPosition;
+                touching.transform.localPosition = new Vector3(pos.x, pos.y, 100);
             }
 
             // if (touch.phase == TouchPhase.Stationary)

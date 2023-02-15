@@ -590,7 +590,7 @@ namespace Custom
                     hexes[1] && hexes[1].hexType == EHexType.empty &&
                     hexes[1].img.color.Equals(Color.yellow)&&
                     hexes[2] && hexes[2].hexType == EHexType.empty &&
-                    hexes[2].img.color.Equals(Color.yellow))
+                    hexes[2].img.color.Equals(Color.yellow) && GameManager.Instance.nextTrihex.CanPlaceOrNot(GameManager.Instance.indexStep))
                 {
                     // play sound 'place'
                     SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.place, 0, 1f, null);

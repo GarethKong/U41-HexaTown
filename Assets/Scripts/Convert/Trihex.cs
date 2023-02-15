@@ -134,6 +134,22 @@ namespace Custom
             }
         }
 
+       public bool CanPlaceOrNot(int step)
+       {
+           if (step == 0)
+               return this.shape == 'a' && this.hexes[0] == 2 && this.hexes[1] == 1;
+           if (step == 1)
+               return this.shape == '-' && this.hexes[0] == 3 && this.hexes[1] == 3 && this.hexes[2] == 3;
+           if (step == 3)
+               return this.shape == 'v' && this.hexes[0] == 2 && this.hexes[1] == 2 && this.hexes[2] == 3;
+           if (step == 4)
+               return this.shape == 'n' && this.hexes[0] == 1 && this.hexes[1] == 2 && this.hexes[2] == 2;
+           if (step == 5)
+               return this.shape == 'd' && this.hexes[0] == 2 && this.hexes[1] == 1 && this.hexes[2] == 3;
+           if(step == 2)
+               return this.shape == 'c' && this.hexes[0] == 3 && this.hexes[1] == 3 && this.hexes[2] == 3;
+           return false;
+       }
        public void rotateRight()
        {
            if (this.shape == 'a')
@@ -275,4 +291,6 @@ namespace Custom
            }
        }
     }
+    
+
 }
