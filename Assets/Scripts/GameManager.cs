@@ -105,6 +105,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject[] HandTut;
 
+    public Button PlayBtn;
+
 
 
 
@@ -586,10 +588,10 @@ public class GameManager : MonoBehaviour
                 {
                     indexStep++;
                     SetStepTut(indexStep);
-                }
-                else
-                {
-                    TransTextTutorial(indexStep);
+                    if (indexStep == 6)
+                    {
+                        TransTextTutorial(indexStep);
+                    }
                 }
             }
 
@@ -601,9 +603,16 @@ public class GameManager : MonoBehaviour
 
             if (nextTrihex.hexes[0] == (int)EHexType.empty || !grid.canPlaceShape(nextTrihex.shape))
             {
-                adsBtn.SetActive(false);
-                StartCoroutine(EndgameAction(2.5f));
-                StartCoroutine(DeactivateameAction(1.2f));
+                if (Tutorial)
+                {
+                    PlayBtn.gameObject.SetActive(true);
+                }
+                else
+                {
+                    adsBtn.SetActive(false);
+                    StartCoroutine(EndgameAction(2.5f));
+                    StartCoroutine(DeactivateameAction(1.2f));
+                }
             }
         }
 
@@ -682,7 +691,10 @@ public class GameManager : MonoBehaviour
     public void onShowPreview()
     {
         this.onAds = true;
-        this.adsBtn.active = false;
+        if (adsBtn!= null)
+        {
+            this.adsBtn.active = false;
+        }
         this.adsPreviewTrihex = new List<Hex>();
         for (var i = 0; i < 3; i++)
         {
@@ -710,6 +722,7 @@ public class GameManager : MonoBehaviour
          }
          else
          {
+             Debug.Log("step bInh: " + step);
              if (step < 6)
              {
                  TutorialAnimation.Instance.PlayAnimationTouch(GetStep());
@@ -787,6 +800,14 @@ public class GameManager : MonoBehaviour
      public int GetStep()
      {
          return indexStep;
+     }
+
+     public void LoadGamePlay()
+     {
+         SoundMaster.Instance.SoundPlayClick(0, null);
+         if(SceneLoader.Instance) SceneLoader.Instance.LoadScene(3, () =>
+         {
+         } );
      }
      
      
