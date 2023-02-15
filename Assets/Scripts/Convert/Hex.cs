@@ -6,6 +6,7 @@ using JetBrains.Annotations;
 using Mkey;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 namespace Custom
 {
@@ -22,12 +23,16 @@ namespace Custom
         public SpriteRenderer img;
         public int row;
         public int col;
+        public Label textType;
         
         public  EHexType hexType;
         public bool hasHill = false;
         public bool counted = false;
         public bool upgraded = false;
 
+        public int getCol()
+        {
+            return col;}
 
         public void initGrid(float x, float y, int row, int col)
         {

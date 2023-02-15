@@ -34,8 +34,8 @@ public class HomeScript : MonoBehaviour, IStoreListener
 
         if (Application.platform == RuntimePlatform.Android)
         {
-            PlayGamesPlatform.DebugLogEnabled = true;
-            PlayGamesPlatform.Activate();
+            // PlayGamesPlatform.DebugLogEnabled = true;
+            // PlayGamesPlatform.Activate();
         }
         loadData();
         // vibrateBtn.onClick.AddListener(onVibrateBtn);
@@ -56,7 +56,7 @@ public class HomeScript : MonoBehaviour, IStoreListener
 
     private void LoginToGooglePlay()
     {
-        PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
+        // PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
     }
 
 

@@ -26,6 +26,7 @@ using TMPro;
 using UI;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
 public enum EDialog
 {
@@ -98,8 +99,13 @@ public class GameManager : MonoBehaviour
 
     private int indexStep = 0;
     public GameObject[] TextTutorial;
+    public bool checkTouchEnd;
 
     public Camera uiCamera;
+
+    public GameObject[] HandTut;
+
+
 
 
 
@@ -112,7 +118,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //StartTutorial(true);
+        StartTutorial(true);
         Debug.Log("GameHandler.Start");
         CustomEventManager.Instance.OnEndGame += OnEndGame;
         btnLeft.onClick.AddListener(onRotateLeftButtonClick);
@@ -477,7 +483,6 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // Handle screen touches.
-
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
@@ -573,11 +578,19 @@ public class GameManager : MonoBehaviour
                 this.nextTrihex))
         {
             this.pickNextTrihex();
-            
             if (Tutorial)
             {
-                if (indexStep < 6) indexStep++;
-                SetStepTut(indexStep);
+                StartCoroutine(Utils.fadeInAndOut(HandTut[indexStep], false, 0.01f));
+                TutorialAnimation.Instance.PlayAnimationDestroy(indexStep);
+                if (indexStep < 6)
+                {
+                    indexStep++;
+                    SetStepTut(indexStep);
+                }
+                else
+                {
+                    TransTextTutorial(indexStep);
+                }
             }
 
             if (nextTrihex.hexes[0] == 0)
@@ -687,7 +700,6 @@ public class GameManager : MonoBehaviour
      public void StartTutorial(bool tut)
      {
          Tutorial = tut;
-         // GetListTextTutorial();
      }
      
      private void TransTextTutorial(int step)
@@ -700,14 +712,16 @@ public class GameManager : MonoBehaviour
          {
              if (step < 6)
              {
+                 TutorialAnimation.Instance.PlayAnimationTouch(GetStep());
                  TransTextOut(step-1);
                  TransTextIn(step);   
              }
              else
              {
+                 TutorialAnimation.Instance.PlayAnimationTouch(GetStep());
                  TransTextOut(step-1);
              }
-
+                
          }
      }
 
@@ -749,6 +763,7 @@ public class GameManager : MonoBehaviour
                  return;
              }
          }
+         TransTextTutorial(Step);
      }
 
      private void SetHexForTutorial()
@@ -757,7 +772,7 @@ public class GameManager : MonoBehaviour
          deckTut.Add(new Trihex(3,1,2,'c'));
          deckTut.Add(new Trihex(2,2,1,'c'));
          deckTut.Add(new Trihex(3,2,2,'a'));
-         deckTut.Add(new Trihex(3,3,3,'c'));
+         deckTut.Add(new Trihex(3,3,3,'n'));
          deckTut.Add(new Trihex(3,3,3,'\\'));
          deckTut.Add(new Trihex(3,2,1,'a'));
 
@@ -765,6 +780,13 @@ public class GameManager : MonoBehaviour
          grid.initHill();
          SetStepTut(indexStep);
          TransTextTutorial(indexStep);
+     }
+
+
+
+     public int GetStep()
+     {
+         return indexStep;
      }
      
      

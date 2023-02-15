@@ -583,44 +583,88 @@ namespace Custom
                 }
             }
 
-            if (touching && hexes[0] && hexes[0].hexType == EHexType.empty &&
-                hexes[1] && hexes[1].hexType == EHexType.empty &&
-                hexes[2] && hexes[2].hexType == EHexType.empty)
+            if (GameManager.Instance.Tutorial)
             {
-                // play sound 'place'
-                SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.place, 0, 1f, null);
-
-                for (var i = 0; i < 3; i++)
+                if (touching && hexes[0] && hexes[0].hexType == EHexType.empty &&
+                    hexes[0].img.color.Equals(Color.yellow) &&
+                    hexes[1] && hexes[1].hexType == EHexType.empty &&
+                    hexes[1].img.color.Equals(Color.yellow)&&
+                    hexes[2] && hexes[2].hexType == EHexType.empty &&
+                    hexes[2].img.color.Equals(Color.yellow))
                 {
-                    hexes[i].setType((EHexType)trihex.hexes[i]);
-                }
+                    // play sound 'place'
+                    SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.place, 0, 1f, null);
 
-                // calculate scores
-                for (var i = 0; i < 3; i++)
-                {
-                    if (hexes[i].hexType == EHexType.windmill)
+                    for (var i = 0; i < 3; i++)
                     {
-                        getPointsFor(hexes[i]);
+                        hexes[i].setType((EHexType)trihex.hexes[i]);
                     }
-                }
 
-                for (var i = 0; i < 3; i++)
-                {
-                    if (hexes[i].hexType != EHexType.windmill)
+                    // calculate scores
+                    for (var i = 0; i < 3; i++)
                     {
-                        getPointsFor(hexes[i]);
+                        if (hexes[i].hexType == EHexType.windmill)
+                        {
+                            getPointsFor(hexes[i]);
+                        }
                     }
-                }
 
-                updateEdges();
-                return true;
+                    for (var i = 0; i < 3; i++)
+                    {
+                        if (hexes[i].hexType != EHexType.windmill)
+                        {
+                            getPointsFor(hexes[i]);
+                        }
+                    }
+
+                    updateEdges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {
-                return false;
-            }
-        }
+                if (touching && hexes[0] && hexes[0].hexType == EHexType.empty &&
+                    hexes[1] && hexes[1].hexType == EHexType.empty &&
+                    hexes[2] && hexes[2].hexType == EHexType.empty)
+                {
+                    // play sound 'place'
+                    SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.place, 0, 1f, null);
 
+                    for (var i = 0; i < 3; i++)
+                    {
+                        hexes[i].setType((EHexType)trihex.hexes[i]);
+                    }
+
+                    // calculate scores
+                    for (var i = 0; i < 3; i++)
+                    {
+                        if (hexes[i].hexType == EHexType.windmill)
+                        {
+                            getPointsFor(hexes[i]);
+                        }
+                    }
+
+                    for (var i = 0; i < 3; i++)
+                    {
+                        if (hexes[i].hexType != EHexType.windmill)
+                        {
+                            getPointsFor(hexes[i]);
+                        }
+                    }
+
+                    updateEdges();
+                    return true;
+                }
+                else
+                    {
+                        return false;
+                    }
+                }
+            }
         // returns connected hexes INCLUDING itself
         List<Hex> getConnected(Hex hex)
         {
