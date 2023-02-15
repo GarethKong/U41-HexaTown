@@ -46,6 +46,7 @@ public class EndGameWindow : MonoBehaviour
             {
                 transform.gameObject.SetActive(false);
                 LivesManager.instance.ConsumeLife();
+                GameManager.Instance.clearGame();
                 GameManager.Instance.StartNewGame();
                 GameManager.Instance.ShowDialogByEDialog(EDialog.PLAY);
             }
@@ -54,6 +55,7 @@ public class EndGameWindow : MonoBehaviour
                 //TODO Show ads then play again
                 transform.gameObject.SetActive(false);
                 LivesManager.instance.ConsumeLife();
+                GameManager.Instance.clearGame();
                 GameManager.Instance.StartNewGame();
                 GameManager.Instance.ShowDialogByEDialog(EDialog.PLAY);
             }

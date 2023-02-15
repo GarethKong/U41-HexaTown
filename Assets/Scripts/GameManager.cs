@@ -23,6 +23,7 @@ using GooglePlayGames.BasicApi;
 using Interface;
 using Mkey;
 using TMPro;
+using UI;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -30,6 +31,7 @@ public enum EDialog
 {
     PLAY,
     SETTING,
+    ADS,
     ENDGAME
 }
 
@@ -395,6 +397,7 @@ public class GameManager : MonoBehaviour
 
     public void OnEndGame()
     {
+        Common.saveScore(Common.curScore);
         StartCoroutine(EEndGame(0f));
     }
 
@@ -403,8 +406,13 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(delayTime);
         CaptureImage();
         ShowDialogByEDialog(EDialog.ENDGAME);
-        Common.saveScore(Common.curScore);
         //GamePlayWindow.HideStatic();
+    }
+
+
+    public void ShowGetBonusLife()
+    {
+        ShowDialogByEDialog(EDialog.ADS);
     }
 
     public void SettingHandle()
@@ -415,11 +423,13 @@ public class GameManager : MonoBehaviour
 
     public void ShowDialogByEDialog(EDialog dialogType)
     {
-        foreach (var t in listDlg)
+        if (dialogType!= EDialog.ADS)
         {
-            t.SetActive(false);
+            foreach (var t in listDlg)
+            {
+                t.SetActive(false);
+            }
         }
-
         background.SetActive(true);
         switch (dialogType)
         {
@@ -428,6 +438,12 @@ public class GameManager : MonoBehaviour
                 break;
             case EDialog.ENDGAME:
                 EndGameWindow.ShowStatic();
+                break;
+            case EDialog.PLAY:
+                GamePlayWindow.ShowStatic();
+                break;
+            case EDialog.ADS:
+                UIAdsController.Instance.ShowStatic();
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(dialogType), dialogType, null);
@@ -572,6 +588,7 @@ public class GameManager : MonoBehaviour
 
             if (nextTrihex.hexes[0] == (int)EHexType.empty || !grid.canPlaceShape(nextTrihex.shape))
             {
+                adsBtn.SetActive(false);
                 StartCoroutine(EndgameAction(2.5f));
                 StartCoroutine(DeactivateameAction(1.2f));
             }
@@ -592,6 +609,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delayTime);
         grid.deactivate();
+        grid.sinkBlanks();
     }
 
     private void CaptureImage()
@@ -747,6 +765,20 @@ public class GameManager : MonoBehaviour
          grid.initHill();
          SetStepTut(indexStep);
          TransTextTutorial(indexStep);
+     }
+     
+     
+     public void clearGame() {
+         foreach (Transform transform in boardNode.transform) {
+             Destroy(transform.gameObject);
+         }
+         foreach (Transform transform in staticPreview.transform) {
+             Destroy(transform.gameObject);
+         }
+
+         foreach (Transform transform in dynamicPreview.transform) {
+             Destroy(transform.gameObject);
+         }
      }
      
      #endregion

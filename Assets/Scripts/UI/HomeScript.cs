@@ -3,6 +3,7 @@ using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using Mkey;
 using TMPro;
+using UI;
 using UnityEngine;
 using UnityEngine.Purchasing;
 using UnityEngine.UI;
@@ -36,13 +37,12 @@ public class HomeScript : MonoBehaviour, IStoreListener
             PlayGamesPlatform.DebugLogEnabled = true;
             PlayGamesPlatform.Activate();
         }
+        loadData();
         // vibrateBtn.onClick.AddListener(onVibrateBtn);
     }
 
     private void Start()
     {
-        loadData();
-
         if (Application.platform == RuntimePlatform.Android)
         {
             Debug.Log("Unity Android SDK");
@@ -145,5 +145,11 @@ public class HomeScript : MonoBehaviour, IStoreListener
     public void OnInitialized(IStoreController controller, IExtensionProvider extensions)
     {
         throw new NotImplementedException();
+    }
+
+    public void ShowBonusLife()
+    {
+        SoundMaster.Instance.SoundPlayClick(0, null);
+        UIAdsController.Instance.ShowStatic();
     }
 }

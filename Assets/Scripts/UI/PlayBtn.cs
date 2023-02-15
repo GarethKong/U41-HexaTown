@@ -15,7 +15,7 @@ public class PlayBtn : MonoBehaviour
         playBtn.ClickFunc = () =>
         {
             SoundMaster.Instance.SoundPlayClick(0, null);
-            if (Common.isFirstTime)
+            if (Common.checkWatchTut())
             {
                 if(SceneLoader.Instance) SceneLoader.Instance.LoadScene(2, () =>
                 {

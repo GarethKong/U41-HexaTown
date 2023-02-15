@@ -16,11 +16,16 @@ namespace UI
         //public TextMeshProUGUI NumberLifeCount;
 
         public Button_UI btnClaim;
+        public Button_UI btnClose;
         public static UIAdsController Instance;
 
         public bool claimAds = false;
         
         public GameObject background;
+        public bool isOnGamePlay;
+
+        public TextMeshProUGUI lblBtnAdsInfo;
+        public TextMeshProUGUI lblNumberLife;
 
 
         void Awake()
@@ -33,15 +38,41 @@ namespace UI
         {
             btnClaim.ClickFunc = () =>
             {
-                //TODO Show ads
-                LivesManager.instance.GiveOneLife();
-                LifeCount.Instance.OnButtonConsumePressed();
-                if (LifeCount.Instance.checkLoadLevel)
+                if (!isOnGamePlay)
                 {
-                    if(SceneLoader.Instance) SceneLoader.Instance.LoadScene(2, () =>
+                    //TODO Show ads
+                    LivesManager.instance.GiveOneLife();
+                    if (Common.checkWatchTut())
                     {
-                    } );
+                     
+                        if (LifeCount.Instance.checkLoadLevel)
+                        {
+                            if(SceneLoader.Instance) SceneLoader.Instance.LoadScene(2, () =>
+                            {
+                            });
+                        }
+                    }
+                    else
+                    {
+                        LifeCount.Instance.OnButtonConsumePressed();
+                        if (LifeCount.Instance.checkLoadLevel)
+                        {
+                            if(SceneLoader.Instance) SceneLoader.Instance.LoadScene(3, () =>
+                            {
+                            } );
+                        }
+                    }
                 }
+                else
+                {
+                    //TODO show ads
+                    LivesManager.instance.GiveOneLife();
+                }
+            };
+            
+            btnClose.ClickFunc = () =>
+            {
+                HideStatic();
             };
         }
 
@@ -69,11 +100,18 @@ namespace UI
             {
                 TimeCountNextLife.text = "";
                 lblTime.text = "Full of Heart";
+                lblBtnAdsInfo.gameObject.SetActive(true);
+                btnClaim.gameObject.SetActive(false);
+                lblNumberLife.text = "5/5";
+
             }
             else
             {
                 lblTime.text = "Refill Heart";
-                TimeCountNextLife.text = "Next life in " + LivesManager.instance.RemainingTimeString;
+                TimeCountNextLife.text = "Next heart in " + LivesManager.instance.RemainingTimeString;
+                lblBtnAdsInfo.gameObject.SetActive(false);
+                btnClaim.gameObject.SetActive(true);
+                lblNumberLife.text = "+1";
             }
             //NumberLifeCount.text = "You have " + LivesManager.instance.LivesText + "/5 live";
         }

@@ -31,7 +31,6 @@ public class LifeCount : MonoBehaviour
     /// </remarks>
     public GameObject lifeWindow;
 
-    public Button_UI btnAdsGetHeart;
     public Button_UI btnAdsClose;
 
 
@@ -39,11 +38,11 @@ public class LifeCount : MonoBehaviour
     {
         Instance = this;
 
-        btnAdsGetHeart.ClickFunc = () =>
-        {
-            SoundMaster.Instance.SoundPlayClick(0, null);
-            UIAdsController.Instance.ShowStatic();
-        };
+        // btnAdsGetHeart.ClickFunc = () =>
+        // {
+        //     SoundMaster.Instance.SoundPlayClick(0, null);
+        //     UIAdsController.Instance.ShowStatic();
+        // };
         // btnAdsClose.ClickFunc = () =>
         // {
         // 	SoundMaster.Instance.SoundPlayClick(0, null);
