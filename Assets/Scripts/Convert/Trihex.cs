@@ -52,7 +52,7 @@ namespace Custom
             
             
             //Trong Write check true tut hex with rotate left
-            if (GameManager.Instance.Tutorial)
+            if (GameManager.Instance.isTutorial)
             {
                 Debug.Log("steppppppp"+ GameManager.Instance.GetStep());
                 Debug.Log(this.shape + "  type: " + this.hexes[0] + " type 1: " + this.hexes[1]);
@@ -187,7 +187,7 @@ namespace Custom
            }
 
            //Trong Write check true tut hex with rotate right
-           if (GameManager.Instance.Tutorial)
+           if (GameManager.Instance.isTutorial)
            {
                Debug.Log("steppppppp" + GameManager.Instance.GetStep());
                Debug.Log(this.shape + "  type: " + this.hexes[0] + " type 1: " + this.hexes[1]);

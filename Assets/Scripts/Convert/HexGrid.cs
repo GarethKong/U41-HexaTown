@@ -192,7 +192,7 @@ namespace Custom
             var placed = 0;
             Random rnd = new Random();
 
-            if (!GameManager.Instance.Tutorial)
+            if (!GameManager.Instance.isTutorial)
             {
                 while (placed < hills)
                 {
@@ -583,7 +583,7 @@ namespace Custom
                 }
             }
 
-            if (GameManager.Instance.Tutorial)
+            if (GameManager.Instance.isTutorial)
             {
                 if (touching && hexes[0] && hexes[0].hexType == EHexType.empty &&
                     hexes[0].img.color.Equals(Color.yellow) &&

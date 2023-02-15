@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
     int score;
     
     public float fadeTime = 1f;
-    public bool Tutorial = false;
+    public bool isTutorial = false;
 
     public int[,,] RCPosYellowHex = new int[6, 3, 2]
     {{{4,6},{4,7},{3,7}},
@@ -108,11 +108,6 @@ public class GameManager : MonoBehaviour
     public Button PlayBtn;
 
 
-
-
-
-
-
     private void Awake()
     {
         Instance = this;
@@ -120,7 +115,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        StartTutorial(true);
+        StartTutorial(isTutorial);
         Debug.Log("GameHandler.Start");
         CustomEventManager.Instance.OnEndGame += OnEndGame;
         btnLeft.onClick.AddListener(onRotateLeftButtonClick);
@@ -147,7 +142,7 @@ public class GameManager : MonoBehaviour
             grid.init(5, 8, 0, 0, actionUpdateScore);
         }
         
-        if (Tutorial)
+        if (isTutorial)
         {
             SetHexForTutorial();
         }
@@ -580,7 +575,7 @@ public class GameManager : MonoBehaviour
                 this.nextTrihex))
         {
             this.pickNextTrihex();
-            if (Tutorial)
+            if (isTutorial)
             {
                 StartCoroutine(Utils.fadeInAndOut(HandTut[indexStep], false, 0.01f));
                 TutorialAnimation.Instance.PlayAnimationDestroy(indexStep);
@@ -603,7 +598,7 @@ public class GameManager : MonoBehaviour
 
             if (nextTrihex.hexes[0] == (int)EHexType.empty || !grid.canPlaceShape(nextTrihex.shape))
             {
-                if (Tutorial)
+                if (isTutorial)
                 {
                     PlayBtn.gameObject.SetActive(true);
                 }
@@ -711,7 +706,7 @@ public class GameManager : MonoBehaviour
     #region Trong Write
      public void StartTutorial(bool tut)
      {
-         Tutorial = tut;
+         isTutorial = tut;
      }
      
      private void TransTextTutorial(int step)
