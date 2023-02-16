@@ -34,7 +34,10 @@ namespace UI
                 endSize = 9;
             }
             isStartZoom = true;
-            AutoFixSize.Instance.StartZoom(endSize);
+            if (AutoFixSize.Instance!=null)
+            {
+                AutoFixSize.Instance.StartZoom(endSize);
+            }
         }
 
         private void Update()

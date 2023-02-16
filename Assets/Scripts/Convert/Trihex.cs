@@ -88,10 +88,6 @@ namespace Custom
                             TutorialAnimation.Instance.PlayAnimationMove(GameManager.Instance.GetStep());
                             Debug.Log("hand4 true");
                         }
-                        else
-                        {
-                            TutorialAnimation.Instance.PlayAnimationTouch(GameManager.Instance.GetStep());
-                        }
                         break;
                     
                     case 3:
@@ -101,10 +97,6 @@ namespace Custom
                             TutorialAnimation.Instance.PlayAnimationMove(GameManager.Instance.GetStep());
                             Debug.Log("hand4 true");
                         }
-                        else
-                        {
-                            TutorialAnimation.Instance.PlayAnimationTouch(GameManager.Instance.GetStep());
-                        }
                         break;
                     case 4:
                         if (this.shape == 'n' && this.hexes[0] == 1 && this.hexes[1] == 2 && this.hexes[2] == 2)
@@ -113,10 +105,6 @@ namespace Custom
                             TutorialAnimation.Instance.PlayAnimationMove(GameManager.Instance.GetStep());
                             Debug.Log("hand5 true");
                         }
-                        else
-                        {
-                            TutorialAnimation.Instance.PlayAnimationTouch(GameManager.Instance.GetStep());
-                        }
                         break;
                     case 5:
                         if (this.shape == 'd' && this.hexes[0] == 2 && this.hexes[1] == 1 && this.hexes[2] == 3)
@@ -124,10 +112,6 @@ namespace Custom
                             // GameManager.Instance.SetBoolAnimation("hand2",true);
                             TutorialAnimation.Instance.PlayAnimationMove(GameManager.Instance.GetStep());
                             Debug.Log("hand6 true");
-                        }
-                        else
-                        {
-                            TutorialAnimation.Instance.PlayAnimationTouch(GameManager.Instance.GetStep());
                         }
                         break;
                 }
@@ -141,7 +125,7 @@ namespace Custom
            if (step == 1)
                return this.shape == '-' && this.hexes[0] == 3 && this.hexes[1] == 3 && this.hexes[2] == 3;
            if (step == 3)
-               return this.shape == 'v' && this.hexes[0] == 2 && this.hexes[1] == 2 && this.hexes[2] == 3;
+               return true;
            if (step == 4)
                return this.shape == 'n' && this.hexes[0] == 1 && this.hexes[1] == 2 && this.hexes[2] == 2;
            if (step == 5)
@@ -241,10 +225,6 @@ namespace Custom
                            TutorialAnimation.Instance.PlayAnimationMove(GameManager.Instance.GetStep());
                            Debug.Log("hand4 true");
                        }
-                       else
-                       {
-                           TutorialAnimation.Instance.PlayAnimationTouch(GameManager.Instance.GetStep());
-                       }
 
                        break;
 
@@ -255,11 +235,6 @@ namespace Custom
                            TutorialAnimation.Instance.PlayAnimationMove(GameManager.Instance.GetStep());
                            Debug.Log("hand4 true");
                        }
-                       else
-                       {
-                           TutorialAnimation.Instance.PlayAnimationTouch(GameManager.Instance.GetStep());
-                       }
-
                        break;
                    case 4:
                        if (this.shape == 'n' && this.hexes[0] == 1 && this.hexes[1] == 2 && this.hexes[2] == 2)
@@ -267,10 +242,6 @@ namespace Custom
                            // GameManager.Instance.SetBoolAnimation("hand2",true);
                            TutorialAnimation.Instance.PlayAnimationMove(GameManager.Instance.GetStep());
                            Debug.Log("hand5 true");
-                       }
-                       else
-                       {
-                           TutorialAnimation.Instance.PlayAnimationTouch(GameManager.Instance.GetStep());
                        }
 
                        break;
@@ -281,11 +252,6 @@ namespace Custom
                            TutorialAnimation.Instance.PlayAnimationMove(GameManager.Instance.GetStep());
                            Debug.Log("hand6 true");
                        }
-                       else
-                       {
-                           TutorialAnimation.Instance.PlayAnimationTouch(GameManager.Instance.GetStep());
-                       }
-
                        break;
                }
            }
