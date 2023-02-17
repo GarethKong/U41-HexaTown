@@ -4,6 +4,8 @@ using GooglePlayGames.BasicApi;
 using Mkey;
 using TMPro;
 using UI;
+using Unity.Services.Core;
+using Unity.Services.Core.Environments;
 using UnityEngine;
 using UnityEngine.Purchasing;
 using UnityEngine.UI;
@@ -36,6 +38,7 @@ public class HomeScript : MonoBehaviour, IStoreListener
             // PlayGamesPlatform.DebugLogEnabled = true;
             // PlayGamesPlatform.Activate();
         }
+        Initialize(OnSuccess, OnError);
         loadData();
         // vibrateBtn.onClick.AddListener(onVibrateBtn);
     }
@@ -56,7 +59,7 @@ public class HomeScript : MonoBehaviour, IStoreListener
 
     private void LoginToGooglePlay()
     {
-        // PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
+        PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
     }
 
 
@@ -172,5 +175,39 @@ public class HomeScript : MonoBehaviour, IStoreListener
         void RemoveAds()
         {
             Common.removeAdsPurchase();
+        }
+        
+        
+        const string k_Environment = "production";
+        
+        void Initialize(Action onSuccess, Action<string> onError)
+        {
+            try
+            {
+                var options = new InitializationOptions().SetEnvironmentName(k_Environment);
+
+                UnityServices.InitializeAsync(options).ContinueWith(task => onSuccess());
+            }
+            catch (Exception exception)
+            {
+                onError(exception.Message);
+            }
+        }
+
+        void OnSuccess()
+        {
+            var text = "Congratulations!\nUnity Gaming Services has been successfully initialized.";
+            Debug.Log(text);
+        }
+
+        void OnError(string message)
+        {
+            var text = $"Unity Gaming Services failed to initialize with error: {message}.";
+            Debug.LogError(text);
+        }
+
+        public void CloseSetting()
+        {
+            HomeSettingScript.instance.onSettingBtnDown();
         }
 }

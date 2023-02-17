@@ -853,5 +853,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void CloseTut()
+    {
+        SoundMaster.Instance.SoundPlayClick(0, null);
+        if (SceneLoader.Instance) SceneLoader.Instance.LoadScene(0, () => { });
+    }
+    
     #endregion
 }

@@ -44,6 +44,7 @@ public class EndGameWindow : MonoBehaviour
             SoundMaster.Instance.SoundPlayClick(0, null);
             if (LivesManager.instance.Lives > 0)
             {
+                EndGameEffect.Instance.CloseEffect();
                 transform.gameObject.SetActive(false);
                 LivesManager.instance.ConsumeLife();
                 GameManager.Instance.clearGame();
@@ -53,6 +54,7 @@ public class EndGameWindow : MonoBehaviour
             else
             {
                 //TODO Show ads then play again
+                EndGameEffect.Instance.CloseEffect();
                 transform.gameObject.SetActive(false);
                 LivesManager.instance.ConsumeLife();
                 GameManager.Instance.clearGame();

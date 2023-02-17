@@ -27,6 +27,7 @@ public class HomeSettingScript : MonoBehaviour
 
     void Awake()
     {
+        instance = this;
         int spMusic = SoundMaster.Instance.MusicOn ? 0 : 1;
         musicBtn.transform.GetComponent<Image>().sprite = this.spList[spMusic];
         int spSound = SoundMaster.Instance.SoundOn ? 2 : 3;
