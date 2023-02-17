@@ -24,15 +24,16 @@ namespace Custom
         public int row;
         public int col;
         public Label textType;
-        
-        public  EHexType hexType;
+
+        public EHexType hexType;
         public bool hasHill = false;
         public bool counted = false;
         public bool upgraded = false;
 
         public int getCol()
         {
-            return col;}
+            return col;
+        }
 
         public void initGrid(float x, float y, int row, int col)
         {
@@ -115,6 +116,9 @@ namespace Custom
                 //set spFrame 'port'
                 img.sprite = SpriteMgr.Instance.hexList[(int)hexType + 5];
             }
+
+            var effectUpgrade = Instantiate(SpriteMgr.Instance.effectUpgrade, transform.position, Quaternion.identity);
+            effectUpgrade.transform.parent = GameManager.Instance.effectNode.transform;
         }
 
         void setSketchy(bool isSketchy)
@@ -137,21 +141,22 @@ namespace Custom
         }
 
 
-         void Update()
+        void Update()
         {
-            if (propeller.gameObject.activeSelf) {
+            if (propeller.gameObject.activeSelf)
+            {
                 var speed = (this.hasHill && this.counted) ? 2.2f : this.counted ? 1f : 0.1f;
-                propeller.transform.eulerAngles += new Vector3(0,0,speed*100f*Time.deltaTime);
+                propeller.transform.eulerAngles += new Vector3(0, 0, speed * 100f * Time.deltaTime);
             }
         }
 
-         #region trọng
+        #region trọng
 
-         public void setColorHex(Color color)
-         {
-             img.color = color;
-         }
+        public void setColorHex(Color color)
+        {
+            img.color = color;
+        }
 
-         #endregion
+        #endregion
     }
 }

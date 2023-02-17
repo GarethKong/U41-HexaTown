@@ -124,12 +124,17 @@ public class GameManager : MonoBehaviour
         btnRight.onClick.AddListener(onRotateRightButtonClick);
         snapshotCamera = SnapshotCamera.MakeSnapshotCamera(1, "");
         StartNewGame();
+        GoogleAdMobController.Instance.RequestBannerAd();
     }
 
     private GameObject gridBoardPri;
 
     public void StartNewGame()
     {
+        if (GameConfig.sessionNumber% 3== 0)
+        {
+            GoogleAdMobController.Instance.ShowInterstitialAd();
+        }
         GameConfig.sessionNumber += 1;
         score = 0;
         dynamicPreview.active = true;
@@ -403,13 +408,13 @@ public class GameManager : MonoBehaviour
     public void OnEndGame()
     {
         Common.saveScore(Common.curScore);
-        StartCoroutine(EEndGame(0f));
+        StartCoroutine(EEndGame(2f));
     }
 
     IEnumerator EEndGame(float delayTime)
     {
         yield return new WaitForSeconds(delayTime);
-        CaptureImage();
+        //CaptureImage();
         ShowDialogByEDialog(EDialog.ENDGAME);
         //GamePlayWindow.HideStatic();
     }

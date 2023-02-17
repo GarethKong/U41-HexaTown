@@ -38,42 +38,46 @@ namespace UI
         {
             btnClaim.ClickFunc = () =>
             {
-                if (!isOnGamePlay)
-                {
-                    //TODO Show ads
-                    LivesManager.instance.GiveOneLife();
-                    if (Common.checkWatchTut())
-                    {
-                     
-                        if (LifeCount.Instance.checkLoadLevel)
-                        {
-                            if(SceneLoader.Instance) SceneLoader.Instance.LoadScene(2, () =>
-                            {
-                            });
-                        }
-                    }
-                    else
-                    {
-                        LifeCount.Instance.OnButtonConsumePressed();
-                        if (LifeCount.Instance.checkLoadLevel)
-                        {
-                            if(SceneLoader.Instance) SceneLoader.Instance.LoadScene(3, () =>
-                            {
-                            } );
-                        }
-                    }
-                }
-                else
-                {
-                    //TODO show ads
-                    LivesManager.instance.GiveOneLife();
-                }
+                GoogleAdMobController.Instance.ShowRewardedAd();
             };
             
             btnClose.ClickFunc = () =>
             {
                 HideStatic();
             };
+        }
+
+
+        public void RewardAdsVideo()
+        {
+            if (!isOnGamePlay)
+            {
+                LivesManager.instance.GiveOneLife();
+                if (Common.checkWatchTut())
+                {
+                     
+                    if (LifeCount.Instance.checkLoadLevel)
+                    {
+                        if(SceneLoader.Instance) SceneLoader.Instance.LoadScene(2, () =>
+                        {
+                        });
+                    }
+                }
+                else
+                {
+                    LifeCount.Instance.OnButtonConsumePressed();
+                    if (LifeCount.Instance.checkLoadLevel)
+                    {
+                        if(SceneLoader.Instance) SceneLoader.Instance.LoadScene(3, () =>
+                        {
+                        } );
+                    }
+                }
+            }
+            else
+            {
+                LivesManager.instance.GiveOneLife();
+            }
         }
 
         private void Show()

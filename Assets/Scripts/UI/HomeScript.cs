@@ -175,6 +175,7 @@ public class HomeScript : MonoBehaviour, IStoreListener
         void RemoveAds()
         {
             Common.removeAdsPurchase();
+            GoogleAdMobController.Instance.DestroyBannerAd();
         }
         
         

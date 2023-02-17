@@ -26,6 +26,15 @@ public class GoogleAdMobController : MonoBehaviour
 
     #region UNITY MONOBEHAVIOR METHODS
 
+    public static GoogleAdMobController Instance;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
+    
     public void Start()
     {
         MobileAds.SetiOSAppPauseOnBackground(true);
@@ -51,6 +60,9 @@ public class GoogleAdMobController : MonoBehaviour
 
         // Listen to application foreground / background events.
         AppStateEventNotifier.AppStateChanged += OnAppStateChanged;
+        
+        RequestAndLoadInterstitialAd();
+        RequestAndLoadRewardedAd();
     }
 
     private void HandleInitCompleteAction(InitializationStatus initstatus)
@@ -63,7 +75,10 @@ public class GoogleAdMobController : MonoBehaviour
         // the next Update() loop.
         MobileAdsEventExecutor.ExecuteInUpdate(() =>
         {
-            RequestBannerAd();
+            if (!Common.isRemovedAds)
+            {
+                RequestBannerAd();
+            }
         });
     }
 
@@ -227,13 +242,16 @@ public class GoogleAdMobController : MonoBehaviour
 
     public void ShowInterstitialAd()
     {
-        if (interstitialAd != null && interstitialAd.CanShowAd())
+        if (!Common.isRemovedAds)
         {
-            interstitialAd.Show();
-        }
-        else
-        {
-            PrintStatus("Interstitial ad is not ready yet.");
+            if (interstitialAd != null && interstitialAd.CanShowAd())
+            {
+                interstitialAd.Show();
+            }
+            else
+            {
+                PrintStatus("Interstitial ad is not ready yet.");
+            }
         }
     }
 
@@ -310,6 +328,7 @@ public class GoogleAdMobController : MonoBehaviour
                                                "Rewarded ad received a paid event.",
                                                adValue.CurrencyCode,
                                                adValue.Value);
+                    OnUserEarnedRewardEvent.Invoke();
                     PrintStatus(msg);
                 };
             });
@@ -322,6 +341,7 @@ public class GoogleAdMobController : MonoBehaviour
             rewardedAd.Show((Reward reward) =>
             {
                 PrintStatus("Rewarded ad granted a reward: " + reward.Amount);
+                OnUserEarnedRewardEvent.Invoke();
             });
         }
         else

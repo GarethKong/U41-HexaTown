@@ -31,4 +31,5 @@ public class SpriteMgr : MonoBehaviour
     public Sprite[] triPreviews;
     public Sprite redSpriteFrame;
     public GameObject lifeEffect;
+    public GameObject effectUpgrade;
 }
