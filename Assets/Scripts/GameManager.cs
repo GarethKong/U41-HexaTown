@@ -128,8 +128,14 @@ public class GameManager : MonoBehaviour
         StartTutorial(isTutorial);
         Debug.Log("GameHandler.Start");
         CustomEventManager.Instance.OnEndGame += OnEndGame;
-        btnLeft.onClick.AddListener(onRotateLeftButtonClick);
-        btnRight.onClick.AddListener(onRotateRightButtonClick);
+        if(isTutorial){
+            btnLeft.onClick.AddListener(WhenClickedLeft);
+            btnRight.onClick.AddListener(WhenClickedRight);
+        }
+        else{
+            btnLeft.onClick.AddListener(onRotateLeftButtonClick);
+            btnRight.onClick.AddListener(onRotateRightButtonClick);
+        }
         snapshotCamera = SnapshotCamera.MakeSnapshotCamera(1, "");
         StartNewGame();
         if (endGameTut != null)
@@ -229,6 +235,32 @@ public class GameManager : MonoBehaviour
         gridBoardPri = gridBoardNode;
 
         if(isTutorial) UpdateTutPosition();
+    }
+    
+    public float ButtonReactivateDelay = 0.7f;
+ 
+// Assign this as your OnClick listener from the inspector
+    public void WhenClickedRight() {
+        btnRight.interactable = false;
+        
+        StartCoroutine(EnableButtonAfterDelay(btnRight));
+
+        onRotateRightButtonClick();
+        // Do whatever else your button is supposed to do.
+    }
+    
+    public void WhenClickedLeft() {
+        btnLeft.interactable = false;
+        
+        StartCoroutine(EnableButtonAfterDelay(btnLeft));
+
+        onRotateLeftButtonClick();
+        // Do whatever else your button is supposed to do.
+    }
+ 
+    IEnumerator EnableButtonAfterDelay(Button button) {
+        yield return new WaitForSeconds(ButtonReactivateDelay);
+        button.interactable = true;
     }
 
 
