@@ -86,6 +86,9 @@ public class GameManager : MonoBehaviour
 
     public Canvas canvas;
 
+    public GameObject rotateRightTUT;
+    public GameObject rotateLeftTUT;
+
 
     int score;
 
@@ -824,14 +827,14 @@ public class GameManager : MonoBehaviour
     private void TransTextIn(int step)
     {
         var rectTrans = TextTutorial[step].GetComponent<RectTransform>();
-        rectTrans.transform.localPosition = new Vector3(-6, -5, 0);
-        rectTrans.DOAnchorPos(new Vector2(1466, -5), fadeTime, false).SetEase(Ease.InBack);
+        rectTrans.transform.localPosition = new Vector3(-6, 2134, 0);
+        rectTrans.DOAnchorPos(new Vector2(1466, 2134), fadeTime, false).SetEase(Ease.InBack);
     }
 
     private void TransTextOut(int step)
     {
         var rectTrans = TextTutorial[step].GetComponent<RectTransform>();
-        rectTrans.DOAnchorPos(new Vector2(3000, -5), fadeTime, false).SetEase(Ease.InBack);
+        rectTrans.DOAnchorPos(new Vector2(3000, 2134), fadeTime, false).SetEase(Ease.InBack);
     }
 
     public void SetStepTut(int Step)
@@ -840,9 +843,15 @@ public class GameManager : MonoBehaviour
         {
             grid.SetYellowHexTut(2, 3);
         }
-        else if (Step == 5)
+        else if (Step == 6)
         {
-            grid.RemoveYellowHexTut(2, 3);
+            grid.RemoveYellowHexTut(3, 5);
+            grid.RemoveYellowHexTut(5, 4);
+            grid.RemoveYellowHexTut(4, 5);
+            Debug.Log("remove yellow");
+
+            rotateLeftTUT.SetActive(false);
+            rotateRightTUT.SetActive(false);
         }
 
         for (int j = 0; j < 3; j++)

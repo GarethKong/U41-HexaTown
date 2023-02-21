@@ -45,7 +45,6 @@ public class GoogleAdMobController : MonoBehaviour
         List<String> deviceIds = new List<String>() { AdRequest.TestDeviceSimulator };
 
         // Add some test device IDs (replace with your own device IDs).
-        Debug.Log("IOS TEST divice id" + Common.GetIOSAdMobID());
 
 #if UNITY_IPHONE
         deviceIds.Add( Common.GetIOSAdMobID());
