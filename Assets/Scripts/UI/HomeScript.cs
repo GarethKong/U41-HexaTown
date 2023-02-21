@@ -113,6 +113,7 @@ public class HomeScript : MonoBehaviour, IStoreListener
 
     public void tutorialBtn()
     {
+        SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.click, 0, 0.9f, null);
         GameConfig.isTutFromHomePlay = false;
         if (SceneLoader.Instance) SceneLoader.Instance.LoadScene(2, () => { });
     }
@@ -127,6 +128,7 @@ public class HomeScript : MonoBehaviour, IStoreListener
 
     public void rankingBtn()
     {
+        SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.click, 0, 0.9f, null);
         if (!IsConnectedToGooglePlay)
         {
             LoginToGooglePlay();
@@ -169,6 +171,7 @@ public class HomeScript : MonoBehaviour, IStoreListener
 
     public void BuyGold()
     {
+        SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.click, 0, 0.9f, null);
         m_StoreController.InitiatePurchase(removeAdsProductId);
     }
 

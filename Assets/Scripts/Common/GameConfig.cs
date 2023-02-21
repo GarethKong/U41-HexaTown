@@ -21,6 +21,8 @@ public class GameConfig
 
 
    public  static Vector2 DynamicPos  = new Vector2(0, -8);
+
+   public static Vector2 offset = new Vector2(0, -3.5f);
     
     int[,] IndexAround = new int[6,5]
     {
@@ -36,7 +38,8 @@ public class GameConfig
     public static int  TrihexDeckNum  = 25;
     public static Vector2 DraggingScale = new Vector2(1.5f, 3f); 
     public static Vector2 propeller_hillPos  = new Vector2(0, 0.25f);
-    public static Vector2 BoardNodeOffset  = new Vector2(0, 0);
+    public static Vector2 BoardNodeOffset  = new Vector2(0, 0f);
+    public static Vector2 BoardNodeOffsetTut  = new Vector2(0, -3.5f);
 
     public static Size captureSize = new Size(667, 376);
     

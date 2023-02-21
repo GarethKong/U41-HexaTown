@@ -495,8 +495,17 @@ namespace Custom
                 GameManager.Instance.dynamicPreview.transform.position = new Vector3(posX, posY + 3f);
             }
 
-            posX -= GameConfig.BoardNodeOffset.X;
-            posY -= GameConfig.BoardNodeOffset.Y;
+            if (GameManager.Instance.isTutorial)
+            {
+                posX -= GameConfig.BoardNodeOffsetTut.X;
+                posY -= GameConfig.BoardNodeOffsetTut.Y;  
+            }
+            else
+            {
+                posX -= GameConfig.BoardNodeOffset.X;
+                posY -= GameConfig.BoardNodeOffset.Y;
+            }
+
             var _row = Utils.getRow(posX, posY);
             var _col = Utils.getCol(posX, posY);
             // console.log("col, row = ", _col, _row, Math.round(x), Math.round(y));
@@ -558,7 +567,14 @@ namespace Custom
         public bool placeTrihex(float posX, float posY, Trihex trihex)
         {
             posX -= 0;
-            posY -= 3;
+            if (GameManager.Instance.isTutorial)
+            {
+                posY -= -0.5f;
+            }
+            else
+            {
+                posY -= 3;
+            }
             var r = Utils.getRow(posX, posY);
             var c = Utils.getCol(posX, posY);
 

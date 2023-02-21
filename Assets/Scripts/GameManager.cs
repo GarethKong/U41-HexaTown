@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
         btnRight.onClick.AddListener(onRotateRightButtonClick);
         snapshotCamera = SnapshotCamera.MakeSnapshotCamera(1, "");
         StartNewGame();
-        if (endGameTut!=null)
+        if (endGameTut != null)
         {
             if (!GameConfig.isTutFromHomePlay)
             {
@@ -140,6 +140,7 @@ public class GameManager : MonoBehaviour
                 endGameTut.SetActive(false);
             }
         }
+
         GoogleAdMobController.Instance.RequestBannerAd();
         Application.targetFrameRate = 120;
     }
@@ -148,16 +149,17 @@ public class GameManager : MonoBehaviour
 
     public void StartNewGame()
     {
-        if (GameConfig.sessionNumber% 3== 0)
+        if (GameConfig.sessionNumber % 3 == 0)
         {
             GoogleAdMobController.Instance.ShowInterstitialAd();
         }
+
         GameConfig.sessionNumber += 1;
         score = 0;
         dynamicPreview.active = true;
         var gridBoardNode = Instantiate(GridBoardPrefab);
         gridBoardNode.transform.parent = boardNode.transform;
-        if (adsBtn!=null)
+        if (adsBtn != null)
         {
             adsBtn.SetActive(true);
         }
@@ -199,7 +201,7 @@ public class GameManager : MonoBehaviour
         bigPreviewTrihex = new List<Hex>();
         staticPreviewSP.transform.position = deckCounterImage.transform.position;
         deckCounterImage.GetComponent<Image>().enabled = true;
-        
+
         for (var i = 0; i < 3; i++)
         {
             GameObject hexNode = Instantiate(this.HexTilePrefab);
@@ -213,6 +215,7 @@ public class GameManager : MonoBehaviour
         }
 
         pickNextTrihex();
+        
         grid.updateTriPreview(GameConfig.DynamicPos.X, GameConfig.DynamicPos.Y, this.nextTrihex, true);
 
         // if (GameConfig.sessionNumber % 3 == 0)
@@ -221,6 +224,22 @@ public class GameManager : MonoBehaviour
         // }
 
         gridBoardPri = gridBoardNode;
+
+        if(isTutorial) UpdateTutPosition();
+    }
+
+
+    //Update pos tutorial
+    public void UpdateTutPosition()
+    {
+        var offset = -3.5f;
+        var gridPosition = gridBoardPri.transform.position;
+        var dynamicPreviewPosition = dynamicPreview.transform.position;
+        var newGridPosition = new Vector3(gridPosition.x, gridPosition.y + offset);
+        var newDynamicPreviewPosition = new Vector3(dynamicPreviewPosition.x, dynamicPreviewPosition.y + offset);
+
+        gridBoardPri.transform.position = newGridPosition;
+        dynamicPreview.transform.position = newDynamicPreviewPosition;
     }
 
     void pickNextTrihex()
@@ -323,7 +342,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    
+
     List<Trihex> createTrihexDeck(int size, bool allShapes)
     {
         List<Trihex> deck = new List<Trihex>();
@@ -418,7 +437,7 @@ public class GameManager : MonoBehaviour
     {
         return Time.timeScale == 0f;
     }
-    
+
     public void OnRestartGame()
     {
     }
@@ -429,7 +448,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(ESoundEndGame(1f));
         StartCoroutine(EEndGame(2.5f));
     }
-    
+
     IEnumerator ESoundEndGame(float delayTime)
     {
         yield return new WaitForSeconds(delayTime);
@@ -447,6 +466,7 @@ public class GameManager : MonoBehaviour
 
     public void ShowGetBonusLife()
     {
+        SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.click, 0, 0.9f, null);
         ShowDialogByEDialog(EDialog.ADS);
     }
 
@@ -653,7 +673,14 @@ public class GameManager : MonoBehaviour
         }
 
         isMoving = false;
-        grid.updateTriPreview(GameConfig.DynamicPos.X, GameConfig.DynamicPos.Y, this.nextTrihex, true);
+        if (isTutorial)
+        {
+            grid.updateTriPreview(GameConfig.DynamicPos.X, GameConfig.DynamicPos.Y - 3.5f, this.nextTrihex, true);
+        }
+        else
+        {
+            grid.updateTriPreview(GameConfig.DynamicPos.X, GameConfig.DynamicPos.Y, this.nextTrihex, true);
+        }
         Debug.Log("ON TOUCH END");
     }
 
@@ -883,7 +910,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(transform.gameObject);
         }
-        
+
         foreach (Transform transform in staticPreviewSP.transform)
         {
             Destroy(transform.gameObject);
@@ -895,6 +922,6 @@ public class GameManager : MonoBehaviour
         SoundMaster.Instance.SoundPlayClick(0, null);
         if (SceneLoader.Instance) SceneLoader.Instance.LoadScene(0, () => { });
     }
-    
+
     #endregion
 }
