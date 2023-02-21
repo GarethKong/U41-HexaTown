@@ -1,6 +1,7 @@
 using System;
 using BeautifulTransitions.Scripts.Transitions;
 using CodeMonkey.Utils;
+using DG.Tweening;
 using ExaGames.Common;
 using Mkey;
 using TMPro;
@@ -12,6 +13,7 @@ namespace UI
     public class UIAdsController : MonoBehaviour
     {
         public TextMeshProUGUI TimeCountNextLife;
+
         public TextMeshProUGUI lblTime;
         //public TextMeshProUGUI NumberLifeCount;
 
@@ -20,13 +22,16 @@ namespace UI
         public static UIAdsController Instance;
 
         public bool claimAds = false;
-        
+
         public GameObject background;
         public bool isOnGamePlay;
 
         public TextMeshProUGUI lblBtnAdsInfo;
         public TextMeshProUGUI lblNumberLife;
-
+        public GameObject heartTopScreen;
+        public GameObject heartEffect;
+        public GameObject effectNode;
+        public GameObject heartOnDialog;
 
         void Awake()
         {
@@ -38,13 +43,18 @@ namespace UI
         {
             btnClaim.ClickFunc = () =>
             {
-                GoogleAdMobController.Instance.ShowRewardedAd();
+                // if (!Common.isRemovedAds)
+                // {
+                //     GoogleAdMobController.Instance.ShowRewardedAd();
+                // }
+                // else
+                // {
+                //     RewardAdsVideo();
+                // }
+                RewardAdsVideo();
             };
-            
-            btnClose.ClickFunc = () =>
-            {
-                HideStatic();
-            };
+
+            btnClose.ClickFunc = () => { HideStatic(); };
         }
 
 
@@ -55,12 +65,9 @@ namespace UI
                 LivesManager.instance.GiveOneLife();
                 if (Common.checkWatchTut())
                 {
-                     
                     if (LifeCount.Instance.checkLoadLevel)
                     {
-                        if(SceneLoader.Instance) SceneLoader.Instance.LoadScene(2, () =>
-                        {
-                        });
+                        if (SceneLoader.Instance) SceneLoader.Instance.LoadScene(2, () => { });
                     }
                 }
                 else
@@ -68,9 +75,7 @@ namespace UI
                     LifeCount.Instance.OnButtonConsumePressed();
                     if (LifeCount.Instance.checkLoadLevel)
                     {
-                        if(SceneLoader.Instance) SceneLoader.Instance.LoadScene(3, () =>
-                        {
-                        } );
+                        if (SceneLoader.Instance) SceneLoader.Instance.LoadScene(3, () => { });
                     }
                 }
             }
@@ -78,6 +83,19 @@ namespace UI
             {
                 LivesManager.instance.GiveOneLife();
             }
+            StartAnimAds(heartTopScreen.transform.position);
+        }
+
+        public void StartAnimAds(Vector3 targetPos)
+        {
+            var startPos = effectNode.transform.position;
+            var heart = Instantiate(heartEffect, startPos, Quaternion.identity);
+            heart.transform.parent = effectNode.transform;
+            heart.transform.DOMove(targetPos, 2).OnComplete(() =>
+            {
+                Destroy(heart);
+                HideStatic();
+            });
         }
 
         private void Show()
@@ -107,7 +125,6 @@ namespace UI
                 lblBtnAdsInfo.gameObject.SetActive(true);
                 btnClaim.gameObject.SetActive(false);
                 lblNumberLife.text = "5/5";
-
             }
             else
             {

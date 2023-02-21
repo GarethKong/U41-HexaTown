@@ -39,5 +39,8 @@ public class GameConfig
     public static Vector2 BoardNodeOffset  = new Vector2(0, 0);
 
     public static Size captureSize = new Size(667, 376);
+    
+    public static bool isTutFromHomePlay = false;
+
    
 }

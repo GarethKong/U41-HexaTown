@@ -106,7 +106,8 @@ namespace Mkey
         splash = 4,
         tree = 5,
         windmill = 6,
-        windmillhill = 7
+        windmillhill = 7,
+        win = 8,
     }
 
     public class SoundMaster : MonoBehaviour
@@ -303,7 +304,6 @@ namespace Mkey
         public void SoundPlayByEnum(EAudioEffectID soundType, float playDelay, float soundVolume, Action callBack)
         {
             StartCoroutine(PlayClipAtPoint(playDelay, listAudioClips[(int)soundType], transform.position, soundVolume, callBack));
-
         }
 
         #endregion play basic clips

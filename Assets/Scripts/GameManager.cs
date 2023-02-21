@@ -18,8 +18,11 @@ using BeautifulTransitions.Scripts.Transitions;
 using UnityEngine;
 using Custom;
 using DG.Tweening;
-using GooglePlayGames;
-using GooglePlayGames.BasicApi;
+#if UNITY_ANDROID
+       using GooglePlayGames;
+       using GooglePlayGames.BasicApi;
+#endif
+
 using Interface;
 using Mkey;
 using TMPro;
@@ -109,6 +112,8 @@ public class GameManager : MonoBehaviour
 
     public Button PlayBtn;
 
+    public GameObject endGameTut;
+
 
     private void Awake()
     {
@@ -124,7 +129,19 @@ public class GameManager : MonoBehaviour
         btnRight.onClick.AddListener(onRotateRightButtonClick);
         snapshotCamera = SnapshotCamera.MakeSnapshotCamera(1, "");
         StartNewGame();
+        if (endGameTut!=null)
+        {
+            if (!GameConfig.isTutFromHomePlay)
+            {
+                endGameTut.SetActive(true);
+            }
+            else
+            {
+                endGameTut.SetActive(false);
+            }
+        }
         GoogleAdMobController.Instance.RequestBannerAd();
+        Application.targetFrameRate = 120;
     }
 
     private GameObject gridBoardPri;
@@ -140,7 +157,10 @@ public class GameManager : MonoBehaviour
         dynamicPreview.active = true;
         var gridBoardNode = Instantiate(GridBoardPrefab);
         gridBoardNode.transform.parent = boardNode.transform;
-
+        if (adsBtn!=null)
+        {
+            adsBtn.SetActive(true);
+        }
 
         if (gridBoardNode.TryGetComponent(out HexGrid hexgrid))
         {
@@ -178,8 +198,8 @@ public class GameManager : MonoBehaviour
 
         bigPreviewTrihex = new List<Hex>();
         staticPreviewSP.transform.position = deckCounterImage.transform.position;
-
-
+        deckCounterImage.GetComponent<Image>().enabled = true;
+        
         for (var i = 0; i < 3; i++)
         {
             GameObject hexNode = Instantiate(this.HexTilePrefab);
@@ -303,8 +323,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
-
+    
     List<Trihex> createTrihexDeck(int size, bool allShapes)
     {
         List<Trihex> deck = new List<Trihex>();
@@ -399,8 +418,7 @@ public class GameManager : MonoBehaviour
     {
         return Time.timeScale == 0f;
     }
-
-
+    
     public void OnRestartGame()
     {
     }
@@ -408,7 +426,14 @@ public class GameManager : MonoBehaviour
     public void OnEndGame()
     {
         Common.saveScore(Common.curScore);
-        StartCoroutine(EEndGame(2f));
+        StartCoroutine(ESoundEndGame(1f));
+        StartCoroutine(EEndGame(2.5f));
+    }
+    
+    IEnumerator ESoundEndGame(float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.win, 0, 0.5f, null);
     }
 
     IEnumerator EEndGame(float delayTime)
@@ -556,7 +581,7 @@ public class GameManager : MonoBehaviour
         foreach (Transform child in dynamicPreview.transform)
         {
             var distance = touchPos - child.position;
-            if (distance.magnitude - 10 < 0.1f)
+            if (distance.magnitude - 10 < 0.05f)
             {
                 isCanMove = true;
                 break;
@@ -698,6 +723,7 @@ public class GameManager : MonoBehaviour
     public void onAdsPreviewClick()
     {
         var self = this;
+        SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.click, 0, 0.9f, null);
         //TODO CHECK ADS let AVSuccessCb = function (arg) {
         //     self.onShowPreview();
         // };
@@ -853,6 +879,11 @@ public class GameManager : MonoBehaviour
         }
 
         foreach (Transform transform in dynamicPreview.transform)
+        {
+            Destroy(transform.gameObject);
+        }
+        
+        foreach (Transform transform in staticPreviewSP.transform)
         {
             Destroy(transform.gameObject);
         }

@@ -116,7 +116,7 @@ namespace Custom
                 //set spFrame 'port'
                 img.sprite = SpriteMgr.Instance.hexList[(int)hexType + 5];
             }
-
+            
             var effectUpgrade = Instantiate(SpriteMgr.Instance.effectUpgrade, transform.position, Quaternion.identity);
             effectUpgrade.transform.parent = GameManager.Instance.effectNode.transform;
         }

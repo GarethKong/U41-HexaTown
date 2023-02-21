@@ -17,6 +17,7 @@ public class PlayBtn : MonoBehaviour
             SoundMaster.Instance.SoundPlayClick(0, null);
             if (Common.checkWatchTut())
             {
+                GameConfig.isTutFromHomePlay = true;
                 if(SceneLoader.Instance) SceneLoader.Instance.LoadScene(2, () =>
                 {
                 } );

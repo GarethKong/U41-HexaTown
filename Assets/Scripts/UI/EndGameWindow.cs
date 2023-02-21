@@ -96,6 +96,7 @@ public class EndGameWindow : MonoBehaviour
     public static void ShowStatic()
     {
         instance.Show();
+        TransitionHelper.TransitionIn(instance.gameObject);
     }
 
     public static void HideStatic()

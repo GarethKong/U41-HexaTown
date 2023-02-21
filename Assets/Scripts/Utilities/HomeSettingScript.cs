@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using DG.Tweening;
-using GooglePlayGames;
-using GooglePlayGames.BasicApi;
 using Mkey;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -59,6 +57,7 @@ public class HomeSettingScript : MonoBehaviour
         isSliding = true;
         Debug.Log("Setting" + "this.layoutState" + isShowed);
         show(isShowed);
+        SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.click, 0, 0.9f, null);
     }
 
     void show(bool _isShowed)

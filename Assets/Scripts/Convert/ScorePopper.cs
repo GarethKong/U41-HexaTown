@@ -9,6 +9,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using Object = System.Object;
 
 namespace Custom
 {
@@ -50,7 +51,7 @@ namespace Custom
             //     GameManager.Instance.canvas.transform as RectTransform, Camera.main);
             // node.transform.position = positionNew;
             //node.transform.position = Camera.main.WorldToScreenPoint(hexes[0].transform.position);
-          
+
             //ADAADAD
             Vector2 adjustedPosition =
                 GameManager.Instance.uiCamera.WorldToScreenPoint(new Vector3(hexes[0].transform.position.x,
@@ -60,11 +61,18 @@ namespace Custom
             adjustedPosition.x *= rect.sizeDelta.x / (float)Camera.main.pixelWidth;
             adjustedPosition.y *= rect.sizeDelta.y / (float)Camera.main.pixelHeight;
             var alchorPos = adjustedPosition - rect.sizeDelta / 2f;
-            Vector3 newPos = new Vector3(alchorPos.x, alchorPos.y +30, 3);
+            Vector3 newPos = new Vector3(alchorPos.x, alchorPos.y + 30, 3);
             node.transform.localScale = Vector3.one;
             node.GetComponent<RectTransform>().localPosition = newPos;
             node.transform.DOLocalMove(new Vector3(newPos.x, newPos.y + 160, 0), 2);
             monoBehaviour.StartCoroutine(Utils.fadeInAndOut(node, false, 2f));
+            monoBehaviour.StartCoroutine(AutoDestroy(node));
+        }
+
+        public IEnumerator AutoDestroy(GameObject go)
+        {
+            yield return new WaitForSeconds(2.5f);
+            UnityEngine.Object.Destroy(go);
         }
     }
 }

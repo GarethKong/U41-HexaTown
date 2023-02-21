@@ -1,6 +1,9 @@
 using System;
-using GooglePlayGames;
-using GooglePlayGames.BasicApi;
+#if UNITY_ANDROID
+        using GooglePlayGames;
+        using GooglePlayGames.BasicApi;
+#endif
+
 using Mkey;
 using TMPro;
 using UI;
@@ -32,12 +35,16 @@ public class HomeScript : MonoBehaviour, IStoreListener
         playButton.onClick.AddListener(playBtn);
         rankingButton.onClick.AddListener(rankingBtn);
         tutorialButton.onClick.AddListener(tutorialBtn);
+        Application.targetFrameRate = 120;
 
-        if (Application.platform == RuntimePlatform.Android)
-        {
-            // PlayGamesPlatform.DebugLogEnabled = true;
-            // PlayGamesPlatform.Activate();
-        }
+
+
+#if UNITY_ANDROID
+                 //PlayGamesPlatform.DebugLogEnabled = true;
+                 PlayGamesPlatform.Activate();
+#endif
+
+
         Initialize(OnSuccess, OnError);
         loadData();
         // vibrateBtn.onClick.AddListener(onVibrateBtn);
@@ -50,20 +57,32 @@ public class HomeScript : MonoBehaviour, IStoreListener
             Debug.Log("Unity Android SDK");
             LoginToGooglePlay();
         }
+
         InitializePurchasing();
     }
 
     //Android 
     public bool IsConnectedToGooglePlay = false;
+    public bool IsConnectedToGamecenter = false;
 
 
     private void LoginToGooglePlay()
     {
+#if UNITY_ANDROID
         PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
+#endif
+    }
+
+    private void LoginToGameCenter()
+    {
+#if UNITY_IOS
+        Social.localUser.Authenticate(ProcessAuthentication);
+#endif
     }
 
 
-    private void ProcessAuthentication(SignInStatus status)
+#if UNITY_ANDROID
+        private void ProcessAuthentication(SignInStatus status)
     {
         if (status == SignInStatus.Success)
         {
@@ -75,12 +94,27 @@ public class HomeScript : MonoBehaviour, IStoreListener
             IsConnectedToGooglePlay = false;
         }
     }
+#endif
+
+#if UNITY_IOS
+    void ProcessAuthentication(bool success)
+    {
+        if (success)
+        {
+            IsConnectedToGamecenter = true;
+        }
+        else
+        {
+            IsConnectedToGamecenter = false;
+        }
+    }
+#endif
+
 
     public void tutorialBtn()
     {
-        if(SceneLoader.Instance) SceneLoader.Instance.LoadScene(2, () =>
-        {
-        } );
+        GameConfig.isTutFromHomePlay = false;
+        if (SceneLoader.Instance) SceneLoader.Instance.LoadScene(2, () => { });
     }
 
     public void shopBtn()
@@ -97,6 +131,10 @@ public class HomeScript : MonoBehaviour, IStoreListener
         {
             LoginToGooglePlay();
         }
+        if (!IsConnectedToGamecenter)
+        {
+            LoginToGameCenter();
+        }
 
         Social.ShowLeaderboardUI();
     }
@@ -112,103 +150,103 @@ public class HomeScript : MonoBehaviour, IStoreListener
         SoundMaster.Instance.SoundPlayClick(0, null);
         UIAdsController.Instance.ShowStatic();
     }
-    
-    
-      IStoreController m_StoreController; // The Unity Purchasing system.
 
-        //Your products IDs. They should match the ids of your products in your store.
-        public string removeAdsProductId = "com.kongsoftware.hexatown.removeads";
 
-        void InitializePurchasing()
+    IStoreController m_StoreController; // The Unity Purchasing system.
+
+    //Your products IDs. They should match the ids of your products in your store.
+    public string removeAdsProductId = "com.kongsoftware.hexatown.removeads";
+
+    void InitializePurchasing()
+    {
+        var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
+
+        //Add products that will be purchasable and indicate its type.
+        builder.AddProduct(removeAdsProductId, ProductType.Consumable);
+
+        UnityPurchasing.Initialize(this, builder);
+    }
+
+    public void BuyGold()
+    {
+        m_StoreController.InitiatePurchase(removeAdsProductId);
+    }
+
+    public void OnInitialized(IStoreController controller, IExtensionProvider extensions)
+    {
+        Debug.Log("In-App Purchasing successfully initialized");
+        m_StoreController = controller;
+    }
+
+    public void OnInitializeFailed(InitializationFailureReason error)
+    {
+        Debug.Log($"In-App Purchasing initialize failed: {error}");
+    }
+
+    public void OnInitializeFailed(InitializationFailureReason error, string message)
+    {
+    }
+
+    public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args)
+    {
+        //Retrieve the purchased product
+        var product = args.purchasedProduct;
+
+        //Add the purchased product to the players inventory
+        if (product.definition.id == removeAdsProductId)
         {
-            var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
-
-            //Add products that will be purchasable and indicate its type.
-            builder.AddProduct(removeAdsProductId, ProductType.Consumable);
-
-            UnityPurchasing.Initialize(this, builder);
+            RemoveAds();
         }
+        //Show dialog complete purchase ads
 
-        public void BuyGold()
+        Debug.Log($"Purchase Complete - Product: {product.definition.id}");
+
+        //We return Complete, informing IAP that the processing on our side is done and the transaction can be closed.
+        return PurchaseProcessingResult.Complete;
+    }
+
+    public void OnPurchaseFailed(Product product, PurchaseFailureReason failureReason)
+    {
+        Debug.Log($"Purchase failed - Product: '{product.definition.id}', PurchaseFailureReason: {failureReason}");
+    }
+
+    void RemoveAds()
+    {
+        Common.removeAdsPurchase();
+        GoogleAdMobController.Instance.DestroyBannerAd();
+        PurchaseComplete.Instance.ShowStatic();
+    }
+
+    const string k_Environment = "production";
+
+    void Initialize(Action onSuccess, Action<string> onError)
+    {
+        try
         {
-            m_StoreController.InitiatePurchase(removeAdsProductId);
-        }
+            var options = new InitializationOptions().SetEnvironmentName(k_Environment);
 
-        public void OnInitialized(IStoreController controller, IExtensionProvider extensions)
+            UnityServices.InitializeAsync(options).ContinueWith(task => onSuccess());
+        }
+        catch (Exception exception)
         {
-            Debug.Log("In-App Purchasing successfully initialized");
-            m_StoreController = controller;
+            onError(exception.Message);
         }
+    }
 
-        public void OnInitializeFailed(InitializationFailureReason error)
-        {
-            Debug.Log($"In-App Purchasing initialize failed: {error}");
-        }
+    void OnSuccess()
+    {
+        var text = "Congratulations!\nUnity Gaming Services has been successfully initialized.";
+        Debug.Log(text);
+    }
 
-        public void OnInitializeFailed(InitializationFailureReason error, string message)
-        {
-        }
+    void OnError(string message)
+    {
+        var text = $"Unity Gaming Services failed to initialize with error: {message}.";
+        Debug.LogError(text);
+    }
 
-        public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args)
-        {
-            //Retrieve the purchased product
-            var product = args.purchasedProduct;
-
-            //Add the purchased product to the players inventory
-            if (product.definition.id == removeAdsProductId)
-            {
-                RemoveAds();
-            }
-            //Show dialog complete purchase ads
-
-            Debug.Log($"Purchase Complete - Product: {product.definition.id}");
-
-            //We return Complete, informing IAP that the processing on our side is done and the transaction can be closed.
-            return PurchaseProcessingResult.Complete;
-        }
-
-        public void OnPurchaseFailed(Product product, PurchaseFailureReason failureReason)
-        {
-            Debug.Log($"Purchase failed - Product: '{product.definition.id}', PurchaseFailureReason: {failureReason}");
-        }
-
-        void RemoveAds()
-        {
-            Common.removeAdsPurchase();
-            GoogleAdMobController.Instance.DestroyBannerAd();
-        }
-        
-        
-        const string k_Environment = "production";
-        
-        void Initialize(Action onSuccess, Action<string> onError)
-        {
-            try
-            {
-                var options = new InitializationOptions().SetEnvironmentName(k_Environment);
-
-                UnityServices.InitializeAsync(options).ContinueWith(task => onSuccess());
-            }
-            catch (Exception exception)
-            {
-                onError(exception.Message);
-            }
-        }
-
-        void OnSuccess()
-        {
-            var text = "Congratulations!\nUnity Gaming Services has been successfully initialized.";
-            Debug.Log(text);
-        }
-
-        void OnError(string message)
-        {
-            var text = $"Unity Gaming Services failed to initialize with error: {message}.";
-            Debug.LogError(text);
-        }
-
-        public void CloseSetting()
-        {
-            HomeSettingScript.instance.onSettingBtnDown();
-        }
+    public void CloseSetting()
+    {
+        HomeSettingScript.instance.onSettingBtnDown();
+    }
 }

@@ -6,6 +6,7 @@ using GoogleMobileAds.Api;
 using GoogleMobileAds.Common;
 using System;
 using System.Collections.Generic;
+using UI;
 
 public class GoogleAdMobController : MonoBehaviour
 {
@@ -105,9 +106,9 @@ public class GoogleAdMobController : MonoBehaviour
 #if UNITY_EDITOR
         string adUnitId = "unused";
 #elif UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/6300978111";
+        string adUnitId = "ca-app-pub-2623110453591824/4780063082";
 #elif UNITY_IPHONE
-        string adUnitId = "ca-app-pub-3940256099942544/2934735716";
+        string adUnitId = "ca-app-pub-2623110453591824/5661915824";
 #else
         string adUnitId = "unexpected_platform";
 #endif
@@ -174,9 +175,9 @@ public class GoogleAdMobController : MonoBehaviour
 #if UNITY_EDITOR
         string adUnitId = "unused";
 #elif UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/1033173712";
+        string adUnitId = "ca-app-pub-2623110453591824/8583592635";
 #elif UNITY_IPHONE
-        string adUnitId = "ca-app-pub-3940256099942544/4411468910";
+        string adUnitId = "ca-app-pub-2623110453591824/8284193821";
 #else
         string adUnitId = "unexpected_platform";
 #endif
@@ -273,9 +274,9 @@ public class GoogleAdMobController : MonoBehaviour
 #if UNITY_EDITOR
         string adUnitId = "unused";
 #elif UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/5224354917";
+        string adUnitId = "ca-app-pub-2623110453591824/1718785471";
 #elif UNITY_IPHONE
-        string adUnitId = "ca-app-pub-3940256099942544/1712485313";
+        string adUnitId = "ca-app-pub-2623110453591824/2401327667";
 #else
         string adUnitId = "unexpected_platform";
 #endif
@@ -346,6 +347,7 @@ public class GoogleAdMobController : MonoBehaviour
         }
         else
         {
+            //NoAds.Instance.ShowStatic();
             PrintStatus("Rewarded ad is not ready yet.");
         }
     }

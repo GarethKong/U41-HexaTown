@@ -74,6 +74,11 @@ public static class Common
                         (bool success) => { Debug.Log("Save score" + success); });
                 }
             }
+            else
+            {
+                Social.ReportScore(Common.curScore, "com.kongsoftware.hexatown.highscore",
+                    (bool success) => { Debug.Log("Save score" + success); });
+            }
             //TODO LEADERBOARD GameServices.ReportScore(bestScore, EM_GameServicesConstants.Leaderboard_High_Score);
             //CloudOnceUtils.LeaderboardUtils.SubmitScore(bestScore);
         }

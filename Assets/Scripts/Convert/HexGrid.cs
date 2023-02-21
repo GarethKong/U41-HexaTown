@@ -404,10 +404,10 @@ namespace Custom
 
         public void deactivate()
         {
-            this.enabled = false;
-            this.triPreviews[0].active = false;
-            this.triPreviews[1].active = false;
-            this.triPreviews[2].active = false;
+            enabled = false;
+            triPreviews[0].active = false;
+            triPreviews[1].active = false;
+            triPreviews[2].active = false;
             for (var i = 0; i < 3; i++)
             {
                 Destroy(this.triPreviews[i]);
