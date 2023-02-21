@@ -76,6 +76,11 @@ public static class Common
             }
             else
             {
+                if (score > 50)
+                {
+                    ReportAchievement50();
+                }
+
                 Social.ReportScore(Common.curScore, "com.kongsoftware.hexatown.highscore",
                     (bool success) => { Debug.Log("Save score" + success); });
             }
@@ -84,6 +89,13 @@ public static class Common
         }
 
         savePlayerData();
+    }
+
+
+    static void ReportAchievement50()
+    {
+        // Social.ReportProgress("com.kongsoftware.hexatown.level", 100,
+        //     (result) => { Debug.Log(result ? "Reported achievement" : "Failed to report achievement"); });
     }
 
 
@@ -133,5 +145,38 @@ public static class Common
     public static bool checkWatchTut()
     {
         return isFirstTime;
+    }
+    
+    
+    
+#if UNITY_ANDROID
+ public static string GetAndroidAdMobID() {
+     UnityEngine.AndroidJavaClass up = new UnityEngine.AndroidJavaClass("com.unity3d.player.UnityPlayer");
+     UnityEngine.AndroidJavaObject currentActivity = up.GetStatic<UnityEngine.AndroidJavaObject>("currentActivity");
+     UnityEngine.AndroidJavaObject contentResolver = currentActivity.Call<UnityEngine.AndroidJavaObject>("getContentResolver");
+     UnityEngine.AndroidJavaObject secure = new UnityEngine.AndroidJavaObject("android.provider.Settings$Secure");
+     string deviceID = secure.CallStatic<string>("getString", contentResolver, "android_id");
+     return Md5Sum(deviceID).ToUpper();
+ }
+#endif
+ 
+#if UNITY_IPHONE
+    public static string GetIOSAdMobID() {
+        return Md5Sum(UnityEngine.iOS.Device.advertisingIdentifier);
+    }
+#endif
+    public static string Md5Sum(string strToEncrypt) {
+        System.Text.UTF8Encoding ue = new System.Text.UTF8Encoding();
+        byte[] bytes = ue.GetBytes(strToEncrypt);
+     
+        System.Security.Cryptography.MD5CryptoServiceProvider md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
+        byte[] hashBytes = md5.ComputeHash(bytes);
+     
+        string hashString = ""; 
+        for (int i = 0; i < hashBytes.Length; i++) {
+            hashString += System.Convert.ToString(hashBytes[i], 16).PadLeft(2, '0');
+        }
+     
+        return hashString.PadLeft(32, '0');
     }
 }

@@ -249,4 +249,25 @@ public class HomeScript : MonoBehaviour, IStoreListener
     {
         HomeSettingScript.instance.onSettingBtnDown();
     }
+
+    public GameObject effectTouch;
+    public GameObject TouchList;
+
+    void Update()
+    {
+        // Handle screen touches.
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Began)
+            {
+                var touchPos = Camera.main.ScreenToWorldPoint(touch.position);
+                var touching = Instantiate(effectTouch, touchPos, effectTouch.transform.rotation);
+                touching.transform.parent = TouchList.transform.parent;
+                var pos = touching.transform.localPosition;
+                touching.transform.localPosition = new Vector3(pos.x, pos.y, 100);
+            }
+        }
+    }
 }

@@ -724,13 +724,14 @@ public class GameManager : MonoBehaviour
     {
         var self = this;
         SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.click, 0, 0.9f, null);
-        //TODO CHECK ADS let AVSuccessCb = function (arg) {
-        //     self.onShowPreview();
-        // };
-        // let AVFailedCb = function (arg) {
-        // };
-        // FBGlobal.instance.showAdsVideo(AVSuccessCb.bind(self), AVFailedCb.bind(self), null);
-        self.onShowPreview();
+        if (!Common.isRemovedAds)
+        {
+            GoogleAdMobController.Instance.ShowHintRewardedAd();
+        }
+        else
+        {
+            onShowPreview();
+        }
     }
 
     public void onShowPreview()

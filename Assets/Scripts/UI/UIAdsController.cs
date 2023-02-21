@@ -43,15 +43,15 @@ namespace UI
         {
             btnClaim.ClickFunc = () =>
             {
-                // if (!Common.isRemovedAds)
-                // {
-                //     GoogleAdMobController.Instance.ShowRewardedAd();
-                // }
-                // else
-                // {
-                //     RewardAdsVideo();
-                // }
-                RewardAdsVideo();
+                if (!Common.isRemovedAds)
+                {
+                    GoogleAdMobController.Instance.ShowRewardedAd();
+                }
+                else
+                {
+                    RewardAdsVideo();
+                }
+                //RewardAdsVideo();
             };
 
             btnClose.ClickFunc = () => { HideStatic(); };
@@ -62,7 +62,6 @@ namespace UI
         {
             if (!isOnGamePlay)
             {
-                LivesManager.instance.GiveOneLife();
                 if (Common.checkWatchTut())
                 {
                     if (LifeCount.Instance.checkLoadLevel)
@@ -79,10 +78,6 @@ namespace UI
                     }
                 }
             }
-            else
-            {
-                LivesManager.instance.GiveOneLife();
-            }
             StartAnimAds(heartTopScreen.transform.position);
         }
 
@@ -93,6 +88,7 @@ namespace UI
             heart.transform.parent = effectNode.transform;
             heart.transform.DOMove(targetPos, 2).OnComplete(() =>
             {
+                LivesManager.instance.GiveOneLife();
                 Destroy(heart);
                 HideStatic();
             });

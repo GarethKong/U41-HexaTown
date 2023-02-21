@@ -22,12 +22,14 @@ public class GoogleAdMobController : MonoBehaviour
     public UnityEvent OnAdFailedToLoadEvent;
     public UnityEvent OnAdOpeningEvent;
     public UnityEvent OnAdFailedToShowEvent;
+    public UnityEvent OnUserShowHint;
     public UnityEvent OnUserEarnedRewardEvent;
     public UnityEvent OnAdClosedEvent;
 
     #region UNITY MONOBEHAVIOR METHODS
 
     public static GoogleAdMobController Instance;
+
     private void Awake()
     {
         if (Instance == null)
@@ -35,7 +37,7 @@ public class GoogleAdMobController : MonoBehaviour
             Instance = this;
         }
     }
-    
+
     public void Start()
     {
         MobileAds.SetiOSAppPauseOnBackground(true);
@@ -43,8 +45,10 @@ public class GoogleAdMobController : MonoBehaviour
         List<String> deviceIds = new List<String>() { AdRequest.TestDeviceSimulator };
 
         // Add some test device IDs (replace with your own device IDs).
+        Debug.Log("IOS TEST divice id" + Common.GetIOSAdMobID());
+
 #if UNITY_IPHONE
-        deviceIds.Add("96e23e80653bb28980d3f40beb58915c");
+        deviceIds.Add( Common.GetIOSAdMobID());
 #elif UNITY_ANDROID
         deviceIds.Add("75EF8D155528C04DACBBA6F36F433035");
 #endif
@@ -52,8 +56,8 @@ public class GoogleAdMobController : MonoBehaviour
         // Configure TagForChildDirectedTreatment and test device IDs.
         RequestConfiguration requestConfiguration =
             new RequestConfiguration.Builder()
-            .SetTagForChildDirectedTreatment(TagForChildDirectedTreatment.Unspecified)
-            .SetTestDeviceIds(deviceIds).build();
+                .SetTagForChildDirectedTreatment(TagForChildDirectedTreatment.Unspecified)
+                .SetTestDeviceIds(deviceIds).build();
         MobileAds.SetRequestConfiguration(requestConfiguration);
 
         // Initialize the Google Mobile Ads SDK.
@@ -61,7 +65,7 @@ public class GoogleAdMobController : MonoBehaviour
 
         // Listen to application foreground / background events.
         AppStateEventNotifier.AppStateChanged += OnAppStateChanged;
-        
+
         RequestAndLoadInterstitialAd();
         RequestAndLoadRewardedAd();
     }
@@ -130,7 +134,7 @@ public class GoogleAdMobController : MonoBehaviour
         };
         bannerView.OnBannerAdLoadFailed += (LoadAdError error) =>
         {
-            PrintStatus("Banner ad failed to load with error: "+ error.GetMessage());
+            PrintStatus("Banner ad failed to load with error: " + error.GetMessage());
             OnAdFailedToLoadEvent.Invoke();
         };
         bannerView.OnAdFullScreenContentOpened += () =>
@@ -146,9 +150,9 @@ public class GoogleAdMobController : MonoBehaviour
         bannerView.OnAdPaid += (AdValue adValue) =>
         {
             string msg = string.Format("{0} (currency: {1}, value: {2}",
-                                        "Banner ad received a paid event.",
-                                        adValue.CurrencyCode,
-                                        adValue.Value);
+                "Banner ad received a paid event.",
+                adValue.CurrencyCode,
+                adValue.Value);
             PrintStatus(msg);
         };
 
@@ -195,7 +199,7 @@ public class GoogleAdMobController : MonoBehaviour
                 if (loadError != null)
                 {
                     PrintStatus("Interstitial ad failed to load with error: " +
-                        loadError.GetMessage());
+                                loadError.GetMessage());
                     return;
                 }
                 else if (ad == null)
@@ -217,14 +221,8 @@ public class GoogleAdMobController : MonoBehaviour
                     PrintStatus("Interstitial ad closed.");
                     OnAdClosedEvent.Invoke();
                 };
-                ad.OnAdImpressionRecorded += () =>
-                {
-                    PrintStatus("Interstitial ad recorded an impression.");
-                };
-                ad.OnAdClicked += () =>
-                {
-                    PrintStatus("Interstitial ad recorded a click.");
-                };
+                ad.OnAdImpressionRecorded += () => { PrintStatus("Interstitial ad recorded an impression."); };
+                ad.OnAdClicked += () => { PrintStatus("Interstitial ad recorded a click."); };
                 ad.OnAdFullScreenContentFailed += (AdError error) =>
                 {
                     PrintStatus("Interstitial ad failed to show with error: " +
@@ -233,9 +231,9 @@ public class GoogleAdMobController : MonoBehaviour
                 ad.OnAdPaid += (AdValue adValue) =>
                 {
                     string msg = string.Format("{0} (currency: {1}, value: {2}",
-                                               "Interstitial ad received a paid event.",
-                                               adValue.CurrencyCode,
-                                               adValue.Value);
+                        "Interstitial ad received a paid event.",
+                        adValue.CurrencyCode,
+                        adValue.Value);
                     PrintStatus(msg);
                 };
             });
@@ -310,25 +308,19 @@ public class GoogleAdMobController : MonoBehaviour
                     PrintStatus("Rewarded ad closed.");
                     OnAdClosedEvent.Invoke();
                 };
-                ad.OnAdImpressionRecorded += () =>
-                {
-                    PrintStatus("Rewarded ad recorded an impression.");
-                };
-                ad.OnAdClicked += () =>
-                {
-                    PrintStatus("Rewarded ad recorded a click.");
-                };
+                ad.OnAdImpressionRecorded += () => { PrintStatus("Rewarded ad recorded an impression."); };
+                ad.OnAdClicked += () => { PrintStatus("Rewarded ad recorded a click."); };
                 ad.OnAdFullScreenContentFailed += (AdError error) =>
                 {
                     PrintStatus("Rewarded ad failed to show with error: " +
-                               error.GetMessage());
+                                error.GetMessage());
                 };
                 ad.OnAdPaid += (AdValue adValue) =>
                 {
                     string msg = string.Format("{0} (currency: {1}, value: {2}",
-                                               "Rewarded ad received a paid event.",
-                                               adValue.CurrencyCode,
-                                               adValue.Value);
+                        "Rewarded ad received a paid event.",
+                        adValue.CurrencyCode,
+                        adValue.Value);
                     OnUserEarnedRewardEvent.Invoke();
                     PrintStatus(msg);
                 };
@@ -347,8 +339,25 @@ public class GoogleAdMobController : MonoBehaviour
         }
         else
         {
-            //NoAds.Instance.ShowStatic();
-            PrintStatus("Rewarded ad is not ready yet.");
+            NoAds.Instance.ShowStatic();
+           // PrintStatus("Rewarded ad is not ready yet.");
+        }
+    }
+    
+    public void ShowHintRewardedAd()
+    {
+        if (rewardedAd != null)
+        {
+            rewardedAd.Show((Reward reward) =>
+            {
+                PrintStatus("Rewarded ad granted a reward: " + reward.Amount);
+                OnUserShowHint.Invoke();
+            });
+        }
+        else
+        {
+            NoAds.Instance.ShowStatic();
+            //PrintStatus("Rewarded ad is not ready yet.");
         }
     }
 
@@ -396,14 +405,8 @@ public class GoogleAdMobController : MonoBehaviour
                     PrintStatus("Rewarded intersitial ad closed.");
                     OnAdClosedEvent.Invoke();
                 };
-                ad.OnAdImpressionRecorded += () =>
-                {
-                    PrintStatus("Rewarded intersitial ad recorded an impression.");
-                };
-                ad.OnAdClicked += () =>
-                {
-                    PrintStatus("Rewarded intersitial ad recorded a click.");
-                };
+                ad.OnAdImpressionRecorded += () => { PrintStatus("Rewarded intersitial ad recorded an impression."); };
+                ad.OnAdClicked += () => { PrintStatus("Rewarded intersitial ad recorded a click."); };
                 ad.OnAdFullScreenContentFailed += (AdError error) =>
                 {
                     PrintStatus("Rewarded intersitial ad failed to show with error: " +
@@ -412,9 +415,9 @@ public class GoogleAdMobController : MonoBehaviour
                 ad.OnAdPaid += (AdValue adValue) =>
                 {
                     string msg = string.Format("{0} (currency: {1}, value: {2}",
-                                                "Rewarded intersitial ad received a paid event.",
-                                                adValue.CurrencyCode,
-                                                adValue.Value);
+                        "Rewarded intersitial ad received a paid event.",
+                        adValue.CurrencyCode,
+                        adValue.Value);
                     PrintStatus(msg);
                 };
             });
@@ -490,7 +493,7 @@ public class GoogleAdMobController : MonoBehaviour
                 if (loadError != null)
                 {
                     PrintStatus("App open ad failed to load with error: " +
-                        loadError.GetMessage());
+                                loadError.GetMessage());
                     return;
                 }
                 else if (ad == null)
@@ -513,25 +516,19 @@ public class GoogleAdMobController : MonoBehaviour
                     PrintStatus("App open ad closed.");
                     OnAdClosedEvent.Invoke();
                 };
-                ad.OnAdImpressionRecorded += () =>
-                {
-                    PrintStatus("App open ad recorded an impression.");
-                };
-                ad.OnAdClicked += () =>
-                {
-                    PrintStatus("App open ad recorded a click.");
-                };
+                ad.OnAdImpressionRecorded += () => { PrintStatus("App open ad recorded an impression."); };
+                ad.OnAdClicked += () => { PrintStatus("App open ad recorded a click."); };
                 ad.OnAdFullScreenContentFailed += (AdError error) =>
                 {
                     PrintStatus("App open ad failed to show with error: " +
-                        error.GetMessage());
+                                error.GetMessage());
                 };
                 ad.OnAdPaid += (AdValue adValue) =>
                 {
                     string msg = string.Format("{0} (currency: {1}, value: {2}",
-                                               "App open ad received a paid event.",
-                                               adValue.CurrencyCode,
-                                               adValue.Value);
+                        "App open ad received a paid event.",
+                        adValue.CurrencyCode,
+                        adValue.Value);
                     PrintStatus(msg);
                 };
             });
@@ -552,6 +549,7 @@ public class GoogleAdMobController : MonoBehaviour
         {
             return;
         }
+
         appOpenAd.Show();
     }
 
@@ -595,10 +593,7 @@ public class GoogleAdMobController : MonoBehaviour
     private void PrintStatus(string message)
     {
         Debug.Log(message);
-        MobileAdsEventExecutor.ExecuteInUpdate(() =>
-        {
-            print(message);
-        });
+        MobileAdsEventExecutor.ExecuteInUpdate(() => { print(message); });
     }
 
     #endregion
