@@ -28,11 +28,13 @@ namespace UI
         {
             btnClaim.ClickFunc = () =>
             {
+                SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.click, 0, 0.9f, null);
                 HideStatic();
             };
             
             btnClose.ClickFunc = () =>
             {
+                SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.click, 0, 0.9f, null);
                 HideStatic();
             };
         }

@@ -43,6 +43,7 @@ namespace UI
         {
             btnClaim.ClickFunc = () =>
             {
+                SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.click, 0, 0.9f, null);
                 if (!Common.isRemovedAds)
                 {
                     GoogleAdMobController.Instance.ShowRewardedAd();
@@ -54,7 +55,11 @@ namespace UI
                 //RewardAdsVideo();
             };
 
-            btnClose.ClickFunc = () => { HideStatic(); };
+            btnClose.ClickFunc = () =>
+            {
+                SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.click, 0, 0.9f, null);
+                HideStatic();
+            };
         }
 
 

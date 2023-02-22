@@ -237,7 +237,7 @@ public class GameManager : MonoBehaviour
         if(isTutorial) UpdateTutPosition();
     }
     
-    public float ButtonReactivateDelay = 0.7f;
+    public float ButtonReactivateDelay = 0.3f;
  
 // Assign this as your OnClick listener from the inspector
     public void WhenClickedRight() {
@@ -930,7 +930,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadGamePlay()
     {
-        SoundMaster.Instance.SoundPlayClick(0, null);
+        SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.click, 0, 0.9f, null);
         if (SceneLoader.Instance) SceneLoader.Instance.LoadScene(3, () => { });
     }
 
@@ -960,7 +960,7 @@ public class GameManager : MonoBehaviour
 
     public void CloseTut()
     {
-        SoundMaster.Instance.SoundPlayClick(0, null);
+        SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.click, 0, 0.9f, null);
         if (SceneLoader.Instance) SceneLoader.Instance.LoadScene(0, () => { });
     }
 

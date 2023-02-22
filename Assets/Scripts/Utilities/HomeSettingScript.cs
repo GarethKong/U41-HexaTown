@@ -120,6 +120,7 @@ public class HomeSettingScript : MonoBehaviour
 
     public void onHomeBtn()
     {
+        SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.click, 0, 0.9f, null);
         SceneManager.LoadScene ("HomeScreen");
     }
 }
