@@ -875,6 +875,8 @@ public class GameManager : MonoBehaviour
         {
             grid.SetYellowHexTut(2, 3);
         }
+        else if(Step == 5) grid.RemoveYellowHexTut(2, 3);
+
         else if (Step == 6)
         {
             grid.RemoveYellowHexTut(3, 5);
