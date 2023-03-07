@@ -789,11 +789,23 @@ public class GameManager : MonoBehaviour
         if (!Common.isRemovedAds)
         {
             GoogleAdMobController.Instance.ShowHintRewardedAd();
+            CloseShowPreview();
         }
         else
         {
             onShowPreview();
         }
+    }
+
+    public GameObject AdsPreview;
+    public void CloseShowPreview()
+    {
+        AdsPreview.SetActive(false);
+    }
+    
+    public void OpenShowPreview()
+    {
+        AdsPreview.SetActive(true);
     }
 
     public void onShowPreview()
@@ -815,6 +827,7 @@ public class GameManager : MonoBehaviour
 
         updateStaticTrihex(onAds);
         deckCounterImage.GetComponent<Image>().enabled = false;
+        CloseShowPreview();
     }
 
     #region Trong Write

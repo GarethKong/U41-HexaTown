@@ -63,6 +63,18 @@ namespace UI
             };
         }
 
+        public void btnClaimm()
+        {
+            SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.click, 0, 0.9f, null);
+            if (!Common.isRemovedAds)
+            {
+                GoogleAdMobController.Instance.ShowRewardedAd();
+            }
+            else
+            {
+                RewardAdsVideo();
+            }
+        }
 
         public void RewardAdsVideo()
         {
