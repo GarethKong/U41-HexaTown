@@ -26,6 +26,7 @@ namespace UI
         {
             btnClaim.ClickFunc = () =>
             {
+                HomeScript.Instance.BuyGold();
                 HideStatic();
             };
             

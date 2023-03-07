@@ -27,6 +27,7 @@ namespace UI
         public bool isOnGamePlay;
 
         public TextMeshProUGUI lblBtnAdsInfo;
+        public TextMeshProUGUI lblBtnAdsInfo2;
         public TextMeshProUGUI lblNumberLife;
         public GameObject heartTopScreen;
         public GameObject heartEffect;
@@ -124,6 +125,7 @@ namespace UI
                 TimeCountNextLife.text = "";
                 lblTime.text = "Full of Heart";
                 lblBtnAdsInfo.gameObject.SetActive(true);
+                lblBtnAdsInfo2.gameObject.SetActive(false);
                 btnClaim.gameObject.SetActive(false);
                 lblNumberLife.text = "5/5";
             }
@@ -132,6 +134,7 @@ namespace UI
                 lblTime.text = "Refill Heart";
                 TimeCountNextLife.text = "Next heart in " + LivesManager.instance.RemainingTimeString;
                 lblBtnAdsInfo.gameObject.SetActive(false);
+                lblBtnAdsInfo2.gameObject.SetActive(true);
                 btnClaim.gameObject.SetActive(true);
                 lblNumberLife.text = "+1";
             }

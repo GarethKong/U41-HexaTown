@@ -217,6 +217,11 @@ public class HomeScript : MonoBehaviour, IStoreListener
     {
         Common.removeAdsPurchase();
         GoogleAdMobController.Instance.DestroyBannerAd();
+        // PurchaseComplete.Instance.ShowStatic();
+    }
+
+    public void PurchasePopup()
+    {
         PurchaseComplete.Instance.ShowStatic();
     }
 
