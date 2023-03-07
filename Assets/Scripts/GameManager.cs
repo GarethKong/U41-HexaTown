@@ -146,7 +146,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                endGameTut.SetActive(false);
+                endGameTut.SetActive(true);
             }
         }
 
@@ -385,11 +385,11 @@ public class GameManager : MonoBehaviour
         {
             if (allShapes)
             {
-                if (i < size / 3)
+                if (i < (float)size / 3)
                 {
                     deck.Add(new Trihex(0, 0, 0, Utils.pick(new[] { 'a', 'v' })));
                 }
-                else if (i < size / 1.5)
+                else if (i < (float)size / 1.5)
                 {
                     deck.Add(new Trihex(0, 0, 0, Utils.pick(new[] { '/', '-', '\\' })));
                 }
@@ -407,7 +407,7 @@ public class GameManager : MonoBehaviour
         Utils.Shuffle(deck);
         for (var i = 0; i < size; i++)
         {
-            if (i < size / 2)
+            if (i < (float)size / 2)
             {
                 deck[i].hexes[0] = 3;
             }
@@ -420,7 +420,7 @@ public class GameManager : MonoBehaviour
         Utils.Shuffle(deck);
         for (var i = 0; i < size; i++)
         {
-            if (i < size / 2)
+            if (i < (float)size / 2)
             {
                 deck[i].hexes[1] = 3;
             }
@@ -433,7 +433,7 @@ public class GameManager : MonoBehaviour
         Utils.Shuffle(deck);
         for (var i = 0; i < size; i++)
         {
-            if (i < size / 2)
+            if (i < (float)size / 2)
             {
                 deck[i].hexes[2] = 3;
             }
@@ -963,7 +963,16 @@ public class GameManager : MonoBehaviour
     public void CloseTut()
     {
         SoundMaster.Instance.SoundPlayByEnum(EAudioEffectID.click, 0, 0.9f, null);
-        if (SceneLoader.Instance) SceneLoader.Instance.LoadScene(0, () => { });
+        Common.SetWatchTut();
+        if (GameConfig.isTutFromHomePlay)
+        {
+            if (SceneLoader.Instance) SceneLoader.Instance.LoadScene(3, () => { });
+        }
+        else
+        {
+            if (SceneLoader.Instance) SceneLoader.Instance.LoadScene(0, () => { });
+        }
+      
     }
 
     #endregion

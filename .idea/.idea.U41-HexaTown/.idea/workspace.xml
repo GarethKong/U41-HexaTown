@@ -3,13 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="101289eb-5478-4be5-877f-5c42d2dad65c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.U41-HexaTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.U41-HexaTown/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Upgrade/ETFX 2019.4.24f1 URP Upgrade.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FlipWebApps/BeautifulTransitions/_Demo/PlayMaker/BeautifulTransitionsPlayMakerDemo.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/HomeScreen.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/HomeScreen.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/Animation/hand2Move.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/Animation/hand2Move.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/Animation/hand6Move.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/Animation/hand6Move.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GvhProjectSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GvhProjectSettings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,9 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/685c48cf8f0b48abb797275c046dda6a158a00/92/3a0a0b51/Component.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/HandDestroy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PlayBtnTut.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Samples/In App Purchasing/4.6.0/01 Buying Consumables/BuyingConsumables.cs" root0="FORCE_HIGHLIGHTING" />
@@ -33,6 +29,24 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mobile.android-logcat@1.3.2/Tests/Editor/AndroidLogcatRegexTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@4.6.0/Samples~/04 IntegratingSelfProvidedBackendReceiptValidation/IntegratingSelfProvidedBackendReceiptValidation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@4.6.0/Samples~/Apple App Store - 03 HandlingDeferredPurchases/HandlingDeferredPurchases.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/PureRockets_IAP/Assets/Scripts/MyIAPManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/38e2728118f24991966122330609e2726400/1d/b38485df/Canvas.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4ac9ef2b8e294691b53b47afb04569b7158a00/e2/5f774617/Application.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4ac9ef2b8e294691b53b47afb04569b7158a00/f6/d48a049e/Camera.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/8f/6daf9f6c/Void.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5ddb5fa70dfe40d2818192400111b9ec2aa00/60/ecd43e28/ShortcutExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a6d1ecb3726043c4acd30d23468860577200/21/b432bf99/Social.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b62633a088884f409955a909366b167f9e00/e1/e7f42f64/Social.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bfb370f0c9204304bb5ddff01b3880ba12d400/61/c7f65882/Color.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bfb370f0c9204304bb5ddff01b3880ba12d400/62/6b9da79c/Camera.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bfb370f0c9204304bb5ddff01b3880ba12d400/fb/148203b1/RectTransform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d7823710ae134cf88b192879e05b96788a00/61/95e204c7/RewardedAd.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d7823710ae134cf88b192879e05b96788a00/8d/4be1fd45/InterstitialAd.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5377ac4e788cc4f8c6545362cee39859969c7b346233bb3bdcf6191179ada9/System.Drawing.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7d303c2bf72cd4cec95665b89c457d265d2b8ef3ed6da17cd4f85587c2f9de7/System.Linq.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cca89918937e838503d883f1aa1784c57493a1cacd61b1f5fe1ebf5a1e3567a/System.Numerics.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -69,7 +83,7 @@
       <method v="2" />
     </configuration>
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="E:\2021.3.15f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/2021.3.15f1/Unity.app/Contents/MacOS/Unity" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath $PROJECT_DIR$ -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -86,10 +100,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="15316">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="15316" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -118,6 +132,7 @@
       <workItem from="1676285425403" duration="18661000" />
       <workItem from="1676425254404" duration="22118000" />
       <workItem from="1676598686347" duration="54166000" />
+      <workItem from="1677031482125" duration="12609000" />
     </task>
     <servers />
   </component>
@@ -290,6 +305,97 @@
           </properties>
           <option name="timeStamp" value="122" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs</url>
+          <line>383</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" initialLine="383" containingFunctionPresentation="method 'createTrihexDeck'">
+            <startOffsets>
+              <option value="10829" />
+            </startOffsets>
+            <endOffsets>
+              <option value="10859" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="123" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs</url>
+          <line>409</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" initialLine="409" containingFunctionPresentation="method 'createTrihexDeck'">
+            <startOffsets>
+              <option value="11616" />
+            </startOffsets>
+            <endOffsets>
+              <option value="11640" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="124" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs</url>
+          <line>407</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" initialLine="407" containingFunctionPresentation="method 'createTrihexDeck'">
+            <startOffsets>
+              <option value="11563" />
+            </startOffsets>
+            <endOffsets>
+              <option value="11593" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="125" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs</url>
+          <line>419</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" initialLine="419" containingFunctionPresentation="method 'createTrihexDeck'">
+            <startOffsets>
+              <option value="11809" />
+            </startOffsets>
+            <endOffsets>
+              <option value="11829" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="126" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs</url>
+          <line>420</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" initialLine="420" containingFunctionPresentation="method 'createTrihexDeck'">
+            <startOffsets>
+              <option value="11838" />
+            </startOffsets>
+            <endOffsets>
+              <option value="11868" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="127" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs</url>
+          <line>411</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" initialLine="411" containingFunctionPresentation="method 'createTrihexDeck'">
+            <startOffsets>
+              <option value="11671" />
+            </startOffsets>
+            <endOffsets>
+              <option value="11692" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="128" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs</url>
+          <line>415</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" initialLine="415" containingFunctionPresentation="method 'createTrihexDeck'">
+            <startOffsets>
+              <option value="11754" />
+            </startOffsets>
+            <endOffsets>
+              <option value="11775" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="129" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
@@ -302,6 +408,7 @@
       <configuration name="UNITY_DEBUG_RUN_CONFIGURATION">
         <watch expression=" r.TryGetValue(col, out var value)" language="C#" />
         <watch expression="!h.hasHill" language="C#" />
+        <watch expression="size / 2" language="C#" />
         <watch expression="gridBoard.has(r, c + 1) " />
         <watch expression="h.hasHill" />
         <watch expression="h.hexType != EHexType.empty " />
